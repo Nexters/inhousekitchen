@@ -30,13 +30,13 @@ Below you'll find information about performing common tasks. The most recent ver
 
 ## add-library
 
-* redux,react-redux
+* redux,react-redux,redux-saga,redux-logger
 * component - native-base(https://nativebase.io/)
 * navigation - (https://wix.github.io/react-native-navigation/#/installation-ios)
   * why's react-native-navigation ? https://jsdev.kr/t/react-native-1-navigation/2617
 * animation - react-native-animatable
 * axios
-* lodash
+* lodash, moment
 
 ## Updating to New Releases
 
