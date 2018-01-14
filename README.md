@@ -4,6 +4,7 @@ Below you'll find information about performing common tasks. The most recent ver
 
 ## Table of Contents
 
+* [Application Structure](#Application Structure)
 * [Add Library](#add-library)
 * [Updating to New Releases](#updating-to-new-releases)
 * [Available Scripts](#available-scripts)
@@ -28,7 +29,11 @@ Below you'll find information about performing common tasks. The most recent ver
   * [iOS Simulator won't open](#ios-simulator-wont-open)
   * [QR Code does not scan](#qr-code-does-not-scan)
 
-## add-library
+## Application Structure
+
+* Not Yet
+
+## Add library
 
 * redux,react-redux,redux-saga,redux-logger
 * component - native-base(https://nativebase.io/)
@@ -37,6 +42,7 @@ Below you'll find information about performing common tasks. The most recent ver
 * animation - react-native-animatable
 * axios
 * lodash, moment
+* storybook(https://github.com/storybooks/storybook/tree/master/app/react-native)
 
 ## Updating to New Releases
 
