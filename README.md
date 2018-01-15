@@ -4,7 +4,7 @@ Below you'll find information about performing common tasks. The most recent ver
 
 ## Table of Contents
 
-* [Application Structure](#Application Structure)
+* [Application Structure](#application-structure)
 * [Add Library](#add-library)
 * [Updating to New Releases](#updating-to-new-releases)
 * [Available Scripts](#available-scripts)
@@ -31,7 +31,8 @@ Below you'll find information about performing common tasks. The most recent ver
 
 ## Application Structure
 
-* Not Yet
+* Ducks Structure(https://github.com/erikras/ducks-modular-redux)
+
 
 ## Add library
 

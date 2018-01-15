@@ -3,16 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "jest": "^22.0.6",
-    "jest-expo": "23.0.0",
-    "react-native-scripts": "1.8.1",
-    "react-test-renderer": "16.0.0",
-    "@storybook/react-native": "^3.3.9",
     "@storybook/addon-actions": "^3.3.9",
     "@storybook/addon-links": "^3.3.9",
     "@storybook/addons": "^3.3.9",
+    "@storybook/react-native": "^3.3.9",
     "babel-core": "^6.26.0",
-    "react-dom": "16.0.0"
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.15.0",
+    "jest": "^22.0.6",
+    "jest-expo": "23.0.0",
+    "react-dom": "16.0.0",
+    "react-native-scripts": "1.8.1",
+    "react-test-renderer": "16.0.0"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
@@ -38,9 +40,11 @@
     "react": "16.0.0",
     "react-native": "0.50.3",
     "react-native-animatable": "^1.2.4",
+    "react-native-extended-stylesheet": "^0.8.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^0.16.0",
+    "reselect": "^3.0.1"
   }
 }
