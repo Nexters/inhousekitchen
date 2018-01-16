@@ -14,7 +14,8 @@
     "jest-expo": "23.0.0",
     "react-dom": "16.0.0",
     "react-native-scripts": "1.8.1",
-    "react-test-renderer": "16.0.0"
+    "react-test-renderer": "16.0.0",
+    "redux-devtools-extension": "^2.13.2"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
@@ -23,7 +24,8 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
-    "storybook": "storybook start -p 7007"
+    "storybook": "storybook start -p 7007",
+    "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'"
   },
   "jest": {
     "preset": "jest-expo"
