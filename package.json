@@ -7,9 +7,14 @@
     "@storybook/addon-links": "^3.3.9",
     "@storybook/addons": "^3.3.9",
     "@storybook/react-native": "^3.3.9",
+    "@storybook/storybook-deployer": "^2.2.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
     "jest": "^22.0.6",
     "jest-expo": "23.0.0",
     "react-dom": "16.0.0",
@@ -25,6 +30,7 @@
     "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
     "storybook": "storybook start -p 7007",
+    "deploy-storybook": "storybook-to-ghpages",
     "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'"
   },
   "jest": {
@@ -33,6 +39,7 @@
   "dependencies": {
     "@expo/vector-icons": "^6.2.2",
     "axios": "^0.17.1",
+    "color": "^2.0.1",
     "expo": "^23.0.4",
     "immutable": "^3.8.2",
     "lodash": "^4.17.4",
@@ -43,6 +50,7 @@
     "react-native": "0.50.3",
     "react-native-animatable": "^1.2.4",
     "react-native-extended-stylesheet": "^0.8.0",
+    "react-native-navigation": "^1.1.346",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",

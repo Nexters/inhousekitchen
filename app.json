@@ -1,5 +1,11 @@
 {
   "expo": {
-    "sdkVersion": "23.0.0"
+    "sdkVersion": "23.0.0",
+    "ios": {
+      "bundleIdentifier": "com.nexters.inhousekitchen"
+    },
+    "android": {
+      "package": "com.nexters.inhousekitchen"
+    }
   }
 }
