@@ -8,8 +8,8 @@ const context = require.context('../', true, /Screen\.js$/);
 addDecorator(centered);
 
 setOptions({
-  name: 'React Native Web',
-  url: 'https://necolas.github.io/react-native-web',
+  name: 'Inhousekitchen',
+  url: 'https://github.com/Nexters/inhousekitchen',
   goFullScreen: false,
   showLeftPanel: true,
   showDownPanel: false,

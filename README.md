@@ -33,7 +33,6 @@ Below you'll find information about performing common tasks. The most recent ver
 
 * Ducks Structure(https://github.com/erikras/ducks-modular-redux)
 
-
 ## Add library
 
 * redux,react-redux,redux-saga,redux-logger
@@ -44,6 +43,9 @@ Below you'll find information about performing common tasks. The most recent ver
 * axios
 * lodash, moment
 * storybook(https://github.com/storybooks/storybook/tree/master/app/react-native)
+  * storybook site : https://nexters.github.io/inhousekitchen
+  * npm run deploy-storybook -- --existing-output-dir=./dist
+  * (https://github.com/storybooks/storybook-deployer)
 
 ## Updating to New Releases
 
