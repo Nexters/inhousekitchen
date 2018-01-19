@@ -2,21 +2,10 @@
   "expo": {
     "sdkVersion": "23.0.0",
     "ios": {
-      "bundleIdentifier": "com.nexters.inhousekitchen",
-      "publishBundlePath": "ios/inhousekitchen/Supporting/shell-app.bundle",
-      "publishManifestPath": "ios/inhousekitchen/Supporting/shell-app-manifest.json"
+      "bundleIdentifier": "com.nexters.inhousekitchen"
     },
     "android": {
       "package": "com.nexters.inhousekitchen"
-    },
-    "name": "inhousekitchen",
-    "slug": "inhousekitchen",
-    "version": "0.1.0",
-    "isDetached": true,
-    "detach": {
-      "scheme": "exp094476c932b442afb7f244747bc2a119",
-      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.1.4-sdk23.0.0-f67c5bc3-4a27-40f6-8686-91e8f868a145.tar.gz",
-      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.1.2-sdk23.0.0-d47f172b-1ed3-4c8f-9e48-239052c678b6.tar.gz"
     }
   }
 }
