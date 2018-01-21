@@ -5,6 +5,7 @@ import { View, Text } from 'react-native';
 import configureStore from './config/store';
 import LoginScreen from './screens/LoginScreen';
 import MainScreen from './screens/MainScreen';
+import DetailScreen from './screens/DetailScreen';
 
 EStyleSheet.build({});
 
@@ -12,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={ configureStore() }>
-        <MainScreen />
+        <DetailScreen />
       </Provider>
     );
   }
