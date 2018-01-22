@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, Animated, ScrollView, View, Image } from 'react-native';
-import { Container, Icon, H2, Text, Button } from 'native-base';
+import { Container, Footer, Icon, H2, Text, Button } from 'native-base';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Swiper from 'react-native-swiper';
 import TestImage from './images/test2.png';
 
 const HEADER_MAX_HEIGHT = 600;
-const HEADER_MIN_HEIGHT = 400;
+const HEADER_MIN_HEIGHT = 300;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 class DetailScreen extends Component {
   constructor(props) {
@@ -57,7 +58,7 @@ class DetailScreen extends Component {
               <Button style={ styles.backIcon }>
                 <Icon size={ 20 } name="arrow-back" />
               </Button>
-              <View style={ styles.barText }>
+              <View style={ styles.headerInfoText }>
                 <H2>Item Name</H2>
                 <Text>TEsstsdfsdflsdkfnsdklfnsd</Text>
               </View>
@@ -65,12 +66,30 @@ class DetailScreen extends Component {
           </View>
           {this._renderScrollViewContent()}
         </ScrollView>
+        <Footer style={ styles.footer }>
+          <Grid>
+            <Col>
+              <Text>Hello World!</Text>
+            </Col>
+            <Col>
+              <Button>
+                <Text>Request a Book</Text>
+              </Button>
+            </Col>
+          </Grid>
+        </Footer>
       </Container>
     );
   }
 }
 
 const styles = EStyleSheet.create({
+  backIcon: {
+    position: 'absolute',
+    top: 5,
+    left: 5,
+    backgroundColor: 'transparent'
+  },
   fill: {
     flex: 1
   },
@@ -93,31 +112,6 @@ const styles = EStyleSheet.create({
     flex: 1,
     flexDirection: 'column'
   },
-  backIcon: {
-    position: 'absolute',
-    top: 5,
-    left: 5,
-    backgroundColor: 'transparent'
-  },
-  barImage: {
-    width: '100%',
-    height: '100%'
-  },
-  barText: {
-    position: 'absolute',
-    bottom: 50,
-    left: 0,
-    width: '100%',
-    paddingHorizontal: 10
-  },
-  title: {
-    backgroundColor: 'transparent',
-    color: 'white',
-    fontSize: 18
-  },
-  scrollViewContent: {
-    marginTop: HEADER_MAX_HEIGHT
-  },
   imageSwiper: {
     height: '100%'
   },
@@ -139,10 +133,23 @@ const styles = EStyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#92BBD9'
   },
+  headerInfoText: {
+    position: 'absolute',
+    bottom: 50,
+    left: 0,
+    width: '100%',
+    paddingHorizontal: 10
+  },
+  scrollViewContent: {
+    marginTop: HEADER_MAX_HEIGHT
+  },
   text: {
     color: '#fff',
     fontSize: 30,
     fontWeight: 'bold'
+  },
+  footer: {
+    backgroundColor: '#fff'
   }
 });
 

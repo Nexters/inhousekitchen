@@ -8177,21 +8177,9 @@ react-native-iphone-x-helper@^1.0.1:
     prop-types "^15.5.10"
     react-timer-mixin "^0.13.3"
 
-react-native-linear-gradient@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.4.0.tgz#51d8ea12bb72a59bede9edc87b694b16b64cf435"
-  dependencies:
-    prop-types "^15.5.10"
-
 react-native-maps@0.17.1:
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.17.1.tgz#ab2236341fd984dac8864202ae55331bc262f60c"
-
-react-native-parallax-scroll-view@^0.20.1:
-  version "0.20.1"
-  resolved "https://registry.yarnpkg.com/react-native-parallax-scroll-view/-/react-native-parallax-scroll-view-0.20.1.tgz#7fad3411df8632b7c99fed5d0a5c0a8f97007b38"
-  dependencies:
-    prop-types "^15.6.0"
 
 react-native-safe-module@^1.1.0:
   version "1.2.0"
@@ -8225,6 +8213,12 @@ react-native-scripts@1.8.1:
   dependencies:
     color "^2.0.1"
     lodash "^4.16.6"
+
+react-native-swiper@^1.5.13:
+  version "1.5.13"
+  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.13.tgz#fa695cd4ab77b9a9df2d2bfee38ea7274dd07a2e"
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-tab-view@^0.0.74:
   version "0.0.74"
