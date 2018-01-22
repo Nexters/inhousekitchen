@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Animated, ScrollView, View, Image } from 'react-native';
 import { Container, Icon, H2, Text, Button } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import Swiper from 'react-native-swiper';
 import TestImage from './images/test2.png';
 
 const HEADER_MAX_HEIGHT = 600;
@@ -36,13 +37,23 @@ class DetailScreen extends Component {
     return (
       <Container>
         <ScrollView
+          stickyHeaderIndices={ [0] }
           scrollEventThrottle={ 16 }
           onScroll={ Animated.event([{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]) }
           style={ styles.fill }>
-          {this._renderScrollViewContent()}
-          <Animated.View style={ [styles.header, { height: headerHeight, top: this.state.scrollY }] }>
-            <View style={ styles.bar }>
-              <Image style={ styles.barImage } source={ TestImage } />
+          <View style={ { height: 1 } }>
+            <Animated.View style={ [styles.header, { height: headerHeight }] }>
+              <Swiper style={ styles.imageSwiper } showsButtons>
+                <View style={ styles.slide1 }>
+                  <Text style={ styles.text }>Hello Swiper</Text>
+                </View>
+                <View style={ styles.slide2 }>
+                  <Text style={ styles.text }>Beautiful</Text>
+                </View>
+                <View style={ styles.slide3 }>
+                  <Text style={ styles.text }>And simple</Text>
+                </View>
+              </Swiper>
               <Button style={ styles.backIcon }>
                 <Icon size={ 20 } name="arrow-back" />
               </Button>
@@ -50,8 +61,9 @@ class DetailScreen extends Component {
                 <H2>Item Name</H2>
                 <Text>TEsstsdfsdflsdkfnsdklfnsd</Text>
               </View>
-            </View>
-          </Animated.View>
+            </Animated.View>
+          </View>
+          {this._renderScrollViewContent()}
         </ScrollView>
       </Container>
     );
@@ -71,16 +83,15 @@ const styles = EStyleSheet.create({
   },
   header: {
     position: 'absolute',
+    width: '100%',
+    height: '100%',
     top: 0,
     left: 0,
     right: 0,
     backgroundColor: '#03A9F4',
-    overflow: 'hidden'
-  },
-  bar: {
+    overflow: 'hidden',
     flex: 1,
-    flexDirection: 'column',
-    marginTop: 28
+    flexDirection: 'column'
   },
   backIcon: {
     position: 'absolute',
@@ -106,6 +117,32 @@ const styles = EStyleSheet.create({
   },
   scrollViewContent: {
     marginTop: HEADER_MAX_HEIGHT
+  },
+  imageSwiper: {
+    height: '100%'
+  },
+  slide1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#9DD6EB'
+  },
+  slide2: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#97CAE5'
+  },
+  slide3: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#92BBD9'
+  },
+  text: {
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold'
   }
 });
 
