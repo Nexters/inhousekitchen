@@ -1,11 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-import { Text } from 'native-base';
+import { H1, Text } from 'native-base';
+import { IconText } from '../../components/Text';
 
-class Content extends Component {
+class Content extends PureComponent {
   render() {
-    return (<View><Text>Content</Text></View>);
+    return (
+      <View>
+        <H1>Item Name</H1>
+        <Text>
+          Praesent facilisis dolor sapien, vel sodales augue mollis ut. Mauris venenatis magna eu tortor posuere luctus.
+        </Text>
+        <IconText />
+        <IconText />
+      </View>
+    );
   }
 }
 
