@@ -1,4 +1,4 @@
-import MainCard from './MainCard';
+import HostCard from './HostCard';
 import styles from './styles';
 
-export { MainCard, styles };
+export { HostCard, styles };

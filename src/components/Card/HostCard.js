@@ -16,7 +16,7 @@ import {
 } from 'native-base';
 import TestImage from './images/test.png';
 
-class MainCard extends Component {
+class HostCard extends Component {
   render() {
     return (
       <Card>
@@ -54,4 +54,4 @@ class MainCard extends Component {
   }
 }
 
-export default MainCard;
+export default HostCard;

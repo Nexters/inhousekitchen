@@ -5,7 +5,7 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import _ from 'lodash';
 import { Header } from '../components/Header';
-import { MainCard } from '../components/Card';
+import { HostCard } from '../components/Card';
 
 const styles = EStyleSheet.create({
   contentContainer: {
@@ -33,6 +33,7 @@ const cards = [1, 2, 3, 4, 5];
 const titles = ['popular', 'theme', 'recent'];
 class MainScreen extends Component {
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <Container>
         <Header />
@@ -48,17 +49,22 @@ class MainScreen extends Component {
               <Col style={ styles.searchCol }>
                 <Text>Guests</Text>
               </Col>
+              <Col style={ styles.searchCol }>
+                <Button onPress={ () => navigate('MapResult') }>
+                  <Text>Search</Text>
+                </Button>
+              </Col>
             </Grid>
           </View>
           <Content style={ styles.content }>
-            {_.map(titles, (title, index) => this.renderCard(index, title, cards))}
+            {_.map(titles, (title, index) => this._renderCard(index, title, cards))}
           </Content>
         </View>
       </Container>
     );
   }
 
-  renderCard = (key, title, cards) => (
+  _renderCard = (key, title, cards) => (
     <View key={ key }>
       <H2>{title}</H2>
       <List
@@ -66,7 +72,7 @@ class MainScreen extends Component {
         horizontal
         renderRow={ card => (
           <ListItem key={ card }>
-            <MainCard />
+            <HostCard />
           </ListItem>
         ) } />
     </View>

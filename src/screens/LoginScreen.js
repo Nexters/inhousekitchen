@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { Container, Header, Content, Footer, Button, Text } from 'native-base';
+import { Container, Content, Footer, Button, Text } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { LoginButton } from '../components/Button';
 
