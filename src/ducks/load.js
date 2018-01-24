@@ -12,3 +12,5 @@ const loadReducer = {
 export const reducers = createReducer(initialState, {
   ...loadReducer
 });
+
+export const getLoading = (state) => state.load.loading;

@@ -10,6 +10,7 @@ import _ from 'lodash';
 import { Content, Host, Menu, Review, Header, Footer } from './detail';
 import { HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE } from './detail/constants';
 import { isAuth } from '../ducks/auth';
+import { withLoading } from '../hocs/index';
 
 class DetailScreen extends Component {
   constructor(props) {
@@ -97,4 +98,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(withLoading(DetailScreen));
