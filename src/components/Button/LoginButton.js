@@ -4,8 +4,12 @@ import styles from './styles';
 
 class LoginButton extends Component {
   render() {
-    const { children } = this.props;
-    return <Button style={ styles.loginButton }>{children}</Button>;
+    const { children, ...props } = this.props;
+    return (
+      <Button { ...props } style={ styles.loginButton }>
+        {children}
+      </Button>
+    );
   }
 }
 

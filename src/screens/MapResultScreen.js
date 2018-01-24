@@ -1,3 +1,4 @@
+import { MapView } from 'expo';
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
@@ -13,9 +14,14 @@ class MapResultScreen extends Component {
       <Container>
         <Header />
         <View style={ styles.content }>
-          <View style={ styles.map }>
-            <Text>Map</Text>
-          </View>
+          <MapView
+            style={ styles.map }
+            initialRegion={ {
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421
+            } } />
         </View>
         <List style={ styles.hostList }>{_.map(items, item => this._rednerHostItem(item))}</List>
       </Container>

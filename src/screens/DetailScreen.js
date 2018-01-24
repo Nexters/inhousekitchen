@@ -55,7 +55,7 @@ class DetailScreen extends Component {
           <View
             style={ {
               height: flexHeight,
-              backgroundColor: '#eee'
+              backgroundColor: 'transparent'
             } }>
             <Header backPress={ () => goBack() } />
           </View>
