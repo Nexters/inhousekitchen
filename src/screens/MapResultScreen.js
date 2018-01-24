@@ -22,16 +22,19 @@ class MapResultScreen extends Component {
     );
   }
 
-  _rednerHostItem = item => (
-    <ListItem style={ styles.hostItem } key={ item }>
-      <Left>
-        <Icon fontSize={ 20 } name="plane" />
-      </Left>
-      <Body>
-        <Text>{item}</Text>
-      </Body>
-    </ListItem>
-  );
+  _rednerHostItem = item => {
+    const { navigate } = this.props.navigation;
+    return (
+      <ListItem onPress={ () => navigate('Detail') } style={ styles.hostItem } key={ item }>
+        <Left>
+          <Icon fontSize={ 20 } name="plane" />
+        </Left>
+        <Body>
+          <Text>{item}</Text>
+        </Body>
+      </ListItem>
+    );
+  };
 }
 
 const styles = EStyleSheet.create({

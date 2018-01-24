@@ -9,16 +9,21 @@ import { HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE } from './
 
 class Header extends Component {
   static propTypes = {
-    headerHeight: PropTypes.any
+    backPress: PropTypes.func
   };
 
   static defaultProps = {
-    headerHeight: '100%'
+    backPress: () => {}
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    // console.log(nextProps, nextState);
+    return false;
+  }
   render() {
-    const { headerHeight } = this.props;
+    const { backPress } = this.props;
     return (
-      <Animated.View style={ [styles.header, { height: headerHeight }] }>
+      <View style={ [styles.header] }>
         <Swiper style={ styles.imageSwiper } showsButtons>
           <View style={ styles.slide1 }>
             <Text style={ styles.text }>Hello Swiper</Text>
@@ -30,14 +35,14 @@ class Header extends Component {
             <Text style={ styles.text }>And simple</Text>
           </View>
         </Swiper>
-        <Button style={ styles.backIcon }>
+        <Button onPress={ backPress } style={ styles.backIcon }>
           <Icon size={ 20 } name="arrow-back" />
         </Button>
         <View style={ styles.headerInfoText }>
           <H2>Item Name</H2>
           <Text>TEsstsdfsdflsdkfnsdklfnsd</Text>
         </View>
-      </Animated.View>
+      </View>
     );
   }
 }
