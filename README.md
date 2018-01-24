@@ -39,6 +39,8 @@ Below you'll find information about performing common tasks. The most recent ver
 * component - native-base(https://nativebase.io/)
 * navigation - (https://wix.github.io/react-native-navigation/#/installation-ios)
   * why's react-native-navigation ? https://jsdev.kr/t/react-native-1-navigation/2617
+  * This project replaced the react-navigation. because That based on expo.
+* Expo - Google Login, Google Map (https://docs.expo.io/versions/latest/sdk/index.html)
 * animation - react-native-animatable
 * axios
 * lodash, moment
