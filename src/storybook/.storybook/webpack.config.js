@@ -21,6 +21,15 @@ var managerEntry = process.env.DEV_BUILD
   : _path2.default.resolve(__dirname, '../manager');
 
 var config = {
+  devtool: '#cheap-module-eval-source-map',
+  entry: {
+    manager: [managerEntry]
+  },
+  output: {
+    path: _path2.default.join(__dirname, 'dist'),
+    filename: '[name].bundle.js',
+    publicPath: '/static/'
+  },
   module: {
     loaders: [
       {

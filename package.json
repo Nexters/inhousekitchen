@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "@kadira/storybook": "^2.35.3",
+    "@kadira/storybook": "1.28.1",
     "@storybook/storybook-deployer": "^2.2.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
