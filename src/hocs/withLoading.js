@@ -11,7 +11,7 @@ const withLoading = Component =>
     render() {
       const { loading } = this.props;
 
-      if (!loading) {
+      if (loading) {
         return (
           <View style={ styles.spinnerContent }>
             <Spinner />
