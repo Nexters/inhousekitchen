@@ -1,24 +1,9 @@
-import { setOptions } from '@storybook/addon-options';
-import centered from './decorator-centered';
-import { AppRegistry } from 'react-native';
-import { configure, addDecorator } from '@storybook/react';
+import { configure } from '@kadira/storybook';
 
-const context = require.context('../', true, /Screen\.js$/);
-
-addDecorator(centered);
-
-setOptions({
-  name: 'Inhousekitchen',
-  url: 'https://github.com/Nexters/inhousekitchen',
-  goFullScreen: false,
-  showLeftPanel: true,
-  showDownPanel: false,
-  showSearchBox: false,
-  downPanelInRight: false
-});
+const req = require.context('../stories', true)
 
 function loadStories() {
-  context.keys().forEach(context);
+  req.keys().forEach(req)
 }
 
 configure(loadStories, module);
