@@ -41,7 +41,7 @@ Below you'll find information about performing common tasks. The most recent ver
   * why's react-native-navigation ? https://jsdev.kr/t/react-native-1-navigation/2617
   * This project replaced the react-navigation. because That based on expo.
 * Expo - Google Login, Google Map (https://docs.expo.io/versions/latest/sdk/index.html)
-* animation - react-native-animatable
+* animation - react animated
 * axios
 * lodash, moment
 * storybook(https://github.com/storybooks/storybook/tree/master/app/react-native)
