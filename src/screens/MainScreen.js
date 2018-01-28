@@ -34,6 +34,8 @@ const styles = EStyleSheet.create({
 
 const cards = [1, 2, 3, 4, 5];
 const titles = ['popular', 'theme', 'recent'];
+
+@connect(mapStateToProps, mapDispatchToProps)
 class MainScreen extends Component {
   componentDidMount() {
     this.props.fetchHostByType('NONE');
@@ -98,4 +100,4 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+export default MainScreen;
