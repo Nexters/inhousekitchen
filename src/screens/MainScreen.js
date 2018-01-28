@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Container, H2, Left, Body, Right, Button, Icon, Title, Text, Content, List, ListItem } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import _ from 'lodash';
 import { Header } from '../components/Header';
 import { HostCard } from '../components/Card';
+import { fetchHostByType } from '../ducks/host';
 
 const styles = EStyleSheet.create({
   contentContainer: {
@@ -32,6 +35,9 @@ const styles = EStyleSheet.create({
 const cards = [1, 2, 3, 4, 5];
 const titles = ['popular', 'theme', 'recent'];
 class MainScreen extends Component {
+  componentDidMount() {
+    this.props.fetchHostByType('NONE');
+  }
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -79,4 +85,17 @@ class MainScreen extends Component {
   );
 }
 
-export default MainScreen;
+function mapStateToProps(state) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      fetchHostByType
+    },
+    dispatch
+  );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

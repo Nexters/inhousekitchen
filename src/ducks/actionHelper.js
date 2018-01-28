@@ -12,6 +12,18 @@ export function action(type, payload) {
   return { type, ...payload };
 }
 
+export function createMetaOffline({ effect, commit, rollback }) {
+  return {
+    meta: {
+      offline: {
+        effect,
+        commit,
+        rollback
+      }
+    }
+  };
+}
+
 /**
  * 비동기 액션 요청 타입 생성
  * @param base

@@ -35,7 +35,8 @@ Below you'll find information about performing common tasks. The most recent ver
 
 ## Add library
 
-* redux,react-redux,redux-saga,redux-logger
+* redux,react-redux,redux-saga,redux-logger,redux-offline
+  * redux-offline saga issue ( https://github.com/redux-offline/redux-offline/issues/173 )
 * component - native-base(https://nativebase.io/)
 * navigation - (https://wix.github.io/react-native-navigation/#/installation-ios)
   * why's react-native-navigation ? https://jsdev.kr/t/react-native-1-navigation/2617

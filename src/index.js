@@ -22,7 +22,7 @@ const AppNavigator = StackNavigator(
     MyPage: { screen: MyPageScreen }
   },
   {
-    initialRouteName: 'MapResult',
+    initialRouteName: 'Login',
     headerMode: 'none'
   }
 );

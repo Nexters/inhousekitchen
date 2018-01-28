@@ -72,12 +72,10 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       googleLogin: () =>
-        action(LOADED, {
-          loaded: fetchGoogleLogin({
-            androidClientId: '94680954925-v72em1r0etl273dmuaslaei17dqm64m5.apps.googleusercontent.com',
-            iosClientId: '94680954925-v72em1r0etl273dmuaslaei17dqm64m5.apps.googleusercontent.com',
-            scopes: ['profile', 'email']
-          })
+        fetchGoogleLogin({
+          androidClientId: '94680954925-v72em1r0etl273dmuaslaei17dqm64m5.apps.googleusercontent.com',
+          iosClientId: '94680954925-v72em1r0etl273dmuaslaei17dqm64m5.apps.googleusercontent.com',
+          scopes: ['profile', 'email']
         })
     },
     dispatch
