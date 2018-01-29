@@ -1,5 +1,5 @@
-
 import { FAILURE, FETCH, SUCCESS } from './constants';
+
 export function createType(base) {
   let _base = base;
   if (Array.isArray(_base)) {
@@ -35,8 +35,7 @@ export function createFetchTypes(base) {
     _base = _base.join('/');
   }
   const res = {};
-  [FETCH, SUCCESS, FAILURE]
-    .forEach(type => res[type] = `${type}_${_base}`);
+  [FETCH, SUCCESS, FAILURE].forEach(type => (res[type] = `${type}_${_base}`));
   return res;
 }
 

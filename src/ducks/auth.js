@@ -13,9 +13,9 @@ export const types = {
 };
 
 const loginActions = {
-  fetch: action(types.LOGIN[FETCH], { loading: true }),
-  success: action(types.LOGIN[SUCCESS], { loading: false, loaded: true }),
-  failure: action(types.LOGIN[FAILURE], { loading: false, loaded: false })
+  fetch: action(types.LOGIN[FETCH]),
+  success: action(types.LOGIN[SUCCESS]),
+  failure: action(types.LOGIN[FAILURE])
 };
 
 export const fetchLogin = googleInfo => ({

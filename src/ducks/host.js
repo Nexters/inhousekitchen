@@ -18,9 +18,9 @@ export const types = {
 };
 
 const actions = {
-  fetch: action(types.HOST[FETCH], { loading: true }),
-  success: action(types.HOST[SUCCESS], { loading: false, loaded: true }),
-  failure: action(types.HOST[FAILURE], { loading: false, loaded: false })
+  fetch: action(types.HOST[FETCH]),
+  success: action(types.HOST[SUCCESS]),
+  failure: action(types.HOST[FAILURE])
 };
 
 export const fetchHostByType = type => ({

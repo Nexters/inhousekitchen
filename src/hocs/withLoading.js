@@ -6,8 +6,8 @@ import { Container, Spinner, Content } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { getLoading } from '../ducks/load';
 
-const withLoading = Component =>
-  connect(mapStateToProps, mapDispatchToProps)(class extends React.Component {
+const withLoading = Component => {
+  const WithLoading = class extends React.Component {
     render() {
       const { loading } = this.props;
 
@@ -20,7 +20,9 @@ const withLoading = Component =>
       }
       return <Component { ...this.props } />;
     }
-  });
+  };
+  return connect(mapStateToProps, mapDispatchToProps)(WithLoading);
+};
 
 const styles = EStyleSheet.create({
   spinnerContent: {

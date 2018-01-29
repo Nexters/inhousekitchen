@@ -11,8 +11,11 @@ function* doLoading({ loading }) {
 
 export default function* watchLoading() {
   yield takeLatest(
-    action =>
-      _.reduce([FETCH, SUCCESS, FAILURE], (state, type) => state || new RegExp(`^${type}_`).test(action.type), false),
-    doLoading
+    action => _.reduce([FETCH], (state, type) => state || new RegExp(`^${type}_`).test(action.type), false),
+    _.partial(doLoading, { loading: true })
+  );
+  yield takeLatest(
+    action => _.reduce([SUCCESS, FAILURE], (state, type) => state || new RegExp(`^${type}_`).test(action.type), false),
+    _.partial(doLoading, { loading: false })
   );
 }

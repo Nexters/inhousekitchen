@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { View } from 'react-native';
 import { isAuth } from '../ducks/auth';
 
-const withAuth = Component =>
-  connect(mapStateToProps, mapDispatchToProps)(class extends React.Component {
+const withAuth = Component => {
+  const WithAuth = class extends React.Component {
     render() {
       const { isAuth } = this.props;
 
@@ -13,7 +13,9 @@ const withAuth = Component =>
       }
       return <Component { ...this.props } />;
     }
-  });
+  };
+  return connect(mapStateToProps, mapDispatchToProps)(WithAuth);
+};
 
 function mapStateToProps(state) {
   return {
