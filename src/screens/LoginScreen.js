@@ -9,8 +9,11 @@ import { LoginButton } from '../components/Button';
 import { isAuth, fetchGoogleLogin } from '../ducks/auth';
 import { action } from '../ducks/actionHelper';
 import { LOADED } from '../ducks/constants';
-import { withLoading } from '../hocs';
+import { withLoading as loading } from '../hocs';
 
+
+@connect(mapStateToProps, mapDispatchToProps)
+@loading
 class LoginScreen extends Component {
   static propTypes = {
     isAuth: PropTypes.bool.isRequired,
@@ -82,4 +85,4 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withLoading(LoginScreen));
+export default LoginScreen;
