@@ -1,4 +1,4 @@
-import env from '../config/constants';
+import env from '../configs/constants';
 
 const Counter = {
   getCounter: () =>

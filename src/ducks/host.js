@@ -2,7 +2,7 @@ import Expo from 'expo';
 import _ from 'lodash';
 import { action, createFetchTypes, createMetaOffline } from './actionHelper';
 import { FAILURE, FETCH, SUCCESS } from './constants';
-import agent from './agent';
+import agent from '../apis/agent';
 import { createReducer } from './reducerHelper';
 
 /**

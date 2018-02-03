@@ -6,6 +6,7 @@ import { Container, H2, Left, Body, Right, Button, Icon, Title, Text, Content, L
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import _ from 'lodash';
+import { autobind } from 'core-decorators';
 import { Header } from '../components/Header';
 import { HostCard } from '../components/Card';
 import { fetchHostByType } from '../ducks/host';
@@ -36,6 +37,7 @@ const cards = [1, 2, 3, 4, 5];
 const titles = ['popular', 'theme', 'recent'];
 
 @connect(mapStateToProps, mapDispatchToProps)
+@autobind
 class MainScreen extends Component {
   componentDidMount() {
     this.props.fetchHostByType('NONE');
@@ -72,19 +74,21 @@ class MainScreen extends Component {
     );
   }
 
-  _renderCard = (key, title, cards) => (
-    <View key={ key }>
-      <H2>{title}</H2>
-      <List
-        dataArray={ cards }
-        horizontal
-        renderRow={ card => (
-          <ListItem key={ card }>
-            <HostCard />
-          </ListItem>
-        ) } />
-    </View>
-  );
+  _renderCard(key, title, cards) {
+    return (
+      <View key={ key }>
+        <H2>{title}</H2>
+        <List
+          dataArray={ cards }
+          horizontal
+          renderRow={ card => (
+            <ListItem key={ card }>
+              <HostCard />
+            </ListItem>
+          ) } />
+      </View>
+    );
+  }
 }
 
 function mapStateToProps(state) {
