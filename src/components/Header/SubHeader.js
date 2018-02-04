@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Header as NativeHeader, Left, Body, Right, Button, Title, Text, Content } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import FeatherIcon from 'react-native-vector-icons/Feather';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 import styles from './styles';
+import { BackButton } from '../Button';
 
 class SubHeader extends Component {
   static propsTypes = {
@@ -23,9 +23,7 @@ class SubHeader extends Component {
         androidStatusBarColor={ styles.headerContainer._backgroundColor }
         iosBarStyle="light-content">
         <Left>
-          <Button transparent>
-            <FeatherIcon name="arrow-left" size={ 32 } color={ EStyleSheet.value('$firstColor') } />
-          </Button>
+          <BackButton />
         </Left>
         <Body>
           <Title>{title}</Title>

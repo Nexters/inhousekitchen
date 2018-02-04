@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Button } from 'native-base';
-import styles from './styles';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 class LoginButton extends Component {
   render() {
@@ -12,5 +12,17 @@ class LoginButton extends Component {
     );
   }
 }
+
+const styles = EStyleSheet.create({
+  loginButtonContainer: {
+    width: '100%'
+  },
+  loginButton: {
+    width: '90%',
+    marginHorizontal: '5%',
+    marginVertical: 10,
+    justifyContent: 'center'
+  }
+});
 
 export default LoginButton;

@@ -5,6 +5,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { View, Text } from 'react-native';
 import configureStore from './configs/store';
 import AppNavigator from './navigators/AppNavigator';
+import StorybookUI from './storybook';
 
 EStyleSheet.build({
   $firstColor: '#45464a',
@@ -42,10 +43,11 @@ class App extends Component {
     }
     return (
       <Provider store={ configureStore() }>
-        <AppNavigator />
+        <AppNavigator initialRouteName="MyPage" />
       </Provider>
     );
   }
 }
 
-export default App;
+module.exports = __DEV__ ? StorybookUI : App;
+// export default App;

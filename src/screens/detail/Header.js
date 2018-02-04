@@ -5,14 +5,22 @@ import { Container, Footer, Icon, H2, Text, Button } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Swiper from 'react-native-swiper';
 import _ from 'lodash';
+
 import { HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE } from './constants';
+import { BackButton } from '../../components/Button';
 
 class Header extends Component {
   static propTypes = {
+    images: PropTypes.arrayOf(PropTypes.string),
+    title: PropTypes.string,
+    content: PropTypes.string,
     backPress: PropTypes.func
   };
 
   static defaultProps = {
+    images: _.times(3, () => 'http://lorempixel.com/640/480/food/'),
+    title: 'Korean Fusion Noodle',
+    content: 'Korean noodles, called "guksu" or "myeon" are everyday food',
     backPress: () => {}
   };
 
@@ -21,26 +29,30 @@ class Header extends Component {
     return false;
   }
   render() {
-    const { backPress } = this.props;
+    const {
+      backPress, images, title, content
+    } = this.props;
     return (
       <View style={ [styles.header] }>
-        <Swiper style={ styles.imageSwiper } showsButtons>
-          <View style={ styles.slide1 }>
-            <Text style={ styles.text }>Hello Swiper</Text>
-          </View>
-          <View style={ styles.slide2 }>
-            <Text style={ styles.text }>Beautiful</Text>
-          </View>
-          <View style={ styles.slide3 }>
-            <Text style={ styles.text }>And simple</Text>
-          </View>
+        <Swiper
+          style={ styles.imageSwiper }
+          paginationStyle={ {
+            paddingBottom: 0,
+            marginBottom: 0,
+            bottom: 12
+          } }
+          dotColor="rgba(255, 255, 255, 0.4)"
+          activeDotColor="#fff">
+          {_.map(images, (image, index) => (
+            <View key={ index } style={ styles.slide }>
+              <Image style={ styles.slideImage } source={ { uri: image } } />
+            </View>
+          ))}
         </Swiper>
-        <Button onPress={ backPress } style={ styles.backIcon }>
-          <Icon size={ 20 } name="arrow-back" />
-        </Button>
-        <View style={ styles.headerInfoText }>
-          <H2>Item Name</H2>
-          <Text>TEsstsdfsdflsdkfnsdklfnsd</Text>
+        <BackButton style={ styles.backIcon } iconColor="#fff" />
+        <View style={ styles.headerInfo }>
+          <Text style={ styles.headerInfoText }>{title}</Text>
+          <Text style={ styles.headerInfoContentText }>{content}</Text>
         </View>
       </View>
     );
@@ -50,8 +62,8 @@ class Header extends Component {
 const styles = EStyleSheet.create({
   backIcon: {
     position: 'absolute',
-    top: 5,
-    left: 5,
+    top: 35,
+    left: 24,
     backgroundColor: 'transparent'
   },
   header: {
@@ -61,7 +73,6 @@ const styles = EStyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#03A9F4',
     overflow: 'hidden',
     flex: 1,
     flexDirection: 'column'
@@ -69,30 +80,33 @@ const styles = EStyleSheet.create({
   imageSwiper: {
     height: '100%'
   },
-  slide1: {
+  slide: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#9DD6EB'
+    backgroundColor: 'transparent'
   },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5'
+  slideImage: {
+    width: '100%',
+    height: '100%'
   },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9'
-  },
-  headerInfoText: {
+  headerInfo: {
     position: 'absolute',
-    bottom: 50,
+    bottom: 32,
     left: 0,
     width: '100%',
-    paddingHorizontal: 10
+    paddingHorizontal: 20,
+    backgroundColor: 'transparent'
+  },
+  headerInfoText: {
+    fontSize: 24,
+    color: '#fff',
+    fontWeight: 'bold',
+    paddingBottom: 8
+  },
+  headerInfoContentText: {
+    fontSize: 14,
+    color: '#fff'
   }
 });
 

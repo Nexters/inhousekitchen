@@ -8,19 +8,20 @@ import { LightRoundedButton } from '../Button';
 class TitleHeader extends Component {
   static propTypes = {
     title: PropTypes.string,
-    rightComponent: PropTypes.func
+    rightComponent: PropTypes.func,
+    headerStyle: PropTypes.number
   };
 
   static defaultProps = {
-    title: '',
+    title: 'Interest',
     rightComponent: undefined
   };
   render() {
-    const { title, rightComponent } = this.props;
+    const { title, rightComponent, headerStyle } = this.props;
     const RightComponent = rightComponent;
 
     return (
-      <Row style={ styles.header }>
+      <Grid style={ [styles.header, headerStyle] }>
         <Col>
           <Text style={ styles.headerTitle }>{title}</Text>
         </Col>
@@ -29,7 +30,7 @@ class TitleHeader extends Component {
             <RightComponent />
           </Col>
         )}
-      </Row>
+      </Grid>
     );
   }
 }

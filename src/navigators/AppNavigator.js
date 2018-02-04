@@ -5,7 +5,7 @@ import DetailScreen from '../screens/DetailScreen';
 import MyPageScreen from '../screens/MyPageScreen';
 import MapResultScreen from '../screens/MapResultScreen';
 
-const AppNavigator = StackNavigator(
+const AppNavigator = (initialRouteName) => StackNavigator(
   {
     Main: { screen: MainScreen },
     MapResult: { screen: MapResultScreen },
@@ -14,7 +14,7 @@ const AppNavigator = StackNavigator(
     MyPage: { screen: MyPageScreen }
   },
   {
-    initialRouteName: 'MyPage',
+    initialRouteName,
     headerMode: 'none'
   }
 );

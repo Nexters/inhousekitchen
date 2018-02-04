@@ -1,15 +1,22 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = EStyleSheet.create({
-  loginButtonContainer: {
-    width: '100%'
-  },
-  loginButton: {
-    width: '90%',
-    marginHorizontal: '5%',
-    marginVertical: 10,
-    justifyContent: 'center'
+const styleObjects = {
+  detail: {
+    requestBook: {
+      width: 154,
+      height: 36,
+      backgroundColor: '#fff',
+      alignSelf: 'flex-start'
+    },
+    requestBookText: {
+      color: '$firstColor'
+    },
+    requestBookArrow: {
+      color: '$firstColor'
+    }
   }
-});
+};
 
-export default styles;
+export default EStyleSheet.create({
+  ...styleObjects.detail
+});
