@@ -25,6 +25,7 @@ class Reservation extends Component {
 const styles = EStyleSheet.create({
   reservation: {
     paddingHorizontal: '$screenPadding',
+    paddingBottom: 19,
     backgroundColor: '$backgroundColor'
   },
   content: {

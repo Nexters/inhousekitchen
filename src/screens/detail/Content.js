@@ -31,12 +31,20 @@ class Content extends PureComponent {
     return (
       <Grid style={ styles.content }>
         <Row style={ styles.header }>
-          <TitleHeader headerStyle={ styles.titleHeader } title={ title } />
+          <TitleHeader title={ title } />
         </Row>
         <Row style={ styles.otherInfo }>
           <Text style={ styles.contentText }>{content}</Text>
-          <TitleText title={ <EvilIcons name="clock" /> } content={ date } contentStyle={ styles.otherText } />
-          <TitleText content={ location } contentStyle={ styles.otherText } />
+          <TitleText
+            titleStyle={ styles.otherIcon }
+            title={ () => <EvilIcons name="clock" size={ 16 } /> }
+            content={ date }
+            contentStyle={ styles.otherText } />
+          <TitleText
+            titleStyle={ styles.otherIcon }
+            title={ () => <EvilIcons name="location" size={ 16 } /> }
+            content={ location }
+            contentStyle={ styles.otherText } />
         </Row>
       </Grid>
     );
@@ -52,16 +60,16 @@ const styles = EStyleSheet.create({
     flex: 0,
     paddingBottom: 8
   },
-  titleHeader: {
-    marginTop: 0
-  },
   contentText: {
     paddingBottom: 20
   },
   otherInfo: {
     flexDirection: 'column'
   },
-  otherIcon: {},
+  otherIcon: {
+    width: 16,
+    marginRight: 8
+  },
   otherText: {
     fontSize: 14,
     color: '#919297'

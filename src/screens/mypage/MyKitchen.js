@@ -25,6 +25,7 @@ class MyKitchen extends Component {
 const styles = EStyleSheet.create({
   myKitchen: {
     paddingHorizontal: '$screenPadding',
+    paddingBottom: 19,
     backgroundColor: '$backgroundColor'
   },
   content: {

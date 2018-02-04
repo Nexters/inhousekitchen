@@ -27,32 +27,8 @@ class Interest extends Component {
 const styles = EStyleSheet.create({
   interest: {
     paddingHorizontal: '$screenPadding',
+    paddingBottom: 19,
     backgroundColor: '$backgroundColor'
-  },
-  header: {
-    marginTop: 19
-  },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '$firstColor',
-    alignSelf: 'flex-start'
-  },
-  headerRight: {
-    justifyContent: 'center'
-  },
-  headerRightButton: {
-    width: 76,
-    height: 24,
-    borderColor: '$thirdColor',
-    backgroundColor: '$backgroundColor',
-    alignSelf: 'flex-end'
-  },
-  headerRightButtonText: {
-    width: '100%',
-    color: '$thirdColor',
-    fontSize: 12,
-    textAlign: 'center'
   },
   content: {
     paddingTop: 20,

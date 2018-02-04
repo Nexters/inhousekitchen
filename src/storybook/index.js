@@ -7,5 +7,5 @@ configure(() => {
   loadStories();
 }, module);
 
-const StorybookUI = getStorybookUI({ port: 7007, host: 'localhost' });
+const StorybookUI = getStorybookUI({ port: 7007, host: '192.168.219.133' });
 export default StorybookUI;

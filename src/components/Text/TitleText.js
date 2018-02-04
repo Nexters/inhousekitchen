@@ -8,11 +8,12 @@ import { Text } from 'native-base';
 
 class TitleText extends PureComponent {
   static propTypes = {
-    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     content: PropTypes.string,
     containerStyle: PropTypes.number,
     titleStyle: PropTypes.number,
-    contentStyle: PropTypes.number
+    titleTextStyle: PropTypes.number,
+    contentTextStyle: PropTypes.number
   };
 
   static defaultProps = {
@@ -22,17 +23,15 @@ class TitleText extends PureComponent {
 
   render() {
     const {
-      title: Title, content, containerStyle, titleStyle, contentStyle
+      title: Title, content, containerStyle, titleStyle, titleTextStyle, contentTextStyle
     } = this.props;
 
-    console.log(Title);
-
-    const textComponent = _.isString(Title) ? <Text style={ [styles.title, titleStyle] }>{Title}</Text> : Title;
+    const textComponent = _.isString(Title) ? <Text style={ [styles.titleText, titleTextStyle] }>{Title}</Text> : <Title />;
     return (
-      <Grid style={ [styles.titleText, containerStyle] }>
-        <Col style={ { width: 49 } }>{textComponent}</Col>
+      <Grid style={ [containerStyle] }>
+        <Col style={ [styles.title, titleStyle] }>{textComponent}</Col>
         <Col>
-          <Text style={ [styles.content, contentStyle] }>{content}</Text>
+          <Text style={ [styles.contentText, contentTextStyle] }>{content}</Text>
         </Col>
       </Grid>
     );
@@ -40,11 +39,14 @@ class TitleText extends PureComponent {
 }
 
 const styles = EStyleSheet.create({
-  titleText: {},
   title: {
+    flex: 0,
+    width: 49
+  },
+  titleText: {
     fontSize: 12
   },
-  content: {
+  contentText: {
     fontSize: 12
   }
 });

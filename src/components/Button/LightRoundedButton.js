@@ -5,13 +5,19 @@ import PropTypes from 'prop-types';
 
 class LightRoundedButton extends PureComponent {
   static propTypes = {
-    title: PropTypes.string
+    title: PropTypes.string,
+    buttonStyle: PropTypes.number,
+    buttonTextStyle: PropTypes.number,
+  };
+
+  static defaultProps = {
+    title: 'hello'
   };
   render() {
-    const { title, ...props } = this.props;
+    const { title, buttonStyle, buttonTextStyle, ...props } = this.props;
     return (
-      <Button rounded bordered light { ...props } style={ styles.button }>
-        <Text style={ styles.buttonText }>{title}</Text>
+      <Button rounded bordered light { ...props } style={ [styles.button, buttonStyle] }>
+        <Text style={ [styles.buttonText, buttonTextStyle] }>{title}</Text>
       </Button>
     );
   }

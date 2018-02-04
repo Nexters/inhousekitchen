@@ -52,7 +52,6 @@ class ReviewCard extends Component {
 const styles = EStyleSheet.create({
   reviewCard: {
     flex: 0,
-    width: 335,
     height: 114,
     backgroundColor: '#fff',
     paddingTop: 12,

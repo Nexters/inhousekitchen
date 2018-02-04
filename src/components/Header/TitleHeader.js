@@ -4,12 +4,14 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Text, Button, List, ListItem } from 'native-base';
 import PropTypes from 'prop-types';
 import { LightRoundedButton } from '../Button';
+import _ from 'lodash';
 
 class TitleHeader extends Component {
   static propTypes = {
     title: PropTypes.string,
     rightComponent: PropTypes.func,
-    headerStyle: PropTypes.number
+    headerStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
+    headerRightStyle: PropTypes.number
   };
 
   static defaultProps = {
@@ -17,16 +19,18 @@ class TitleHeader extends Component {
     rightComponent: undefined
   };
   render() {
-    const { title, rightComponent, headerStyle } = this.props;
+    const {
+      title, rightComponent, headerStyle, headerRightStyle, ...props
+    } = this.props;
     const RightComponent = rightComponent;
 
     return (
-      <Grid style={ [styles.header, headerStyle] }>
+      <Grid { ...props } style={ _.flatten([styles.header, headerStyle]) }>
         <Col>
           <Text style={ styles.headerTitle }>{title}</Text>
         </Col>
         {RightComponent && (
-          <Col style={ styles.headerRight }>
+          <Col style={ [styles.headerRight, headerRightStyle] }>
             <RightComponent />
           </Col>
         )}
@@ -36,9 +40,7 @@ class TitleHeader extends Component {
 }
 
 const styles = EStyleSheet.create({
-  header: {
-    marginTop: 19
-  },
+  header: {},
   headerTitle: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -47,19 +49,6 @@ const styles = EStyleSheet.create({
   },
   headerRight: {
     justifyContent: 'center'
-  },
-  headerRightButton: {
-    width: 76,
-    height: 24,
-    borderColor: '$thirdColor',
-    backgroundColor: '$backgroundColor',
-    alignSelf: 'flex-end'
-  },
-  headerRightButtonText: {
-    width: '100%',
-    color: '$thirdColor',
-    fontSize: 12,
-    textAlign: 'center'
   }
 });
 
