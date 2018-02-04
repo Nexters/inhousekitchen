@@ -18,7 +18,7 @@ export default function configureStore(initialState = {}) {
   const createOfflineStore = offline(customConfig)(createStore);
 
   const sagaMiddleware = createSagaMiddleware();
-  const middleware = [createLogger(), sagaMiddleware, createOfflineMiddleware(customConfig)];
+  const middleware = [sagaMiddleware, createOfflineMiddleware(customConfig)]; // createLogger(), 
 
   const applyMiddlewares = composeWithDevTools(applyMiddleware(...middleware));
   const store = createOfflineStore(reducers, initialState, applyMiddlewares);

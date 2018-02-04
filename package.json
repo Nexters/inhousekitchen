@@ -46,9 +46,7 @@
     "transformIgnorePatterns": [
       "node_modules/(?!react-native|native-base|expo|@expo|react-navigation|native-base-shoutem-theme|@shoutem/theme|@shoutem/animation|@shoutem/ui|tcomb-form-native)"
     ],
-    "setupFiles": [
-      "./jest/setup.js"
-    ]
+    "setupFiles": ["./jest/setup.js"]
   },
   "dependencies": {
     "@expo/vector-icons": "^6.2.2",
@@ -68,7 +66,6 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-23.0.0.tar.gz",
     "react-native-calendars": "^1.16.1",
     "react-native-collapsible": "^0.10.0",
-    "react-native-expo-image-cache": "^1.0.3",
     "react-native-extended-stylesheet": "^0.8.0",
     "react-native-interactable": "^0.1.7",
     "react-native-read-more-text": "^1.0.0",

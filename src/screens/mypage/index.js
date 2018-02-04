@@ -1,5 +1,6 @@
 import Profile from './Profile';
 import Interest from './Interest';
-import History from './History';
+import Reservation from './Reservation';
+import MyKitchen from './MyKitchen';
 
-export { Profile, Interest, History };
+export { Profile, Interest, Reservation, MyKitchen };

@@ -5,44 +5,58 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { TouchableHighlight, TouchableOpacity, View } from 'react-native';
 import { Thumbnail, H1, H2, H3, Text, Button, List, ListItem } from 'native-base';
-import { HostCard } from '../../components/Card';
+import { ImageCard } from '../../components/Card';
+import { TitleHeader } from '../../components/Header';
 import TestImage from './images/test2.png';
+import { LightRoundedButton } from '../../components/Button/index';
 
-class Interest extends PureComponent {
+class Interest extends Component {
   render() {
     const cards = [1, 2, 3, 4, 5];
     return (
-      <View style={ styles.interest }>
-        <Grid>
-          <Row>
-            <Col>
-              <H1>Interested</H1>
-            </Col>
-            <Col>
-              <Button>
-                <Text>Edit</Text>
-              </Button>
-            </Col>
-          </Row>
-          <Row>
-            <List
-              dataArray={ cards }
-              horizontal
-              renderRow={ card => (
-                <ListItem key={ card }>
-                  <HostCard key={ card } />
-                </ListItem>
-              ) } />
-          </Row>
-        </Grid>
-      </View>
+      <Grid style={ styles.interest }>
+        <TitleHeader title="Interest" rightComponent={ () => <LightRoundedButton title="Edit" /> } />
+        <Row style={ styles.content }>
+          <List dataArray={ cards } horizontal renderRow={ card => <ImageCard key={ card } /> } />
+        </Row>
+      </Grid>
     );
   }
 }
 
 const styles = EStyleSheet.create({
   interest: {
-    alignItems: 'center'
+    paddingHorizontal: '$screenPadding',
+    backgroundColor: '$backgroundColor'
+  },
+  header: {
+    marginTop: 19
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '$firstColor',
+    alignSelf: 'flex-start'
+  },
+  headerRight: {
+    justifyContent: 'center'
+  },
+  headerRightButton: {
+    width: 76,
+    height: 24,
+    borderColor: '$thirdColor',
+    backgroundColor: '$backgroundColor',
+    alignSelf: 'flex-end'
+  },
+  headerRightButtonText: {
+    width: '100%',
+    color: '$thirdColor',
+    fontSize: 12,
+    textAlign: 'center'
+  },
+  content: {
+    paddingTop: 20,
+    paddingBottom: 21
   }
 });
 

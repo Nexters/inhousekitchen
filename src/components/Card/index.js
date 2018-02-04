@@ -1,4 +1,7 @@
 import HostCard from './HostCard';
+import Host2Card from './Host2Card';
+import Host3Card from './Host3Card';
+import ImageCard from './ImageCard';
 import styles from './styles';
 
-export { HostCard, styles };
+export { ImageCard, HostCard, Host2Card, Host3Card, styles };

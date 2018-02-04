@@ -4,8 +4,16 @@ import { Provider } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { View, Text } from 'react-native';
 import configureStore from './configs/store';
+import AppNavigator from './navigators/AppNavigator';
 
-EStyleSheet.build({});
+EStyleSheet.build({
+  $firstColor: '#45464a',
+  $secondColor: '#9b9b9b',
+  $thirdColor: '#7bd176',
+  $fourthColor: '#d16a70',
+  $backgroundColor: '#eee',
+  $screenPadding: 21
+});
 
 class App extends Component {
   constructor(props) {

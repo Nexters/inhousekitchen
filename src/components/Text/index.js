@@ -1,5 +1,6 @@
-import IconText from './IconText';
-import MainCategoryText from './MainCategoryText';
+import ProfileText from './ProfileText';
+import TitleText from './TitleText';
+import PriceText from './PriceText';
 import styles from './styles';
 
-export { IconText, MainCategoryText, styles };
+export { ProfileText, TitleText, PriceText, styles };

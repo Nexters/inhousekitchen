@@ -1,4 +1,5 @@
 import LoginButton from './LoginButton';
+import LightRoundedButton from './LightRoundedButton';
 import styles from './styles';
 
-export { LoginButton, styles };
+export { LightRoundedButton, LoginButton, styles };
