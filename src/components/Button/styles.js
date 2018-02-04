@@ -14,9 +14,24 @@ const styleObjects = {
     requestBookArrow: {
       color: '$firstColor'
     }
+  },
+  guestMode: {
+    guestMode: {
+      width: 134,
+      borderWidth: 1,
+      borderColor: '$fourthColor',
+      backgroundColor: '#fff'
+    },
+    guestModeText: {
+      color: '$fourthColor'
+    },
+    guestModeArrow: {
+      color: '$fourthColor'
+    }
   }
 };
 
 export default EStyleSheet.create({
-  ...styleObjects.detail
+  ...styleObjects.detail,
+  ...styleObjects.guestMode
 });

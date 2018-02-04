@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 
 class ArrowRoundedButton extends PureComponent {
   static propTypes = {
-    buttonStyle: PropTypes.object,
-    buttonTextStyle: PropTypes.object,
-    buttonArrowStyle: PropTypes.object,
+    buttonStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    buttonTextStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    buttonArrowStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     title: PropTypes.string
   };
 
