@@ -63,7 +63,6 @@ const styles = EStyleSheet.create({
   host: {},
   content: {
     flex: 0,
-    height: '100%',
     paddingHorizontal: 20,
     paddingBottom: 21,
     backgroundColor: '$backgroundColor'

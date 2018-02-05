@@ -22,18 +22,17 @@ class DetailScreen extends Component {
       flexHeight: HEADER_MAX_HEIGHT,
       flexMarginTop: 0
     };
-
     this.state.scrollY.addListener(({ value }) => {
       /** ignore minHeight > currentHeight or currentHeight > maxHeight */
       const currentHeight = HEADER_MAX_HEIGHT - value;
-      if (currentHeight < HEADER_MIN_HEIGHT && currentHeight > HEADER_MAX_HEIGHT) {
+      if (HEADER_MAX_HEIGHT < currentHeight && currentHeight < HEADER_MIN_HEIGHT) {
         return;
       }
       // console.log(currentHeight, value);
       if (currentHeight < HEADER_MIN_HEIGHT) {
         this.setState({
-          flexHeight: HEADER_MIN_HEIGHT,
-          flexMarginTop: HEADER_MIN_HEIGHT
+          flexHeight: HEADER_MIN_HEIGHT
+          // flexMarginTop: HEADER_MIN_HEIGHT
         });
         return;
       }
@@ -48,28 +47,34 @@ class DetailScreen extends Component {
     const { navigate, goBack } = this.props.navigation;
     const { isAuth } = this.props;
     const { flexHeight } = this.state;
+    // 0 ... HEADER_MAX_HEIGHT, 0, hidden 1 ... 0
+    // 0 ... HEADER_MAX_HEIGHT, 0, height 56 ... 0
+    // 0 ... HEADER_MAX_HEIGHT, 0, color 0 ... 1
+
     return (
       <Container>
         <ScrollView
           stickyHeaderIndices={ [0] }
           scrollEventThrottle={ 16 }
-          onScroll={ Animated.event([{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]) }
+          onScroll={ Animated.event([{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }], {
+            useNativeDriver: false
+          }) }
           style={ styles.fill }>
           <View
             style={ {
               height: flexHeight,
               backgroundColor: 'transparent'
             } }>
-            <Header backPress={ () => goBack() } />
+            <Header scrollY={ this.state.scrollY } backPress={ () => goBack() } />
           </View>
           {this._renderScrollViewContent()}
         </ScrollView>
-        <Footer onRequest={ isAuth ? () => {} : () => navigate('Login') } />
+        <Footer scrollY={ this.state.scrollY } onRequest={ isAuth ? () => {} : () => navigate('Login') } />
       </Container>
     );
   }
 
-  _renderScrollViewContent() {
+  _renderScrollViewContent = () => {
     const contents = [{ component: Content }, { component: Host }, { component: Menu }, { component: Review }];
     const { flexMarginTop } = this.state;
     return (
@@ -80,14 +85,17 @@ class DetailScreen extends Component {
         })}
       </View>
     );
-  }
+  };
 }
 
 const styles = EStyleSheet.create({
   fill: {
     flex: 1
   },
-  scrollViewContent: {}
+  scrollViewContent: {
+    paddingTop: 20,
+    paddingBottom: 56
+  }
 });
 
 function mapStateToProps(state) {

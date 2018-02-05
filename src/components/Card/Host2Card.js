@@ -14,7 +14,7 @@ class Host2Card extends PureComponent {
   };
 
   static defaultProps = {
-    sideUrl: 'https://facebook.github.io/react-native/docs/assets/favicon.png',
+    sideUrl: 'http://lorempixel.com/300/300/food',
     title: 'Korean Fusion Food...'
   };
 

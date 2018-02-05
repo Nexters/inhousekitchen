@@ -15,7 +15,7 @@ class ReviewCard extends Component {
   };
 
   static defaultProps = {
-    profileUrl: 'https://facebook.github.io/react-native/docs/assets/favicon.png',
+    profileUrl: 'https://s3.amazonaws.com/uifaces/faces/twitter/denisepires/128.jpg',
     name: 'Chicken',
     date: '2015-01-01',
     starCount: 3,

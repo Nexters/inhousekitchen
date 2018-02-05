@@ -9,7 +9,8 @@ export const types = {
   LOGIN: createFetchTypes('LOGIN'),
   GOOGLE_LOGIN: createFetchTypes('GOOGLE_LOGIN'),
   LOGOUT: createFetchTypes('LOGOUT'),
-  GOOGLE_LOGOUT: createFetchTypes('GOOGLE_LOGOUT')
+  GOOGLE_LOGOUT: createFetchTypes('GOOGLE_LOGOUT'),
+  TOGGLE_USER_TYPE: 'TOGGLE_USER_TYPE'
 };
 
 const loginActions = {
@@ -45,8 +46,12 @@ export const fetchGoogleLogin = config => ({
   })
 });
 
+export const toggleUserType = () => action(types.TOGGLE_USER_TYPE);
+
 const initialState = {
-  user: {},
+  user: {
+    userType: 'GUEST' // GUEST, HOST
+  },
   accessToken: ''
 };
 
@@ -60,9 +65,18 @@ const googleLoginReducer = {
   [types.GOOGLE_LOGIN[FAILURE]]: state => initialState
 };
 
+const authReducer = {
+  [types.TOGGLE_USER_TYPE]: state => ({
+    ...state,
+    user: { ...state.user, userType: isGuest({ auth: state }) ? 'HOST' : 'GUEST' }
+  })
+};
+
 export const reducers = createReducer(initialState, {
   ...loginReducer,
-  ...googleLoginReducer
+  ...googleLoginReducer,
+  ...authReducer
 });
 
 export const isAuth = state => !_.isEmpty(state.auth.user);
+export const isGuest = state => state.auth.user.userType === 'GUEST';

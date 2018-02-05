@@ -41,13 +41,14 @@ class App extends Component {
     if (!this.state.isReady) {
       return <Expo.AppLoading />;
     }
+    const NavComponent = AppNavigator({ initialRouteName: 'Detail' });
     return (
       <Provider store={ configureStore() }>
-        <AppNavigator initialRouteName="MyPage" />
+        <NavComponent />
       </Provider>
     );
   }
 }
 
-module.exports = __DEV__ ? StorybookUI : App;
-// export default App;
+// module.exports = __DEV__ ? StorybookUI : App;
+export default App;

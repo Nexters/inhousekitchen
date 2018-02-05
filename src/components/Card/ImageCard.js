@@ -11,7 +11,7 @@ class ImageCard extends Component {
   };
 
   static defaultProps = {
-    url: 'https://facebook.github.io/react-native/docs/assets/favicon.png',
+    url: 'http://lorempixel.com/100/100/food',
     name: 'Chicken'
   };
   render() {

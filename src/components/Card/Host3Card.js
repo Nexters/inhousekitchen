@@ -14,7 +14,7 @@ class Host3Card extends PureComponent {
   };
 
   static defaultProps = {
-    contentUrl: 'https://facebook.github.io/react-native/docs/assets/favicon.png',
+    contentUrl: 'http://lorempixel.com/300/300/food',
     title: 'Korean Fusion Food...'
   };
 
@@ -31,9 +31,9 @@ class Host3Card extends PureComponent {
             <Text style={ styles.contentTitle }>{title}</Text>
             <PriceText style={ styles.price }>$29.99</PriceText>
           </View>
-          <View style={styles.stars}>
-                <Text>Start</Text>
-              </View>
+          <View style={ styles.stars }>
+            <Text>Start</Text>
+          </View>
         </Row>
       </Grid>
     );
@@ -61,7 +61,7 @@ const styles = EStyleSheet.create({
   contentHeader: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   contentTitle: {
     fontSize: 16

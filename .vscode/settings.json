@@ -3,5 +3,9 @@
         "packager": {
             "port": 19001
         }
-    }
+    },
+    "settings": {
+		"react-native-storybooks.port": 7007,
+		"react-native-storybooks.storyRegex": "src/**/*.story.js"
+	}
 }
