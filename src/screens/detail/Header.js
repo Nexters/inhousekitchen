@@ -8,6 +8,7 @@ import _ from 'lodash';
 
 import { HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE } from './constants';
 import { BackButton } from '../../components/Button';
+import { ActiveDot, Dot } from '../../components/Dot';
 
 class Header extends Component {
   static propTypes = {
@@ -91,38 +92,13 @@ class Header extends Component {
   };
 }
 
-const Dot = props => (
-  <View
-    style={ {
-      backgroundColor: 'rgba(0,0,0,.3)',
-      width: 8,
-      height: 8,
-      borderRadius: 4,
-      marginLeft: 3,
-      marginRight: 3,
-      marginTop: 3,
-      marginBottom: 3
-    } } />
-);
-
-const ActiveDot = props => (
-  <View
-    style={ {
-      backgroundColor: '#fff',
-      width: 8,
-      height: 8,
-      borderRadius: 4,
-      marginLeft: 3,
-      marginRight: 3,
-      marginTop: 3,
-      marginBottom: 3
-    } } />
-);
-
 const styles = EStyleSheet.create({
   backIcon: {
     position: 'absolute',
     top: 35,
+    '@media android': {
+      top: 35 - 8
+    },
     left: 24,
     backgroundColor: 'transparent'
   },
