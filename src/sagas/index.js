@@ -8,7 +8,7 @@ export default function* rootSaga() {
   yield all([
     fork(loaded),
     fork(loading),
-    fork(authSagas)
+    fork(authSagas),
     // takeEvery(authTypes.AUTO_LOGIN, authSagas.autoLogin),
     // takeEvery(authTypes.SIGNUP_REQUEST, authSagas.signup),
     // takeEvery(authTypes.LOGIN_REQUEST, authSagas.login),

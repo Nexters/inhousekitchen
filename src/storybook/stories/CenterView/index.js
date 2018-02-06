@@ -4,13 +4,13 @@ import { View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 const CenterView = ({ children, style, ...props }) => (
-  <View { ...props } style={ [styles.main, style] }>
+  <View {...props} style={[styles.main, style]}>
     {children}
   </View>
 );
 
 CenterView.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 const styles = EStyleSheet.create({
@@ -18,8 +18,8 @@ const styles = EStyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '$backgroundColor'
-  }
+    backgroundColor: '$backgroundColor',
+  },
 });
 
 export default CenterView;

@@ -4,4 +4,10 @@ import ArrowRoundedButton from './ArrowRoundedButton';
 import BackButton from './BackButton';
 import styles from './styles';
 
-export { LightRoundedButton, ArrowRoundedButton, LoginButton, BackButton, styles };
+export {
+  LightRoundedButton,
+  ArrowRoundedButton,
+  LoginButton,
+  BackButton,
+  styles,
+};

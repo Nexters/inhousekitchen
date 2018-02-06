@@ -7,7 +7,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { Header, SubHeader, TitleHeader } from './';
 
 storiesOf('Header', module)
-  .addDecorator(getStory => <View style={ { width: '100%' } }>{getStory()}</View>)
+  .addDecorator(getStory => <View style={{ width: '100%' }}>{getStory()}</View>)
   .add('with Header', () => <Header />)
   .add('with SubHeader', () => <SubHeader />)
   .add('with TitleHeader', () => <TitleHeader />);

@@ -5,11 +5,11 @@ const styles = EStyleSheet.create({
     backgroundColor: '$backgroundColor',
     paddingLeft: '$screenPadding',
     paddingRight: 20,
-    borderBottomWidth: 0
+    borderBottomWidth: 0,
   },
   subHeaderRightText: {
-    color: '$thirdColor'
-  }
+    color: '$thirdColor',
+  },
 });
 
 export default styles;

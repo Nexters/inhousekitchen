@@ -1,5 +1,9 @@
 import React from 'react';
-import { getStorybookUI, configure, addDecorator } from '@storybook/react-native';
+import {
+  getStorybookUI,
+  configure,
+  addDecorator,
+} from '@storybook/react-native';
 import { CenterView } from './stories/CenterView';
 import { loadStories } from './storyLoader';
 

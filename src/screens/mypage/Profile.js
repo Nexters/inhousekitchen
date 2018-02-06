@@ -16,29 +16,33 @@ import { toggleUserType, isGuest } from '../../ducks/auth';
 class Profile extends Component {
   render() {
     const { isGuest, toggleUserType } = this.props;
-    
+
     const ButtonComponent = isGuest ? (
-      <ArrowRoundedButton title="Become a Host" onPress={ () => toggleUserType() } />
+      <ArrowRoundedButton
+        title="Become a Host"
+        onPress={() => toggleUserType()}
+      />
     ) : (
       <ArrowRoundedButton
         title="Guest Mode"
-        onPress={ () => toggleUserType() }
-        buttonStyle={ buttonStyles.guestMode }
-        buttonTextStyle={ buttonStyles.guestModeText }
-        buttonArrowStyle={ buttonStyles.guestModeArrow } />
+        onPress={() => toggleUserType()}
+        buttonStyle={buttonStyles.guestMode}
+        buttonTextStyle={buttonStyles.guestModeText}
+        buttonArrowStyle={buttonStyles.guestModeArrow}
+      />
     );
     return (
-      <Grid style={ styles.profile }>
+      <Grid style={styles.profile}>
         <Row>
-          <Col style={ styles.profileLeft }>
-            <Thumbnail style={ styles.profileImage } source={ TestImage } />
-            <Text style={ styles.name }>Arthur Hwang</Text>
-            <Text style={ styles.userType }>Guest</Text>
+          <Col style={styles.profileLeft}>
+            <Thumbnail style={styles.profileImage} source={TestImage} />
+            <Text style={styles.name}>Arthur Hwang</Text>
+            <Text style={styles.userType}>Guest</Text>
           </Col>
-          <Col style={ styles.profileRight }>{ButtonComponent}</Col>
+          <Col style={styles.profileRight}>{ButtonComponent}</Col>
         </Row>
         <Row>
-          <Separator style={ styles.separator } />
+          <Separator style={styles.separator} />
         </Row>
       </Grid>
     );
@@ -50,46 +54,46 @@ const styles = EStyleSheet.create({
     paddingTop: 12,
     backgroundColor: '$backgroundColor',
     paddingHorizontal: '$screenPadding',
-    borderColor: '$firstColor'
+    borderColor: '$firstColor',
   },
   profileLeft: {
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
   profileImage: {
     width: 60,
     height: 60,
-    marginBottom: 13
+    marginBottom: 13,
   },
   name: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '$firstColor',
     height: 24,
-    marginBottom: 1
+    marginBottom: 1,
   },
   userType: {
     fontSize: 16,
     color: '$secondColor',
-    height: 24
+    height: 24,
   },
   profileRight: {},
   separator: {
-    paddingTop: 24
-  }
+    paddingTop: 24,
+  },
 });
 
 function mapStateToProps(state) {
   return {
-    isGuest: isGuest(state)
+    isGuest: isGuest(state),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      toggleUserType
+      toggleUserType,
     },
-    dispatch
+    dispatch,
   );
 }
 

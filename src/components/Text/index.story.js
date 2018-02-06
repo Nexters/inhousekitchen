@@ -11,10 +11,12 @@ storiesOf('Text', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
   .add('with PriceText', () => <PriceText>19.4</PriceText>)
   .add('with ProfileText', () => (
-    <View style={ { width: 130, height: 14 } }>
+    <View style={{ width: 130, height: 14 }}>
       <ProfileText />
     </View>
   ))
-  .add('with TitleText', () => <TitleText containerStyle={ { flex: 0, height: 20 } } />);
+  .add('with TitleText', () => (
+    <TitleText containerStyle={{ flex: 0, height: 20 }} />
+  ));
 
 const styles = EStyleSheet.create({});

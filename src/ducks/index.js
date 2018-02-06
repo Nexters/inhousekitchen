@@ -6,5 +6,5 @@ import { reducers as host } from './host';
 export const reducers = combineReducers({
   auth,
   load,
-  host
+  host,
 });

@@ -6,32 +6,32 @@ const styleObjects = {
       width: 154,
       height: 36,
       backgroundColor: '#fff',
-      alignSelf: 'flex-start'
+      alignSelf: 'flex-start',
     },
     requestBookText: {
-      color: '$firstColor'
+      color: '$firstColor',
     },
     requestBookArrow: {
-      color: '$firstColor'
-    }
+      color: '$firstColor',
+    },
   },
   guestMode: {
     guestMode: {
       width: 134,
       borderWidth: 1,
       borderColor: '$fourthColor',
-      backgroundColor: '#fff'
+      backgroundColor: '#fff',
     },
     guestModeText: {
-      color: '$fourthColor'
+      color: '$fourthColor',
     },
     guestModeArrow: {
-      color: '$fourthColor'
-    }
-  }
+      color: '$fourthColor',
+    },
+  },
 };
 
 export default EStyleSheet.create({
   ...styleObjects.detail,
-  ...styleObjects.guestMode
+  ...styleObjects.guestMode,
 });

@@ -11,13 +11,19 @@ class LightRoundedButton extends PureComponent {
   };
 
   static defaultProps = {
-    title: 'hello'
+    title: 'hello',
   };
   render() {
     const { title, buttonStyle, buttonTextStyle, ...props } = this.props;
     return (
-      <Button rounded bordered light { ...props } style={ [styles.button, buttonStyle] }>
-        <Text style={ [styles.buttonText, buttonTextStyle] }>{title}</Text>
+      <Button
+        rounded
+        bordered
+        light
+        {...props}
+        style={[styles.button, buttonStyle]}
+      >
+        <Text style={[styles.buttonText, buttonTextStyle]}>{title}</Text>
       </Button>
     );
   }
@@ -29,14 +35,14 @@ const styles = EStyleSheet.create({
     height: 24,
     borderColor: '$thirdColor',
     backgroundColor: '$backgroundColor',
-    alignSelf: 'flex-end'
+    alignSelf: 'flex-end',
   },
   buttonText: {
     width: '100%',
     color: '$thirdColor',
     fontSize: 12,
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 });
 
 export default LightRoundedButton;

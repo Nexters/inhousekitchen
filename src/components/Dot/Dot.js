@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 const Dot = props => (
   <View
-    style={ {
+    style={{
       backgroundColor: 'rgba(0,0,0,.3)',
       width: 8,
       height: 8,
@@ -11,8 +11,9 @@ const Dot = props => (
       marginLeft: 3,
       marginRight: 3,
       marginTop: 3,
-      marginBottom: 3
-    } } />
+      marginBottom: 3,
+    }}
+  />
 );
 
 export default Dot;

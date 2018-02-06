@@ -8,7 +8,7 @@ import CenterView from '../../storybook/stories/CenterView';
 import { Profile, Interest, MyKitchen, Reservation } from './';
 
 storiesOf('MyPage organization', module)
-  .addDecorator(getStory => <View style={ styles.page }>{getStory()}</View>)
+  .addDecorator(getStory => <View style={styles.page}>{getStory()}</View>)
   .add('with Profile', () => <Profile />)
   .add('with Interest', () => <Interest />)
   .add('with MyKitchen', () => <MyKitchen />)
@@ -18,6 +18,6 @@ const styles = EStyleSheet.create({
   page: {
     width: '100%',
     height: '100%',
-    backgroundColor: '$backgroundColor'
-  }
+    backgroundColor: '$backgroundColor',
+  },
 });

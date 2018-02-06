@@ -6,7 +6,7 @@ class LoginButton extends Component {
   render() {
     const { children, ...props } = this.props;
     return (
-      <Button { ...props } style={ styles.loginButton }>
+      <Button {...props} style={styles.loginButton}>
         {children}
       </Button>
     );
@@ -15,14 +15,14 @@ class LoginButton extends Component {
 
 const styles = EStyleSheet.create({
   loginButtonContainer: {
-    width: '100%'
+    width: '100%',
   },
   loginButton: {
     width: '90%',
     marginHorizontal: '5%',
     marginVertical: 10,
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 });
 
 export default LoginButton;

@@ -12,12 +12,12 @@ const AppNavigator = ({ initialRouteName }) =>
       MapResult: { screen: MapResultScreen },
       Detail: { screen: DetailScreen },
       Login: { screen: LoginScreen },
-      MyPage: { screen: MyPageScreen }
+      MyPage: { screen: MyPageScreen },
     },
     {
       initialRouteName,
-      headerMode: 'none'
-    }
+      headerMode: 'none',
+    },
   );
 
 export default AppNavigator;

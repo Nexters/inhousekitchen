@@ -13,12 +13,12 @@ const withLoading = Component => {
 
       if (loading) {
         return (
-          <View style={ styles.spinnerContent }>
+          <View style={styles.spinnerContent}>
             <Spinner />
           </View>
         );
       }
-      return <Component { ...this.props } />;
+      return <Component {...this.props} />;
     }
   };
   return connect(mapStateToProps, mapDispatchToProps)(WithLoading);
@@ -28,13 +28,13 @@ const styles = EStyleSheet.create({
   spinnerContent: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });
 
 function mapStateToProps(state) {
   return {
-    loading: getLoading(state)
+    loading: getLoading(state),
   };
 }
 

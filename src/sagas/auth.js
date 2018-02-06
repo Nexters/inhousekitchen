@@ -1,4 +1,13 @@
-import { call, fork, take, select, put, cancel, takeLatest, takeEvery } from 'redux-saga/effects';
+import {
+  call,
+  fork,
+  take,
+  select,
+  put,
+  cancel,
+  takeLatest,
+  takeEvery,
+} from 'redux-saga/effects';
 import _ from 'lodash';
 import { FAILURE, FETCH, LOADED, SUCCESS } from '../ducks/constants';
 import { types, fetchLogin } from '../ducks/auth';

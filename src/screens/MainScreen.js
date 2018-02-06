@@ -2,7 +2,20 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Container, H2, Left, Body, Right, Button, Icon, Title, Text, Content, List, ListItem } from 'native-base';
+import {
+  Container,
+  H2,
+  Left,
+  Body,
+  Right,
+  Button,
+  Icon,
+  Title,
+  Text,
+  Content,
+  List,
+  ListItem,
+} from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import _ from 'lodash';
@@ -13,24 +26,24 @@ import { fetchHostByType } from '../ducks/host';
 
 const styles = EStyleSheet.create({
   contentContainer: {
-    flex: 1
+    flex: 1,
   },
   searchContainer: {
     height: 100,
     paddingHorizontal: 20,
-    paddingVertical: 20
+    paddingVertical: 20,
   },
   search: {
-    borderWidth: 1
+    borderWidth: 1,
   },
   searchCol: {
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   content: {
     flex: 1,
-    flexDirection: 'column'
-  }
+    flexDirection: 'column',
+  },
 });
 
 const cards = [1, 2, 3, 4, 5];
@@ -47,27 +60,29 @@ class MainScreen extends Component {
     return (
       <Container>
         <Header />
-        <View style={ styles.contentContainer }>
-          <View style={ styles.searchContainer }>
-            <Grid style={ styles.search }>
-              <Col style={ styles.searchCol }>
+        <View style={styles.contentContainer}>
+          <View style={styles.searchContainer}>
+            <Grid style={styles.search}>
+              <Col style={styles.searchCol}>
                 <Text>Date</Text>
               </Col>
-              <Col style={ styles.searchCol }>
+              <Col style={styles.searchCol}>
                 <Text>City</Text>
               </Col>
-              <Col style={ styles.searchCol }>
+              <Col style={styles.searchCol}>
                 <Text>Guests</Text>
               </Col>
-              <Col style={ styles.searchCol }>
-                <Button onPress={ () => navigate('MapResult') }>
+              <Col style={styles.searchCol}>
+                <Button onPress={() => navigate('MapResult')}>
                   <Text>Search</Text>
                 </Button>
               </Col>
             </Grid>
           </View>
-          <Content style={ styles.content }>
-            {_.map(titles, (title, index) => this._renderCard(index, title, cards))}
+          <Content style={styles.content}>
+            {_.map(titles, (title, index) =>
+              this._renderCard(index, title, cards),
+            )}
           </Content>
         </View>
       </Container>
@@ -76,16 +91,17 @@ class MainScreen extends Component {
 
   _renderCard(key, title, cards) {
     return (
-      <View key={ key }>
+      <View key={key}>
         <H2>{title}</H2>
         <List
-          dataArray={ cards }
+          dataArray={cards}
           horizontal
-          renderRow={ card => (
-            <ListItem key={ card }>
+          renderRow={card => (
+            <ListItem key={card}>
               <HostCard />
             </ListItem>
-          ) } />
+          )}
+        />
       </View>
     );
   }
@@ -98,9 +114,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      fetchHostByType
+      fetchHostByType,
     },
-    dispatch
+    dispatch,
   );
 }
 

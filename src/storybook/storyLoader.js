@@ -1,4 +1,3 @@
-
 // Auto-generated file created by react-native-storybook-loader
 // Do not edit.
 //
@@ -14,7 +13,6 @@ function loadStories() {
   require('../screens/detail/index.story');
   require('../screens/mypage/index.story');
   require('./stories/Common/index.story');
-  
 }
 
 const stories = [
@@ -27,7 +25,6 @@ const stories = [
   '../screens/detail/index.story',
   '../screens/mypage/index.story',
   './stories/Common/index.story',
-  
 ];
 
 module.exports = {

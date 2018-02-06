@@ -14,37 +14,37 @@ class Content extends PureComponent {
     title: PropTypes.string,
     content: PropTypes.string,
     date: PropTypes.string,
-    location: PropTypes.string
+    location: PropTypes.string,
   };
 
   static defaultProps = {
     title: 'Korean Fusion Noodle',
     content: 'Korean noodles, called "guksu" or "myeon" are everyday food',
     date: '10:00 AM - 3:00 PM',
-    location: 'Yeoksam-dong, Gangnam-gu, Seoul'
+    location: 'Yeoksam-dong, Gangnam-gu, Seoul',
   };
   render() {
-    const {
-      title, content, date, location
-    } = this.props;
+    const { title, content, date, location } = this.props;
 
     return (
-      <Grid style={ styles.content }>
-        <Row style={ styles.header }>
-          <TitleHeader title={ title } />
+      <Grid style={styles.content}>
+        <Row style={styles.header}>
+          <TitleHeader title={title} />
         </Row>
-        <Row style={ styles.otherInfo }>
-          <Text style={ styles.contentText }>{content}</Text>
+        <Row style={styles.otherInfo}>
+          <Text style={styles.contentText}>{content}</Text>
           <TitleText
-            titleStyle={ styles.otherIcon }
-            title={ () => <EvilIcons name="clock" size={ 16 } /> }
-            content={ date }
-            contentStyle={ styles.otherText } />
+            titleStyle={styles.otherIcon}
+            title={() => <EvilIcons name="clock" size={16} />}
+            content={date}
+            contentStyle={styles.otherText}
+          />
           <TitleText
-            titleStyle={ styles.otherIcon }
-            title={ () => <EvilIcons name="location" size={ 16 } /> }
-            content={ location }
-            contentStyle={ styles.otherText } />
+            titleStyle={styles.otherIcon}
+            title={() => <EvilIcons name="location" size={16} />}
+            content={location}
+            contentStyle={styles.otherText}
+          />
         </Row>
       </Grid>
     );
@@ -54,26 +54,26 @@ class Content extends PureComponent {
 const styles = EStyleSheet.create({
   content: {
     paddingHorizontal: 20,
-    paddingVertical: 21
+    paddingVertical: 21,
   },
   header: {
     flex: 0,
-    paddingBottom: 8
+    paddingBottom: 8,
   },
   contentText: {
-    paddingBottom: 20
+    paddingBottom: 20,
   },
   otherInfo: {
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   otherIcon: {
     width: 16,
-    marginRight: 8
+    marginRight: 8,
   },
   otherText: {
     fontSize: 14,
-    color: '#919297'
-  }
+    color: '#919297',
+  },
 });
 
 export default Content;

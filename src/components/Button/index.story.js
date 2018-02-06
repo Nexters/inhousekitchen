@@ -9,21 +9,25 @@ import styles from './styles';
 
 storiesOf('Button', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
-  .add('with LightRoundedButton', () => <LightRoundedButton title="hello" onPress={ action('clicked-button') } />)
+  .add('with LightRoundedButton', () => (
+    <LightRoundedButton title="hello" onPress={action('clicked-button')} />
+  ))
   .add('with Become a Host', () => <ArrowRoundedButton />)
   .add('with Guest Mode', () => (
     <ArrowRoundedButton
       title="Guest Mode"
-      buttonStyle={ styles.guestMode }
-      buttonTextStyle={ styles.guestModeText }
-      buttonArrowStyle={ styles.guestModeArrow } />
+      buttonStyle={styles.guestMode}
+      buttonTextStyle={styles.guestModeText}
+      buttonArrowStyle={styles.guestModeArrow}
+    />
   ))
   .add('with Request a Book', () => (
     <ArrowRoundedButton
       title="Request a Book"
-      buttonStyle={ styles.requestBook }
-      buttonTextStyle={ styles.requestBookText }
-      buttonArrowStyle={ styles.requestBookArrow } />
+      buttonStyle={styles.requestBook}
+      buttonTextStyle={styles.requestBookText}
+      buttonArrowStyle={styles.requestBookArrow}
+    />
   ))
   .add('with LoginButton', () => (
     <LoginButton>

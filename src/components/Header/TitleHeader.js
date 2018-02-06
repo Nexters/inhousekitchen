@@ -11,26 +11,30 @@ class TitleHeader extends Component {
     title: PropTypes.string,
     rightComponent: PropTypes.func,
     headerStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
-    headerRightStyle: PropTypes.number
+    headerRightStyle: PropTypes.number,
   };
 
   static defaultProps = {
     title: 'Interest',
-    rightComponent: undefined
+    rightComponent: undefined,
   };
   render() {
     const {
-      title, rightComponent, headerStyle, headerRightStyle, ...props
+      title,
+      rightComponent,
+      headerStyle,
+      headerRightStyle,
+      ...props
     } = this.props;
     const RightComponent = rightComponent;
 
     return (
-      <Grid { ...props } style={ _.flatten([styles.header, headerStyle]) }>
+      <Grid {...props} style={_.flatten([styles.header, headerStyle])}>
         <Col>
-          <Text style={ styles.headerTitle }>{title}</Text>
+          <Text style={styles.headerTitle}>{title}</Text>
         </Col>
         {RightComponent && (
-          <Col style={ [styles.headerRight, headerRightStyle] }>
+          <Col style={[styles.headerRight, headerRightStyle]}>
             <RightComponent />
           </Col>
         )}
@@ -45,11 +49,11 @@ const styles = EStyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: '$firstColor',
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
   },
   headerRight: {
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 });
 
 export default TitleHeader;
