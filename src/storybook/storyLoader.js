@@ -24,10 +24,10 @@ const stories = [
   '../components/Text/index.story',
   '../screens/detail/index.story',
   '../screens/mypage/index.story',
-  './stories/Common/index.story',
+  './stories/Common/index.story'
 ];
 
 module.exports = {
   loadStories,
-  stories,
+  stories
 };

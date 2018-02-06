@@ -11,7 +11,7 @@ import rootSaga from '../sagas';
 
 const customConfig = {
   ...offlineConfig,
-  effect: (effect, _action) => (effect.url ? effect.url() : Promise.reject()),
+  effect: (effect, _action) => (effect.url ? effect.url() : Promise.reject())
 };
 
 export default function configureStore(initialState = {}) {

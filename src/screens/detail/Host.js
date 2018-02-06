@@ -11,48 +11,45 @@ import { TitleHeader } from '../../components/Header/index';
 import { ProfileText } from '../../components/Text/index';
 import {
   ArrowRoundedButton,
-  LightRoundedButton,
+  LightRoundedButton
 } from '../../components/Button/index';
 import { AccordianHeader } from './';
 
 class Host extends Component {
   state = {
-    isOpen: true,
+    isOpen: true
   };
   render() {
     const { isOpen } = this.state;
     return (
       <Accordion
-        touchableComponent={TouchableOpacity}
-        touchableProps={{
-          onPress: this._toggleOpen,
-        }}
-        sections={['1']}
-        activeSection={isOpen ? 0 : false}
-        renderHeader={this._renderHeader}
-        renderContent={this._renderContent}
-      />
+        touchableComponent={ TouchableOpacity }
+        touchableProps={ {
+          onPress: this._toggleOpen
+        } }
+        sections={ ['1'] }
+        activeSection={ isOpen ? 0 : false }
+        renderHeader={ this._renderHeader }
+        renderContent={ this._renderContent } />
     );
   }
   _renderHeader = section => {
     const { isOpen } = this.state;
-    return <AccordianHeader title="Host Info" isOpen={isOpen} />;
+    return <AccordianHeader title="Host Info" isOpen={ isOpen } />;
   };
   _renderContent = section => (
-    <Grid style={styles.content}>
-      <Row style={styles.profile}>
+    <Grid style={ styles.content }>
+      <Row style={ styles.profile }>
         <ProfileText
-          containerStyle={styles.profileText}
-          profileStyle={styles.profileImage}
-          nameTextStyle={styles.name}
-        />
+          containerStyle={ styles.profileText }
+          profileStyle={ styles.profileImage }
+          nameTextStyle={ styles.name } />
         <LightRoundedButton
-          buttonStyle={styles.contactButton}
-          title="CONTACT"
-        />
+          buttonStyle={ styles.contactButton }
+          title="CONTACT" />
       </Row>
       <Row>
-        <Text style={styles.contentText}>
+        <Text style={ styles.contentText }>
           I’m full time Youtuber Lorem Ipsum is simply dummy text of the
           printing and typesetting industry. Lorem Ipsum has been the industry's
           standard dummy text ever since t…
@@ -63,7 +60,7 @@ class Host extends Component {
 
   _toggleOpen = () => {
     this.setState(state => ({
-      isOpen: !state.isOpen,
+      isOpen: !state.isOpen
     }));
   };
 }
@@ -74,27 +71,27 @@ const styles = EStyleSheet.create({
     flex: 0,
     paddingHorizontal: 20,
     paddingBottom: 21,
-    backgroundColor: '$backgroundColor',
+    backgroundColor: '$backgroundColor'
   },
   profile: {
     flex: 0,
     height: 26,
-    marginBottom: 10,
+    marginBottom: 10
   },
   profileText: {
-    height: 26,
+    height: 26
   },
   profileImage: {
     width: 24,
-    height: 24,
+    height: 24
   },
   name: {
     fontSize: 14,
     color: '$firstColor',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   contactButton: {
-    width: 100,
+    width: 100
     // position: 'absolute',
     // top: 0,
     // right: 0
@@ -102,8 +99,8 @@ const styles = EStyleSheet.create({
   contentText: {
     width: '100%',
     fontSize: 14,
-    color: '$firstColor',
-  },
+    color: '$firstColor'
+  }
 });
 
 export default Host;

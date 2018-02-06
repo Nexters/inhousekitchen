@@ -9,5 +9,5 @@ export {
   ArrowRoundedButton,
   LoginButton,
   BackButton,
-  styles,
+  styles
 };

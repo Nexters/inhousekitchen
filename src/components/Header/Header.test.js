@@ -5,9 +5,7 @@ import { Title } from 'native-base';
 import { Header } from '../Header';
 
 it('Header set title', () => {
-  expect(
-    shallow(<Header title="helloworld" />).contains(<Title>helloworld</Title>),
-  ).toBeTruthy();
+  expect(shallow(<Header title="helloworld" />).contains(<Title>helloworld</Title>), ).toBeTruthy();
 });
 
 it('Header no set title', () => {

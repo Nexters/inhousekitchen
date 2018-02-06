@@ -18,9 +18,9 @@ export function createMetaOffline({ effect, commit, rollback }) {
       offline: {
         effect,
         commit,
-        rollback,
-      },
-    },
+        rollback
+      }
+    }
   };
 }
 

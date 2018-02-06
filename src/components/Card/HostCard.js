@@ -12,7 +12,7 @@ import {
   Icon,
   Left,
   Body,
-  Right,
+  Right
 } from 'native-base';
 import TestImage from './images/test.png';
 
@@ -22,7 +22,7 @@ class HostCard extends Component {
       <Card>
         <CardItem>
           <Left>
-            <Thumbnail source={TestImage} />
+            <Thumbnail source={ TestImage } />
             <Body>
               <Text>NativeBase</Text>
               <Text note>GeekyAnts</Text>
@@ -31,9 +31,8 @@ class HostCard extends Component {
         </CardItem>
         <CardItem cardBody>
           <Image
-            source={TestImage}
-            style={{ height: 200, width: null, flex: 1 }}
-          />
+            source={ TestImage }
+            style={ { height: 200, width: null, flex: 1 } } />
         </CardItem>
         <CardItem>
           <Left>

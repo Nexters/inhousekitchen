@@ -6,7 +6,7 @@ class PriceText extends PureComponent {
   render() {
     const { children, style, ...props } = this.props;
     return (
-      <Text {...props} style={[styles.priceText, style]}>
+      <Text { ...props } style={ [styles.priceText, style] }>
         {children}
       </Text>
     );
@@ -16,8 +16,8 @@ class PriceText extends PureComponent {
 const styles = EStyleSheet.create({
   priceText: {
     fontSize: 16,
-    color: '$thirdColor',
-  },
+    color: '$thirdColor'
+  }
 });
 
 export default PriceText;

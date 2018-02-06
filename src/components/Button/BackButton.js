@@ -7,24 +7,23 @@ import PropTypes from 'prop-types';
 class BackButton extends PureComponent {
   static propTypes = {
     iconSize: PropTypes.number,
-    iconColor: PropTypes.string,
+    iconColor: PropTypes.string
   };
 
   static defaultProps = {
     iconSize: 32,
-    iconColor: '',
+    iconColor: ''
   };
 
   render() {
     const { iconSize, iconColor } = this.props;
 
     return (
-      <Button {...this.props} transparent>
+      <Button { ...this.props } transparent>
         <FeatherIcon
           name="arrow-left"
-          size={iconSize}
-          color={iconColor || EStyleSheet.value('$firstColor')}
-        />
+          size={ iconSize }
+          color={ iconColor || EStyleSheet.value('$firstColor') } />
       </Button>
     );
   }

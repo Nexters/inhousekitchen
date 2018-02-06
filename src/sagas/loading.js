@@ -5,7 +5,7 @@ import {
   select,
   put,
   cancel,
-  takeLatest,
+  takeLatest
 } from 'redux-saga/effects';
 import _ from 'lodash';
 import { FAILURE, FETCH, LOADING, SUCCESS } from '../ducks/constants';

@@ -12,7 +12,7 @@ import {
   Text,
   Button,
   List,
-  ListItem,
+  ListItem
 } from 'native-base';
 import { Host2Card } from '../../components/Card';
 import { TitleHeader } from '../../components/Header';
@@ -21,13 +21,12 @@ class Reservation extends Component {
   render() {
     const cards = [1, 2, 3, 4, 5];
     return (
-      <Grid style={styles.reservation}>
+      <Grid style={ styles.reservation }>
         <TitleHeader title="Reservation" />
-        <Row style={styles.content}>
+        <Row style={ styles.content }>
           <List
-            dataArray={cards}
-            renderRow={card => <Host2Card key={card} />}
-          />
+            dataArray={ cards }
+            renderRow={ card => <Host2Card key={ card } /> } />
         </Row>
       </Grid>
     );
@@ -38,11 +37,11 @@ const styles = EStyleSheet.create({
   reservation: {
     paddingHorizontal: '$screenPadding',
     paddingBottom: 19,
-    backgroundColor: '$backgroundColor',
+    backgroundColor: '$backgroundColor'
   },
   content: {
-    paddingTop: 20,
-  },
+    paddingTop: 20
+  }
 });
 
 export default Reservation;

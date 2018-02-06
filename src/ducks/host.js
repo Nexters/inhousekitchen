@@ -14,13 +14,13 @@ import { createReducer } from './reducerHelper';
 // type poplurar, theme, recent
 
 export const types = {
-  HOST: createFetchTypes('HOST'),
+  HOST: createFetchTypes('HOST')
 };
 
 const actions = {
   fetch: action(types.HOST[FETCH]),
   success: action(types.HOST[SUCCESS]),
-  failure: action(types.HOST[FAILURE]),
+  failure: action(types.HOST[FAILURE])
 };
 
 export const fetchHostByType = type => ({
@@ -28,27 +28,27 @@ export const fetchHostByType = type => ({
   ...createMetaOffline({
     effect: { url: _.partial(agent.Host.findByType, type) },
     commit: actions.success,
-    rollback: actions.failure,
-  }),
+    rollback: actions.failure
+  })
 });
 
 const initialState = {
-  hosts: [],
+  hosts: []
 };
 
 const hostReducer = {
   [types.HOST[SUCCESS]]: (state, { payload: { hosts } }) => ({
     ...state,
-    hosts,
+    hosts
   }),
-  [types.HOST[FAILURE]]: state => {
+  [types.HOST[FAILURE]]: state =>
     // TODO faker data.
-    return initialState;
-  },
+    initialState
+  
 };
 
 export const reducers = createReducer(initialState, {
-  ...hostReducer,
+  ...hostReducer
 });
 
 export const getHosts = state => state.host.hosts;

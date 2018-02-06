@@ -7,19 +7,19 @@ import PropTypes from 'prop-types';
 class ImageCard extends Component {
   static propTypes = {
     url: PropTypes.string,
-    name: PropTypes.string,
+    name: PropTypes.string
   };
 
   static defaultProps = {
     url: 'http://lorempixel.com/100/100/food',
-    name: 'Chicken',
+    name: 'Chicken'
   };
   render() {
     const { url, name } = this.props;
     return (
-      <View style={styles.imageCard}>
-        <Image style={styles.backgroundImage} source={{ uri: url }} />
-        <Text style={styles.name}>{name}</Text>
+      <View style={ styles.imageCard }>
+        <Image style={ styles.backgroundImage } source={ { uri: url } } />
+        <Text style={ styles.name }>{name}</Text>
       </View>
     );
   }
@@ -29,11 +29,11 @@ const styles = EStyleSheet.create({
   imageCard: {
     width: 100,
     height: 100,
-    marginRight: 12.3,
+    marginRight: 12.3
   },
   backgroundImage: {
     width: '100%',
-    height: '100%',
+    height: '100%'
   },
   name: {
     fontSize: 12,
@@ -41,8 +41,8 @@ const styles = EStyleSheet.create({
     left: 8,
     bottom: 10,
     backgroundColor: 'transparent',
-    color: '#fff',
-  },
+    color: '#fff'
+  }
 });
 
 export default ImageCard;

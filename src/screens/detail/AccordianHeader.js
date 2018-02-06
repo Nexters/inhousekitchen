@@ -8,23 +8,21 @@ class AccordianHeader extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     isOpen: PropTypes.bool.isRequired,
-    headerStyle: PropTypes.number,
+    headerStyle: PropTypes.number
   };
   render() {
     const { title, isOpen, headerStyle } = this.props;
 
     return (
       <TitleHeader
-        title={title}
-        headerStyle={[styles.header, headerStyle]}
-        headerRightStyle={styles.headerRight}
-        rightComponent={() => (
+        title={ title }
+        headerStyle={ [styles.header, headerStyle] }
+        headerRightStyle={ styles.headerRight }
+        rightComponent={ () => (
           <SimpleLineIcons
-            name={isOpen ? 'arrow-up' : 'arrow-down'}
-            size={24}
-          />
-        )}
-      />
+            name={ isOpen ? 'arrow-up' : 'arrow-down' }
+            size={ 24 } />
+        ) } />
     );
   }
 }
@@ -36,11 +34,11 @@ const styles = EStyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 24,
     backgroundColor: '$backgroundColor',
-    zIndex: 10,
+    zIndex: 10
   },
   headerRight: {
-    alignItems: 'flex-end',
-  },
+    alignItems: 'flex-end'
+  }
 });
 
 export default AccordianHeader;

@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 const ActiveDot = props => (
   <View
-    style={{
+    style={ {
       backgroundColor: '#fff',
       width: 8,
       height: 8,
@@ -11,9 +11,8 @@ const ActiveDot = props => (
       marginLeft: 3,
       marginRight: 3,
       marginTop: 3,
-      marginBottom: 3,
-    }}
-  />
+      marginBottom: 3
+    } } />
 );
 
 export default ActiveDot;

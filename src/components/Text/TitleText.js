@@ -13,12 +13,12 @@ class TitleText extends PureComponent {
     containerStyle: PropTypes.number,
     titleStyle: PropTypes.number,
     titleTextStyle: PropTypes.number,
-    contentTextStyle: PropTypes.number,
+    contentTextStyle: PropTypes.number
   };
 
   static defaultProps = {
     title: 'Date',
-    content: 'Guest',
+    content: 'Guest'
   };
 
   render() {
@@ -28,19 +28,19 @@ class TitleText extends PureComponent {
       containerStyle,
       titleStyle,
       titleTextStyle,
-      contentTextStyle,
+      contentTextStyle
     } = this.props;
 
     const textComponent = _.isString(Title) ? (
-      <Text style={[styles.titleText, titleTextStyle]}>{Title}</Text>
+      <Text style={ [styles.titleText, titleTextStyle] }>{Title}</Text>
     ) : (
       <Title />
     );
     return (
-      <Grid style={[containerStyle]}>
-        <Col style={[styles.title, titleStyle]}>{textComponent}</Col>
+      <Grid style={ [containerStyle] }>
+        <Col style={ [styles.title, titleStyle] }>{textComponent}</Col>
         <Col>
-          <Text style={[styles.contentText, contentTextStyle]}>{content}</Text>
+          <Text style={ [styles.contentText, contentTextStyle] }>{content}</Text>
         </Col>
       </Grid>
     );
@@ -50,14 +50,14 @@ class TitleText extends PureComponent {
 const styles = EStyleSheet.create({
   title: {
     flex: 0,
-    width: 49,
+    width: 49
   },
   titleText: {
-    fontSize: 12,
+    fontSize: 12
   },
   contentText: {
-    fontSize: 12,
-  },
+    fontSize: 12
+  }
 });
 
 export default TitleText;

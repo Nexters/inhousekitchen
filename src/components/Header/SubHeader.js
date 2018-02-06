@@ -8,7 +8,7 @@ import {
   Button,
   Title,
   Text,
-  Content,
+  Content
 } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -18,21 +18,20 @@ import { BackButton } from '../Button';
 
 class SubHeader extends Component {
   static propsTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
   };
 
   static defaultProps = {
-    title: '',
+    title: ''
   };
   render() {
     const { title } = this.props;
 
     return (
       <NativeHeader
-        style={styles.headerContainer}
-        androidStatusBarColor={styles.headerContainer._backgroundColor}
-        iosBarStyle="light-content"
-      >
+        style={ styles.headerContainer }
+        androidStatusBarColor={ styles.headerContainer._backgroundColor }
+        iosBarStyle="light-content">
         <Left>
           <BackButton />
         </Left>
@@ -40,7 +39,7 @@ class SubHeader extends Component {
           <Title>{title}</Title>
         </Body>
         <Right>
-          <Text style={styles.subHeaderRightText}>EDIT</Text>
+          <Text style={ styles.subHeaderRightText }>EDIT</Text>
         </Right>
       </NativeHeader>
     );

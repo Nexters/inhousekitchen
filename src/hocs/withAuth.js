@@ -11,7 +11,7 @@ const withAuth = Component => {
       if (!isAuth) {
         return <View />;
       }
-      return <Component {...this.props} />;
+      return <Component { ...this.props } />;
     }
   };
   return connect(mapStateToProps, mapDispatchToProps)(WithAuth);
@@ -19,7 +19,7 @@ const withAuth = Component => {
 
 function mapStateToProps(state) {
   return {
-    isAuth: isAuth(state),
+    isAuth: isAuth(state)
   };
 }
 

@@ -13,14 +13,14 @@ EStyleSheet.build({
   $thirdColor: '#7bd176',
   $fourthColor: '#d16a70',
   $backgroundColor: '#eee',
-  $screenPadding: 21,
+  $screenPadding: 21
 });
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isReady: false,
+      isReady: false
     };
   }
 
@@ -33,7 +33,7 @@ class App extends Component {
       Roboto: require('native-base/Fonts/Roboto.ttf'),
       Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
       Arial: require('../assets/fonts/Arial.ttf'),
-      Ionicons: require('@expo/vector-icons/fonts/Ionicons.ttf'),
+      Ionicons: require('@expo/vector-icons/fonts/Ionicons.ttf')
     });
     this.setState({ isReady: true });
   }
@@ -43,7 +43,7 @@ class App extends Component {
     }
     const NavComponent = AppNavigator({ initialRouteName: 'Detail' });
     return (
-      <Provider store={configureStore()}>
+      <Provider store={ configureStore() }>
         <NavComponent />
       </Provider>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   getStorybookUI,
   configure,
-  addDecorator,
+  addDecorator
 } from '@storybook/react-native';
 import { CenterView } from './stories/CenterView';
 import { loadStories } from './storyLoader';

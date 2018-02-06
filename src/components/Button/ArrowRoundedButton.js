@@ -9,31 +9,23 @@ class ArrowRoundedButton extends PureComponent {
     buttonStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     buttonTextStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     buttonArrowStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
-    title: PropTypes.string,
+    title: PropTypes.string
   };
 
   static defaultProps = {
     buttonStyle: {},
     buttonTextStyle: {},
     buttonArrowStyle: {},
-    title: 'Become a Host',
+    title: 'Become a Host'
   };
   render() {
     const {
-      title,
-      buttonStyle,
-      buttonTextStyle,
-      buttonArrowStyle,
-      ...props
+      title, buttonStyle, buttonTextStyle, buttonArrowStyle, ...props
     } = this.props;
     return (
-      <Button {...props} style={[styles.button, buttonStyle]}>
-        <Text style={[styles.buttonText, buttonTextStyle]}>{title}</Text>
-        <IonIcons
-          style={[styles.buttonArrow, buttonArrowStyle]}
-          name="ios-arrow-forward"
-          size={16}
-        />
+      <Button { ...props } style={ [styles.button, buttonStyle] }>
+        <Text style={ [styles.buttonText, buttonTextStyle] }>{title}</Text>
+        <IonIcons style={ [styles.buttonArrow, buttonArrowStyle] } name="ios-arrow-forward" size={ 16 } />
       </Button>
     );
   }
@@ -41,22 +33,24 @@ class ArrowRoundedButton extends PureComponent {
 
 const styles = EStyleSheet.create({
   button: {
-    width: 154,
+    // width: 154,
     height: 36,
     borderRadius: 18,
+    paddingLeft: 18,
+    paddingRight: 13,
     backgroundColor: '$thirdColor',
     alignSelf: 'flex-end',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-start'
   },
   buttonText: {
     fontSize: 14,
-    paddingLeft: 18,
-    paddingRight: 13,
     lineHeight: 15,
+    paddingLeft: 0,
+    paddingRight: 8
   },
   buttonArrow: {
-    color: '#fff',
-  },
+    color: '#fff'
+  }
 });
 
 export default ArrowRoundedButton;

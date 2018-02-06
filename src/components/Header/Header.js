@@ -9,7 +9,7 @@ import {
   Icon,
   Title,
   Text,
-  Content,
+  Content
 } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import EntyoIcon from 'react-native-vector-icons/Entypo';
@@ -18,21 +18,20 @@ import styles from './styles';
 
 class Header extends Component {
   static propsTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
   };
 
   static defaultProps = {
-    title: 'Header',
+    title: 'Header'
   };
   render() {
     const { title } = this.props;
 
     return (
       <NativeHeader
-        style={styles.headerContainer}
-        androidStatusBarColor={styles.headerContainer._backgroundColor}
-        iosBarStyle="light-content"
-      >
+        style={ styles.headerContainer }
+        androidStatusBarColor={ styles.headerContainer._backgroundColor }
+        iosBarStyle="light-content">
         <Left>
           <Button transparent>
             <Icon name="menu" />
@@ -43,7 +42,7 @@ class Header extends Component {
         </Body>
         <Right>
           <Button transparent>
-            <EntyoIcon size={20} name="direction" />
+            <EntyoIcon size={ 20 } name="direction" />
           </Button>
         </Right>
       </NativeHeader>

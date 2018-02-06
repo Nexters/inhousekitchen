@@ -12,7 +12,7 @@ import {
   Text,
   Button,
   List,
-  ListItem,
+  ListItem
 } from 'native-base';
 import { ImageCard } from '../../components/Card';
 import { TitleHeader } from '../../components/Header';
@@ -23,17 +23,15 @@ class Interest extends Component {
   render() {
     const cards = [1, 2, 3, 4, 5];
     return (
-      <Grid style={styles.interest}>
+      <Grid style={ styles.interest }>
         <TitleHeader
           title="Interest"
-          rightComponent={() => <LightRoundedButton title="Edit" />}
-        />
-        <Row style={styles.content}>
+          rightComponent={ () => <LightRoundedButton title="Edit" /> } />
+        <Row style={ styles.content }>
           <List
-            dataArray={cards}
+            dataArray={ cards }
             horizontal
-            renderRow={card => <ImageCard key={card} />}
-          />
+            renderRow={ card => <ImageCard key={ card } /> } />
         </Row>
       </Grid>
     );
@@ -44,12 +42,12 @@ const styles = EStyleSheet.create({
   interest: {
     paddingHorizontal: '$screenPadding',
     paddingBottom: 19,
-    backgroundColor: '$backgroundColor',
+    backgroundColor: '$backgroundColor'
   },
   content: {
     paddingTop: 20,
-    paddingBottom: 21,
-  },
+    paddingBottom: 21
+  }
 });
 
 export default Interest;

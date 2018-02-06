@@ -16,7 +16,7 @@ import { withLoading as loading } from '../hocs';
 class LoginScreen extends Component {
   static propTypes = {
     isAuth: PropTypes.bool.isRequired,
-    googleLogin: PropTypes.func.isRequired,
+    googleLogin: PropTypes.func.isRequired
   };
 
   componentDidMount() {}
@@ -29,16 +29,15 @@ class LoginScreen extends Component {
     }
     return (
       <Container>
-        <Content contentContainerStyle={styles.logo}>
-          <Text style={styles.logoImage}>Hello world!123123</Text>
+        <Content contentContainerStyle={ styles.logo }>
+          <Text style={ styles.logoImage }>Hello world!123123</Text>
         </Content>
-        <Footer style={styles.footer}>
-          <LoginButton onPress={googleLogin}>
+        <Footer style={ styles.footer }>
+          <LoginButton onPress={ googleLogin }>
             <Text>Google Login</Text>
           </LoginButton>
-          <Text style={styles.loginButtonText}>
-            By signing up, You Confirmed That accept the Terms of Use and
-            Privacy Policy
+          <Text style={ styles.loginButtonText }>
+            By signing up, You Confirmed That accept the Terms of Use and Privacy Policy
           </Text>
         </Footer>
       </Container>
@@ -50,24 +49,24 @@ const styles = EStyleSheet.create({
   logo: {
     height: '100%',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   logoImage: {
-    borderWidth: 1,
+    borderWidth: 1
   },
   footer: {
     height: 130,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 15,
+    paddingHorizontal: 15
   },
-  loginButtonText: {},
+  loginButtonText: {}
 });
 
 function mapStateToProps(state) {
   return {
-    isAuth: isAuth(state),
+    isAuth: isAuth(state)
   };
 }
 
@@ -76,14 +75,12 @@ function mapDispatchToProps(dispatch) {
     {
       googleLogin: () =>
         fetchGoogleLogin({
-          androidClientId:
-            '94680954925-v72em1r0etl273dmuaslaei17dqm64m5.apps.googleusercontent.com',
-          iosClientId:
-            '94680954925-v72em1r0etl273dmuaslaei17dqm64m5.apps.googleusercontent.com',
-          scopes: ['profile', 'email'],
-        }),
+          androidClientId: '94680954925-v72em1r0etl273dmuaslaei17dqm64m5.apps.googleusercontent.com',
+          iosClientId: '94680954925-v72em1r0etl273dmuaslaei17dqm64m5.apps.googleusercontent.com',
+          scopes: ['profile', 'email']
+        })
     },
-    dispatch,
+    dispatch
   );
 }
 

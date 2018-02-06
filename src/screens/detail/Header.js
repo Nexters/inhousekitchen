@@ -9,7 +9,7 @@ import _ from 'lodash';
 import {
   HEADER_MAX_HEIGHT,
   HEADER_MIN_HEIGHT,
-  HEADER_SCROLL_DISTANCE,
+  HEADER_SCROLL_DISTANCE
 } from './constants';
 import { BackButton } from '../../components/Button';
 import { ActiveDot, Dot } from '../../components/Dot';
@@ -19,14 +19,14 @@ class Header extends Component {
     images: PropTypes.arrayOf(PropTypes.string),
     title: PropTypes.string,
     content: PropTypes.string,
-    backPress: PropTypes.func,
+    backPress: PropTypes.func
   };
 
   static defaultProps = {
     images: _.times(3, () => 'http://lorempixel.com/640/480/food/'),
     title: 'Korean Fusion Noodle',
     content: 'Korean noodles, called "guksu" or "myeon" are everyday food',
-    backPress: () => {},
+    backPress: () => {}
   };
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -37,29 +37,29 @@ class Header extends Component {
     return false;
   }
   render() {
-    const { backPress, images, title, content, scrollY } = this.props;
+    const {
+      backPress, images, title, content, scrollY
+    } = this.props;
     const { animatedHidden, animatedBottom } = this._getAnimated();
     return (
-      <View style={[styles.header]}>
+      <View style={ [styles.header] }>
         <Swiper
-          style={styles.imageSwiper}
-          renderPagination={this._renderPagination}
-        >
+          style={ styles.imageSwiper }
+          renderPagination={ this._renderPagination }>
           {_.map(images, (image, index) => (
-            <View key={index} style={styles.slide}>
-              <Image style={styles.slideImage} source={{ uri: image }} />
+            <View key={ index } style={ styles.slide }>
+              <Image style={ styles.slideImage } source={ { uri: image } } />
             </View>
           ))}
         </Swiper>
-        <BackButton style={styles.backIcon} iconColor="#fff" />
+        <BackButton style={ styles.backIcon } iconColor="#fff" />
         <Animated.View
-          style={[
+          style={ [
             styles.headerInfo,
-            { paddingBottom: animatedBottom, opacity: animatedHidden },
-          ]}
-        >
-          <Text style={styles.headerInfoText}>{title}</Text>
-          <Text style={styles.headerInfoContentText}>{content}</Text>
+            { paddingBottom: animatedBottom, opacity: animatedHidden }
+          ] }>
+          <Text style={ styles.headerInfoText }>{title}</Text>
+          <Text style={ styles.headerInfoContentText }>{content}</Text>
         </Animated.View>
       </View>
     );
@@ -69,18 +69,17 @@ class Header extends Component {
     const { animatedBottom } = this._getAnimated();
     return (
       <Animated.View
-        style={[
+        style={ [
           styles.pagingation,
           {
-            paddingBottom: animatedBottom,
-          },
-        ]}
-      >
+            paddingBottom: animatedBottom
+          }
+        ] }>
         {_.times(total, dotIndex => {
           if (dotIndex == index) {
-            return <ActiveDot key={dotIndex} />;
+            return <ActiveDot key={ dotIndex } />;
           }
-          return <Dot key={dotIndex} />;
+          return <Dot key={ dotIndex } />;
         })}
       </Animated.View>
     );
@@ -90,15 +89,15 @@ class Header extends Component {
     const { scrollY } = this.props;
     const animatedHidden = scrollY.interpolate({
       inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
-      outputRange: [1, 0],
+      outputRange: [1, 0]
     });
     const animatedBottom = scrollY.interpolate({
       inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
-      outputRange: [55, 1],
+      outputRange: [55, 1]
     });
     return {
       animatedBottom,
-      animatedHidden,
+      animatedHidden
     };
   };
 }
@@ -108,10 +107,10 @@ const styles = EStyleSheet.create({
     position: 'absolute',
     top: 35,
     '@media android': {
-      top: 35 - 8,
+      top: 35 - 8
     },
     left: 24,
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
   header: {
     position: 'absolute',
@@ -122,20 +121,20 @@ const styles = EStyleSheet.create({
     right: 0,
     overflow: 'hidden',
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   imageSwiper: {
-    height: '100%',
+    height: '100%'
   },
   slide: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
   slideImage: {
     width: '100%',
-    height: '100%',
+    height: '100%'
   },
   headerInfo: {
     position: 'absolute',
@@ -143,25 +142,25 @@ const styles = EStyleSheet.create({
     left: 0,
     width: '100%',
     paddingHorizontal: 20,
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
   headerInfoText: {
     fontSize: 24,
     color: '#fff',
     fontWeight: 'bold',
-    paddingBottom: 8,
+    paddingBottom: 8
   },
   headerInfoContentText: {
     fontSize: 14,
-    color: '#fff',
+    color: '#fff'
   },
   pagingation: {
     position: 'absolute',
     width: '100%',
     bottom: 12,
     justifyContent: 'center',
-    flexDirection: 'row',
-  },
+    flexDirection: 'row'
+  }
 });
 
 export default Header;

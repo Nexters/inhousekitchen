@@ -6,28 +6,28 @@ function withValidation(TargetComponent) {
     static propTypes = {
       isValid: PropTypes.bool,
       validStyle: PropTypes.object,
-      inValidStyle: PropTypes.object,
+      inValidStyle: PropTypes.object
     };
 
     static defaultProps = {
       isValid: true,
       validStyle: {},
-      inValidStyle: {},
+      inValidStyle: {}
     };
 
     constructor(props) {
       super(props);
       this.state = {
-        isValid: true,
+        isValid: true
       };
     }
     render() {
       const { validStyle, inValidStyle } = this.props;
       const props = Object.assign({
         onChange: this._onChange,
-        style: this.state.isValid ? validStyle : inValidStyle,
+        style: this.state.isValid ? validStyle : inValidStyle
       });
-      return <TargetComponent {...props} />;
+      return <TargetComponent { ...props } />;
     }
 
     _onChange = val => true;

@@ -11,12 +11,12 @@ class ProfileText extends PureComponent {
     name: PropTypes.string,
     containerStyle: PropTypes.number,
     profileStyle: PropTypes.number,
-    nameTextStyle: PropTypes.number,
+    nameTextStyle: PropTypes.number
   };
 
   static defaultProps = {
     profileUrl: 'http://lorempixel.com/100/100/abstract',
-    name: 'Arthur Pendragon',
+    name: 'Arthur Pendragon'
   };
 
   render() {
@@ -25,15 +25,15 @@ class ProfileText extends PureComponent {
       name,
       containerStyle,
       profileStyle,
-      nameTextStyle,
+      nameTextStyle
     } = this.props;
     return (
-      <Grid style={[styles.profileText, containerStyle]}>
-        <Col style={[styles.profileBox, profileStyle]}>
-          <Image style={styles.profileImage} source={{ uri: profileUrl }} />
+      <Grid style={ [styles.profileText, containerStyle] }>
+        <Col style={ [styles.profileBox, profileStyle] }>
+          <Image style={ styles.profileImage } source={ { uri: profileUrl } } />
         </Col>
-        <Col style={styles.name}>
-          <Text style={[styles.nameText, nameTextStyle]}>{name}</Text>
+        <Col style={ styles.name }>
+          <Text style={ [styles.nameText, nameTextStyle] }>{name}</Text>
         </Col>
       </Grid>
     );
@@ -44,21 +44,21 @@ const styles = EStyleSheet.create({
   profileText: {},
   profileBox: {
     flex: 0,
-    width: 14,
+    width: 14
   },
   profileImage: {
     width: '100%',
     height: '100%',
     borderRadius: 7,
-    resizeMode: 'contain',
+    resizeMode: 'contain'
   },
   name: {
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   nameText: {
     fontSize: 12,
-    paddingLeft: 6,
-  },
+    paddingLeft: 6
+  }
 });
 
 export default ProfileText;

@@ -10,28 +10,28 @@ import { PriceText } from '../Text';
 class Host3Card extends PureComponent {
   static propTypes = {
     contentUrl: PropTypes.string,
-    title: PropTypes.string,
+    title: PropTypes.string
   };
 
   static defaultProps = {
     contentUrl: 'http://lorempixel.com/300/300/food',
-    title: 'Korean Fusion Food...',
+    title: 'Korean Fusion Food...'
   };
 
   render() {
     const { contentUrl, title } = this.props;
 
     return (
-      <Grid style={styles.host3Card}>
-        <Row style={styles.header}>
-          <Image style={styles.image} source={{ uri: contentUrl }} />
+      <Grid style={ styles.host3Card }>
+        <Row style={ styles.header }>
+          <Image style={ styles.image } source={ { uri: contentUrl } } />
         </Row>
-        <Row style={styles.content}>
-          <View style={styles.contentHeader}>
-            <Text style={styles.contentTitle}>{title}</Text>
-            <PriceText style={styles.price}>$29.99</PriceText>
+        <Row style={ styles.content }>
+          <View style={ styles.contentHeader }>
+            <Text style={ styles.contentTitle }>{title}</Text>
+            <PriceText style={ styles.price }>$29.99</PriceText>
           </View>
-          <View style={styles.stars}>
+          <View style={ styles.stars }>
             <Text>Start</Text>
           </View>
         </Row>
@@ -43,34 +43,34 @@ class Host3Card extends PureComponent {
 const styles = EStyleSheet.create({
   host3Card: {
     marginBottom: 12,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
   header: {
-    height: 120,
+    height: 120
   },
   image: {
     width: '100%',
-    height: '100%',
+    height: '100%'
   },
   content: {
     flexDirection: 'column',
     paddingTop: 11,
     paddingBottom: 17,
-    paddingHorizontal: 12,
+    paddingHorizontal: 12
   },
   contentHeader: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   contentTitle: {
-    fontSize: 16,
+    fontSize: 16
   },
   price: {},
   stars: {
-    paddingTop: 5,
+    paddingTop: 5
   },
-  starCount: {},
+  starCount: {}
 });
 
 export default Host3Card;

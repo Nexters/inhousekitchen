@@ -5,11 +5,11 @@ const Counter = {
     new Promise((resolve, reject) => {
       console.log('fetch Counter');
       window.setTimeout(() => resolve(3), 5000);
-    }),
+    })
 };
 
 const Login = {
-  login: googleInfo => Promise.resolve({ user: googleInfo }),
+  login: googleInfo => Promise.resolve({ user: googleInfo })
 };
 
 const Host = {
@@ -21,15 +21,15 @@ const Host = {
           {
             username: 'bobinlee',
             profileImage: 'image',
-            contentImage: 'contentImage',
-          },
-        ],
+            contentImage: 'contentImage'
+          }
+        ]
       });
-    }),
+    })
 };
 
 export default {
   Counter,
   Login,
-  Host,
+  Host
 };

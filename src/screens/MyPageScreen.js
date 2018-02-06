@@ -16,12 +16,12 @@ class MyPageScreen extends Component {
     return (
       <Container>
         <SubHeader />
-        <Content style={styles.content}>
+        <Content style={ styles.content }>
           <Profile />
           {isGuest ? <Interest /> : <MyKitchen />}
           <Reservation />
-          <Button full style={styles.signoutButton}>
-            <Text style={styles.signoutButtonText}>Sign Out</Text>
+          <Button full style={ styles.signoutButton }>
+            <Text style={ styles.signoutButtonText }>Sign Out</Text>
           </Button>
         </Content>
       </Container>
@@ -31,25 +31,25 @@ class MyPageScreen extends Component {
 
 const styles = EStyleSheet.create({
   content: {
-    backgroundColor: '$backgroundColor',
+    backgroundColor: '$backgroundColor'
   },
   signoutButton: {
     marginTop: 20,
     marginBottom: 40,
     height: 44,
     backgroundColor: '#fff',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-start'
   },
   signoutButtonText: {
     fontSize: 16,
     color: '$fourthColor',
-    textAlign: 'left',
-  },
+    textAlign: 'left'
+  }
 });
 
 function mapStateToProps(state) {
   return {
-    isGuest: isGuest(state),
+    isGuest: isGuest(state)
   };
 }
 
