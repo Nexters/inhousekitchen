@@ -7,6 +7,7 @@ import configureStore from './configs/store';
 import AppNavigator from './navigators/AppNavigator';
 import StorybookUI from './storybook';
 
+
 EStyleSheet.build({
   $firstColor: '#45464a',
   $secondColor: '#9b9b9b',
@@ -41,10 +42,9 @@ class App extends Component {
     if (!this.state.isReady) {
       return <Expo.AppLoading />;
     }
-    const NavComponent = AppNavigator({ initialRouteName: 'Detail' });
     return (
-      <Provider store={ configureStore() }>
-        <NavComponent />
+      <Provider store={ configureStore }>
+        <AppNavigator />
       </Provider>
     );
   }

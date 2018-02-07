@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Container, Content, Footer, Button, Text } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { NavigationActions } from 'react-navigation';
 import { SubHeader } from '../components/Header';
 import { Profile, Interest, Reservation, MyKitchen } from './mypage';
 import { toggleUserType, isGuest } from '../ducks/auth';
@@ -15,7 +16,7 @@ class MyPageScreen extends Component {
 
     return (
       <Container>
-        <SubHeader />
+        <SubHeader onBackPress={ () => this.props.backScreen() } />
         <Content style={ styles.content }>
           <Profile />
           {isGuest ? <Interest /> : <MyKitchen />}
@@ -54,7 +55,12 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators(
+    {
+      backScreen: NavigationActions.back
+    },
+    dispatch
+  );
 }
 
 export default MyPageScreen;

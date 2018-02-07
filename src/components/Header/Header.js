@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
-import {
-  Container,
-  Header as NativeHeader,
-  Left,
-  Body,
-  Right,
-  Button,
-  Icon,
-  Title,
-  Text,
-  Content
-} from 'native-base';
+import { Container, Header as NativeHeader, Left, Body, Right, Button, Icon, Title, Text, Content } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import EntyoIcon from 'react-native-vector-icons/Entypo';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 import PropTypes from 'prop-types';
-import styles from './styles';
 
 class Header extends Component {
   static propsTypes = {
@@ -25,29 +15,45 @@ class Header extends Component {
     title: 'Header'
   };
   render() {
-    const { title } = this.props;
+    const { title, onMyPagePress } = this.props;
 
     return (
       <NativeHeader
         style={ styles.headerContainer }
-        androidStatusBarColor={ styles.headerContainer._backgroundColor }
+        androidStatusBarColor={ EStyleSheet.value('$backgroundColor') }
         iosBarStyle="light-content">
         <Left>
-          <Button transparent>
-            <Icon name="menu" />
+          <Button onPress={ onMyPagePress } transparent>
+            <FeatherIcon name="user" size={ 24 } />
           </Button>
         </Left>
         <Body>
-          <Title>{title}</Title>
+          <Title style={ styles.headerTitle }>{title}</Title>
         </Body>
         <Right>
           <Button transparent>
-            <EntyoIcon size={ 20 } name="direction" />
+            <EntyoIcon name="direction" color={ EStyleSheet.value('$secondColor') } size={ 24 } />
           </Button>
         </Right>
       </NativeHeader>
     );
   }
 }
+
+const styles = EStyleSheet.create({
+  headerContainer: {
+    backgroundColor: '$backgroundColor',
+    paddingTop: 38,
+    paddingLeft: '$screenPadding',
+    paddingRight: 20,
+    paddingBottom: 17,
+    borderColor: '#181818',
+    borderBottomWidth: 0.3
+  },
+  headerTitle: {
+    fontSize: 18,
+    color: '$thirdColor'
+  }
+});
 
 export default Header;

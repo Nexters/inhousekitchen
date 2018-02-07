@@ -7,13 +7,41 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import _ from 'lodash';
 import { autobind } from 'core-decorators';
+import { NavigationActions } from 'react-navigation';
 import { Header } from '../components/Header';
 import { HostCard } from '../components/Card';
 import { fetchHostByType } from '../ducks/host';
+import { Favorite, Place, Popular, Search } from './main';
+
+@connect(mapStateToProps, mapDispatchToProps)
+@autobind
+class MainScreen extends Component {
+  componentDidMount() {
+    this.props.fetchHostByType('NONE');
+  }
+  render() {
+    return (
+      <Container>
+        <Header onMyPagePress={ () => this.props.moveToScreen({ routeName: 'MyPage' }) } />
+        <View style={ styles.contentContainer }>
+          <Search />
+          <Content style={ styles.content }>{this._renderContent()}</Content>
+        </View>
+      </Container>
+    );
+  }
+
+  _renderContent = () => {
+    const contents = [Popular, Place, Favorite];
+
+    return _.map(contents, (Component, index) => <Component key={ index } />);
+  };
+}
 
 const styles = EStyleSheet.create({
   contentContainer: {
-    flex: 1
+    flex: 1,
+    paddingHorizontal: '$screenPadding'
   },
   searchContainer: {
     height: 100,
@@ -33,64 +61,6 @@ const styles = EStyleSheet.create({
   }
 });
 
-const cards = [1, 2, 3, 4, 5];
-const titles = ['popular', 'theme', 'recent'];
-
-@connect(mapStateToProps, mapDispatchToProps)
-@autobind
-class MainScreen extends Component {
-  componentDidMount() {
-    this.props.fetchHostByType('NONE');
-  }
-  render() {
-    const { navigate } = this.props.navigation;
-    return (
-      <Container>
-        <Header />
-        <View style={ styles.contentContainer }>
-          <View style={ styles.searchContainer }>
-            <Grid style={ styles.search }>
-              <Col style={ styles.searchCol }>
-                <Text>Date</Text>
-              </Col>
-              <Col style={ styles.searchCol }>
-                <Text>City</Text>
-              </Col>
-              <Col style={ styles.searchCol }>
-                <Text>Guests</Text>
-              </Col>
-              <Col style={ styles.searchCol }>
-                <Button onPress={ () => navigate('MapResult') }>
-                  <Text>Search</Text>
-                </Button>
-              </Col>
-            </Grid>
-          </View>
-          <Content style={ styles.content }>
-            {_.map(titles, (title, index) => this._renderCard(index, title, cards))}
-          </Content>
-        </View>
-      </Container>
-    );
-  }
-
-  _renderCard(key, title, cards) {
-    return (
-      <View key={ key }>
-        <H2>{title}</H2>
-        <List
-          dataArray={ cards }
-          horizontal
-          renderRow={ card => (
-            <ListItem key={ card }>
-              <HostCard />
-            </ListItem>
-          ) } />
-      </View>
-    );
-  }
-}
-
 function mapStateToProps(state) {
   return {};
 }
@@ -98,7 +68,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      fetchHostByType
+      fetchHostByType,
+      moveToScreen: NavigationActions.navigate
     },
     dispatch
   );

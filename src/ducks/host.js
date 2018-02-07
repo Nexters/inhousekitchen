@@ -17,18 +17,12 @@ export const types = {
   HOST: createFetchTypes('HOST')
 };
 
-const actions = {
-  fetch: action(types.HOST[FETCH]),
-  success: action(types.HOST[SUCCESS]),
-  failure: action(types.HOST[FAILURE])
-};
-
 export const fetchHostByType = type => ({
-  ...actions.fetch,
+  ...action(types.HOST[FETCH]),
   ...createMetaOffline({
     effect: { url: _.partial(agent.Host.findByType, type) },
-    commit: actions.success,
-    rollback: actions.failure
+    commit: action(types.HOST[SUCCESS]),
+    rollback: action(types.HOST[FAILURE])
   })
 });
 
@@ -44,7 +38,6 @@ const hostReducer = {
   [types.HOST[FAILURE]]: state =>
     // TODO faker data.
     initialState
-  
 };
 
 export const reducers = createReducer(initialState, {

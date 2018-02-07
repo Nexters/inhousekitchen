@@ -1,19 +1,8 @@
 import React, { Component } from 'react';
-import {
-  Container,
-  Header as NativeHeader,
-  Left,
-  Body,
-  Right,
-  Button,
-  Title,
-  Text,
-  Content
-} from 'native-base';
+import { Container, Header as NativeHeader, Left, Body, Right, Button, Title, Text, Content } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
-import styles from './styles';
 import { BackButton } from '../Button';
 
 class SubHeader extends Component {
@@ -25,15 +14,15 @@ class SubHeader extends Component {
     title: ''
   };
   render() {
-    const { title } = this.props;
+    const { title, onBackPress } = this.props;
 
     return (
       <NativeHeader
         style={ styles.headerContainer }
-        androidStatusBarColor={ styles.headerContainer._backgroundColor }
+        androidStatusBarColor={ EStyleSheet.value('$backgroundColor') }
         iosBarStyle="light-content">
         <Left>
-          <BackButton />
+          <BackButton onPress={ onBackPress } />
         </Left>
         <Body>
           <Title>{title}</Title>
@@ -45,5 +34,11 @@ class SubHeader extends Component {
     );
   }
 }
+
+const styles = EStyleSheet.create({
+  subHeaderRightText: {
+    color: '$thirdColor'
+  }
+});
 
 export default SubHeader;

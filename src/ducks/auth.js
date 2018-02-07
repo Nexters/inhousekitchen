@@ -13,39 +13,27 @@ export const types = {
   TOGGLE_USER_TYPE: 'TOGGLE_USER_TYPE'
 };
 
-const loginActions = {
-  fetch: action(types.LOGIN[FETCH]),
-  success: action(types.LOGIN[SUCCESS]),
-  failure: action(types.LOGIN[FAILURE])
-};
-
 export const fetchLogin = googleInfo => ({
-  ...loginActions.fetch,
+  ...action(types.LOGIN[FETCH]),
   ...createMetaOffline({
     effect: { url: _.partial(agent.Login.login, googleInfo) },
-    commit: loginActions.success,
-    rollback: loginActions.failure
+    commit: action(types.LOGIN[SUCCESS]),
+    rollback: action(types.LOGIN[FAILURE])
   })
 });
 
-const googleLoginActions = {
-  fetch: action(types.GOOGLE_LOGIN[FETCH], { loading: true }),
-  success: action(types.GOOGLE_LOGIN[SUCCESS], {
-    loading: false,
-    loaded: true
-  }),
-  failure: action(types.GOOGLE_LOGIN[FAILURE], {
-    loading: false,
-    loaded: false
-  })
-};
-
 export const fetchGoogleLogin = config => ({
-  ...googleLoginActions.fetch,
+  ...action(types.GOOGLE_LOGIN[FETCH], { loading: true }),
   ...createMetaOffline({
     effect: { url: _.partial(Expo.Google.logInAsync, config) },
-    commit: googleLoginActions.success,
-    rollback: googleLoginActions.failure
+    commit: action(types.GOOGLE_LOGIN[SUCCESS], {
+      loading: false,
+      loaded: true
+    }),
+    rollback: action(types.GOOGLE_LOGIN[FAILURE], {
+      loading: false,
+      loaded: false
+    })
   })
 });
 
