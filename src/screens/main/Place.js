@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import { Text } from 'native-base';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import { TitleHeader } from '../../components/Header';
 
 function mapStateToProps(state) {
@@ -18,5 +19,6 @@ class Place extends Component {
     );
   }
 }
+
 
 export default connect(mapStateToProps)(Place);

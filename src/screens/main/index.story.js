@@ -6,22 +6,35 @@ import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import CenterView from '../../storybook/stories/CenterView';
+import { Popular, Favorite, Place, Search } from './';
 import store from '../../configs/store';
-import { Profile, Interest, MyKitchen, Reservation } from './';
 
-storiesOf('MyPage organization', module)
+storiesOf('Main organization', module)
   .addDecorator(getStory => (
     <Provider store={ store }>
-      <View style={ styles.page }>{getStory()}</View>
+      <View style={ styles.main }>{getStory()}</View>
     </Provider>
   ))
-  .add('with Profile', () => <Profile />)
-  .add('with Interest', () => <Interest />)
-  .add('with MyKitchen', () => <MyKitchen />)
-  .add('with Reservation', () => <Reservation />);
+  .add('with Search', () => <Search />)
+  .add('with Popular', () => <Popular />)
+  .add('with Place', () => (
+    <CenterView>
+      <View style={ { height: 177, backgroundColor: '#fff' } }>
+        <Place />
+      </View>
+    </CenterView>
+  ))
+  .add('with Favorite', () => (
+    <CenterView>
+      <View style={ { width: '100%', height: 194, backgroundColor: '#fff' } }>
+        <Favorite />
+      </View>
+    </CenterView>
+  ));
 
 const styles = EStyleSheet.create({
-  page: {
+  main: {
+    paddingTop: 20,
     width: '100%',
     height: '100%',
     backgroundColor: '$backgroundColor'

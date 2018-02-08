@@ -6,6 +6,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 
 import { PriceText } from '../Text';
+import { StarRating } from '../Star';
 
 class Host3Card extends PureComponent {
   static propTypes = {
@@ -32,7 +33,10 @@ class Host3Card extends PureComponent {
             <PriceText style={ styles.price }>$29.99</PriceText>
           </View>
           <View style={ styles.stars }>
-            <Text>Start</Text>
+            <View style={ styles.starCount }>
+              <StarRating />
+            </View>
+            <Text style={ styles.starText }>(12)</Text>
           </View>
         </Row>
       </Grid>
@@ -59,7 +63,7 @@ const styles = EStyleSheet.create({
     paddingHorizontal: 12
   },
   contentHeader: {
-    flex: 1,
+    height: 19,
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
@@ -68,9 +72,19 @@ const styles = EStyleSheet.create({
   },
   price: {},
   stars: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
     paddingTop: 5
   },
-  starCount: {}
+  starCount: {
+    width: 60
+  },
+  starText: {
+    fontSize: 12,
+    color: '$firstColor',
+    marginLeft: 3
+  }
 });
 
 export default Host3Card;

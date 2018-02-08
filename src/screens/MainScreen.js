@@ -41,7 +41,7 @@ class MainScreen extends Component {
 const styles = EStyleSheet.create({
   contentContainer: {
     flex: 1,
-    paddingHorizontal: '$screenPadding'
+    paddingLeft: '$screenPadding'
   },
   searchContainer: {
     height: 100,

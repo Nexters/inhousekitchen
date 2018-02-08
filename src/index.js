@@ -50,5 +50,5 @@ class App extends Component {
   }
 }
 
-// module.exports = __DEV__ ? StorybookUI : App;
-export default App;
+module.exports = __DEV__ ? StorybookUI : App;
+// export default App;
