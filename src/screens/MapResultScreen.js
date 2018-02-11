@@ -1,6 +1,6 @@
 import { MapView } from 'expo';
 import React, { Component } from 'react';
-import { ScrollView, View, Animated } from 'react-native';
+import { ScrollView, View, Animated, TouchableOpacity, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { Icon, Container, Content, Footer, Button, List, ListItem, Left, Body, Text } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -10,6 +10,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import { NavigationActions } from 'react-navigation';
 import { BackButton } from '../components/Button';
 import { Header } from '../components/Header';
+import { Host4Card } from '../components/Card';
 
 const markers = [
   {
@@ -38,7 +39,7 @@ class MapResultScreen extends Component {
     this._flexHeight = new Animated.Value(HOST_HEIGHT);
   }
   render() {
-    const items = [1, 2, 3];
+    const items = [1, 2, 3, 4];
     const { backScreen, moveToScreen } = this.props;
     const { selectedMarkerId } = this.state;
 
@@ -67,13 +68,19 @@ class MapResultScreen extends Component {
                 coordinate={ marker.latlng }
                 title={ marker.title }
                 description={ marker.description }
-                onPress={ _.partial(this._onPressMarker, marker.id) } />
+                onPress={ _.partial(this._onPressMarker, marker.id) }>
+                <View style={ styles.pinIcon } />
+              </MapView.Marker>
             ))}
           </MapView>
         </View>
         <Animated.View style={ [styles.hostView, { height: this._flexHeight }] }>
           <ScrollView contentContainerStyle={ styles.hostScrollView }>
-            <List>{_.map(items, item => this._rednerHostItem(item))}</List>
+            <FlatList
+              style={ styles.hostList }
+              data={ items }
+              renderItem={ item => this._rednerHostItem(item) }
+              keyExtractor={ item => item } />
           </ScrollView>
         </Animated.View>
       </Container>
@@ -111,14 +118,9 @@ class MapResultScreen extends Component {
   _rednerHostItem = item => {
     const { navigate } = this.props.navigation;
     return (
-      <ListItem key={ item } onPress={ () => navigate('Detail') } style={ styles.hostItem }>
-        <Left>
-          <Icon fontSize={ 20 } name="plane" />
-        </Left>
-        <Body>
-          <Text>{item}</Text>
-        </Body>
-      </ListItem>
+      <TouchableOpacity key={ item } onPress={ () => navigate('Detail') } style={ styles.hostItem }>
+        <Host4Card />
+      </TouchableOpacity>
     );
   };
 }
@@ -147,12 +149,21 @@ const styles = EStyleSheet.create({
     flex: 1,
     flexGrow: 1
   },
-  hostList: {},
+  hostList: {
+    marginTop: 20
+  },
   hostItem: {
-    width: '100%',
-    height: 100,
-    marginLeft: 0,
-    backgroundColor: '#eee'
+    width: 355,
+    backgroundColor: '#eee',
+    alignSelf: 'center'
+  },
+  pinIcon: {
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: '$thirdColor',
+    shadowColor: 'rgba(0,0,0,0.12)',
+    shadowRadius: 10
   }
 });
 

@@ -6,6 +6,10 @@
     },
     "android": {
       "package": "com.nexters.inhousekitchen"
+    },
+    "splash": {
+      "image": "./assets/images/splashBg.png",
+      "resizeMode": "cover"
     }
   }
 }

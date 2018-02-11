@@ -35,10 +35,14 @@ class Guest extends Component {
 
 const styles = EStyleSheet.create({
   guest: {
+    flex: 1,
+    height: 48,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   text: {
+    fontSize: 16,
     height: 15,
     justifyContent: 'center',
     alignItems: 'center',
@@ -46,10 +50,13 @@ const styles = EStyleSheet.create({
   },
   button: {
     height: 15,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    alignSelf: 'center'
   },
   buttonText: {
-    color: '$firstColor'
+    fontSize: 24,
+    color: '$firstColor',
+    lineHeight: 21
   }
 });
 

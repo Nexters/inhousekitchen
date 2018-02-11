@@ -9,7 +9,7 @@ class SearchItem extends Component {
   static propTypes = {
     selected: PropTypes.bool,
     name: PropTypes.string,
-    leftComponent: PropTypes.element,
+    leftComponent: PropTypes.func,
     onPress: PropTypes.func
   };
 

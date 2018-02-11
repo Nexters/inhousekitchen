@@ -28,7 +28,7 @@ class MainScreen extends Component {
       <Container>
         <Header
           leftComponent={ () => (
-            <Button onPress={ () => moveToScreen({ routeName: 'MyPage' }) } transparent>
+            <Button onPress={ () => moveToScreen({ routeName: 'Login' }) } transparent>
               <FeatherIcon name="user" size={ 24 } />
             </Button>
           ) }
@@ -37,10 +37,10 @@ class MainScreen extends Component {
               <EntyoIcon name="direction" color={ EStyleSheet.value('$secondColor') } size={ 24 } />
             </Button>
           ) } />
-        <View style={ styles.contentContainer }>
+        <Content>
           <Search />
-          <Content style={ styles.content }>{this._renderContent()}</Content>
-        </View>
+          <View style={ styles.content }>{this._renderContent()}</View>
+        </Content>
       </Container>
     );
   }
@@ -53,25 +53,10 @@ class MainScreen extends Component {
 }
 
 const styles = EStyleSheet.create({
-  contentContainer: {
-    flex: 1,
-    paddingLeft: '$screenPadding'
-  },
-  searchContainer: {
-    height: 100,
-    paddingHorizontal: 20,
-    paddingVertical: 20
-  },
-  search: {
-    borderWidth: 1
-  },
-  searchCol: {
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   content: {
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: 'column',
+    paddingLeft: '$screenPadding'
   }
 });
 

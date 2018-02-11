@@ -14,7 +14,7 @@ class Header extends Component {
   };
 
   static defaultProps = {
-    title: 'INSIDE HOUSE'
+    title: 'InHouseKitchen'
   };
 
   render() {
@@ -25,11 +25,11 @@ class Header extends Component {
         style={ styles.headerContainer }
         androidStatusBarColor={ EStyleSheet.value('$backgroundColor') }
         iosBarStyle="light-content">
-        <Left>{LeftComponent && <LeftComponent />}</Left>
-        <Body>
+        <Left style={ { flex: 0 } }>{LeftComponent && <LeftComponent />}</Left>
+        <Body style={ { justifyContent: 'center', alignItems: 'center' } }>
           <Title style={ styles.headerTitle }>{title}</Title>
         </Body>
-        <Right>{RightComponent && <RightComponent />}</Right>
+        <Right style={ { flex: 0 } }>{RightComponent && <RightComponent />}</Right>
       </NativeHeader>
     );
   }
@@ -37,16 +37,20 @@ class Header extends Component {
 
 const styles = EStyleSheet.create({
   headerContainer: {
-    backgroundColor: '$backgroundColor',
+    backgroundColor: '#fff',
+    paddingTop: 36,
     paddingLeft: '$screenPadding',
     paddingRight: 20,
-    paddingBottom: 17,
+    paddingBottom: 13,
     borderColor: '#181818',
     borderBottomWidth: 0.3
   },
   headerTitle: {
+    width: 180,
     fontSize: 18,
-    color: '$thirdColor'
+    color: '$thirdColor',
+    textAlign: 'center',
+    fontWeight: 'bold'
   },
   '@media android': {
     headerContainer: {
