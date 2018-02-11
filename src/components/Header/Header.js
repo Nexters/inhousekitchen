@@ -8,33 +8,28 @@ import PropTypes from 'prop-types';
 
 class Header extends Component {
   static propsTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    leftComponent: PropTypes.func,
+    rightComponent: PropTypes.func
   };
 
   static defaultProps = {
-    title: 'Header'
+    title: 'INSIDE HOUSE'
   };
+
   render() {
-    const { title, onMyPagePress } = this.props;
+    const { title, leftComponent: LeftComponent, rightComponent: RightComponent } = this.props;
 
     return (
       <NativeHeader
         style={ styles.headerContainer }
         androidStatusBarColor={ EStyleSheet.value('$backgroundColor') }
         iosBarStyle="light-content">
-        <Left>
-          <Button onPress={ onMyPagePress } transparent>
-            <FeatherIcon name="user" size={ 24 } />
-          </Button>
-        </Left>
+        <Left>{LeftComponent && <LeftComponent />}</Left>
         <Body>
           <Title style={ styles.headerTitle }>{title}</Title>
         </Body>
-        <Right>
-          <Button transparent>
-            <EntyoIcon name="direction" color={ EStyleSheet.value('$secondColor') } size={ 24 } />
-          </Button>
-        </Right>
+        <Right>{RightComponent && <RightComponent />}</Right>
       </NativeHeader>
     );
   }
@@ -43,7 +38,6 @@ class Header extends Component {
 const styles = EStyleSheet.create({
   headerContainer: {
     backgroundColor: '$backgroundColor',
-    paddingTop: 38,
     paddingLeft: '$screenPadding',
     paddingRight: 20,
     paddingBottom: 17,
@@ -53,6 +47,11 @@ const styles = EStyleSheet.create({
   headerTitle: {
     fontSize: 18,
     color: '$thirdColor'
+  },
+  '@media android': {
+    headerContainer: {
+      paddingTop: 18
+    }
   }
 });
 

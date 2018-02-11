@@ -20,8 +20,13 @@ const AnimatedFooter = Animated.createAnimatedComponent(NativeFooter);
 
 class Footer extends Component {
   static propTypes = {
-    onRequest: PropTypes.func
+    onRequest: PropTypes.func,
+    scrollY: PropTypes.any
   };
+
+  static defaultProps = {
+    scrollY: new Animated.Value(0)
+  }
   render() {
     const { onRequest, scrollY } = this.props;
     const {

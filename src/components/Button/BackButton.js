@@ -18,10 +18,12 @@ class BackButton extends PureComponent {
   };
 
   render() {
-    const { iconSize, iconColor, onPress } = this.props;
+    const {
+      buttonStyle, iconSize, iconColor, onPress
+    } = this.props;
 
     return (
-      <Button onPress={ onPress } transparent>
+      <Button style={ buttonStyle } onPress={ onPress } transparent>
         <FeatherIcon name="arrow-left" size={ iconSize } color={ iconColor || EStyleSheet.value('$firstColor') } />
       </Button>
     );

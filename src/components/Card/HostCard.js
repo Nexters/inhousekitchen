@@ -40,17 +40,18 @@ class HostCard extends PureComponent {
 
 const styles = EStyleSheet.create({
   hostCard: {
-    width: 236,
-    height: 174,
     marginBottom: 12,
     backgroundColor: '#fff'
   },
-  header: {},
+  header: {
+    flex: 0,
+    height: 115
+  },
   image: {
-    width: '100%'
+    width: '100%',
+    height: '100%'
   },
   content: {
-    flex: 0,
     flexDirection: 'column',
     paddingTop: 11,
     paddingBottom: 17,

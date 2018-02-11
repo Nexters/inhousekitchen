@@ -38,6 +38,7 @@ class SelectCalendar extends Component {
 
 const styles = EStyleSheet.create({
   selectCalendar: {
+    flex: 0,
     backgroundColor: '$backgroundColor'
   }
 });

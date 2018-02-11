@@ -38,8 +38,15 @@ const styles = EStyleSheet.create({
     color: '$thirdColor',
     fontSize: 12,
     textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingLeft: 0,
     paddingRight: 0
+  },
+  '@media android': {
+    buttonText: {
+      lineHeight: 15
+    }
   }
 });
 

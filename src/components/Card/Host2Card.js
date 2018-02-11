@@ -97,6 +97,11 @@ const styles = EStyleSheet.create({
     paddingLeft: 0,
     paddingRight: 0,
     textAlign: 'center'
+  },
+  '@media android': {
+    statusText: {
+      lineHeight: 15
+    }
   }
 });
 

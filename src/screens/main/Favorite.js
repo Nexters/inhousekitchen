@@ -13,7 +13,6 @@ class Favorite extends Component {
     return (
       <View>
         <TitleHeader title="My favorites" />
-        <Text>Favorite</Text>
       </View>
     );
   }

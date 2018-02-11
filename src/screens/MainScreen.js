@@ -8,6 +8,8 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import _ from 'lodash';
 import { autobind } from 'core-decorators';
 import { NavigationActions } from 'react-navigation';
+import EntyoIcon from 'react-native-vector-icons/Entypo';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 import { Header } from '../components/Header';
 import { HostCard } from '../components/Card';
 import { fetchHostByType } from '../ducks/host';
@@ -20,9 +22,21 @@ class MainScreen extends Component {
     this.props.fetchHostByType('NONE');
   }
   render() {
+    const { moveToScreen } = this.props;
+
     return (
       <Container>
-        <Header onMyPagePress={ () => this.props.moveToScreen({ routeName: 'MyPage' }) } />
+        <Header
+          leftComponent={ () => (
+            <Button onPress={ () => moveToScreen({ routeName: 'MyPage' }) } transparent>
+              <FeatherIcon name="user" size={ 24 } />
+            </Button>
+          ) }
+          rightComponent={ () => (
+            <Button onPress={ () => moveToScreen({ routeName: 'MapResult' }) } transparent>
+              <EntyoIcon name="direction" color={ EStyleSheet.value('$secondColor') } size={ 24 } />
+            </Button>
+          ) } />
         <View style={ styles.contentContainer }>
           <Search />
           <Content style={ styles.content }>{this._renderContent()}</Content>

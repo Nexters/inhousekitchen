@@ -1,20 +1,17 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Button, Text } from 'native-base';
+import { View, Animated } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { Text, Button, Container } from 'native-base';
 import CenterView from '../../storybook/stories/CenterView';
 import { Footer, Header, Content, Host, Menu, Review } from './';
 
 storiesOf('Detail organization', module)
-  .addDecorator(getStory => <View style={ styles.detail }>{getStory()}</View>)
+  .addDecorator(getStory => <Container style={ styles.detail }>{getStory()}</Container>)
   .add('with Header', () => <Header />)
-  .add('with Footer', () => (
-    <CenterView>
-      <Footer />
-    </CenterView>
-  ))
+  .add('with Footer', () => <Footer />)
+
   .add('with Content', () => (
     <CenterView>
       <View style={ { height: 177, backgroundColor: '#fff' } }>
@@ -22,32 +19,13 @@ storiesOf('Detail organization', module)
       </View>
     </CenterView>
   ))
-  .add('with Host', () => (
-    <CenterView>
-      <View style={ { width: '100%', height: 194, backgroundColor: '#fff' } }>
-        <Host />
-      </View>
-    </CenterView>
-  ))
-  .add('with Menu', () => (
-    <CenterView>
-      <View style={ { width: '100%', height: 194, backgroundColor: '#fff' } }>
-        <Menu />
-      </View>
-    </CenterView>
-  ))
-  .add('with Review', () => (
-    <CenterView>
-      <View style={ { width: '100%', height: 194, backgroundColor: '#fff' } }>
-        <Review />
-      </View>
-    </CenterView>
-  ));
+  .add('with Host', () => <Host />)
+  .add('with Menu', () => <Menu />)
+  .add('with Review', () => <Review />);
 
 const styles = EStyleSheet.create({
   detail: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     backgroundColor: '$backgroundColor'
   }
 });

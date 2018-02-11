@@ -6,7 +6,7 @@ import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import CenterView from '../../storybook/stories/CenterView';
-import { Popular, Favorite, Place, Search } from './';
+import { Popular, Favorite, Place, Search, SearchItem, Guest } from './';
 import store from '../../configs/store';
 
 storiesOf('Main organization', module)
@@ -16,10 +16,21 @@ storiesOf('Main organization', module)
     </Provider>
   ))
   .add('with Search', () => <Search />)
-  .add('with Popular', () => <Popular />)
+  .add('with SearchItem', () => (
+    <View style={ { height: 25 } }>
+      <SearchItem />
+    </View>
+  ))
+  .add('with Popular', () => (
+    <CenterView>
+      <View style={ { width: '100%', height: 250, backgroundColor: '#fff' } }>
+        <Popular />
+      </View>
+    </CenterView>
+  ))
   .add('with Place', () => (
     <CenterView>
-      <View style={ { height: 177, backgroundColor: '#fff' } }>
+      <View style={ { width: '100%', height: 250, backgroundColor: '#fff' } }>
         <Place />
       </View>
     </CenterView>
@@ -30,7 +41,8 @@ storiesOf('Main organization', module)
         <Favorite />
       </View>
     </CenterView>
-  ));
+  ))
+  .add('with Guest', () => <Guest />);
 
 const styles = EStyleSheet.create({
   main: {

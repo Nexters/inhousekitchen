@@ -2,27 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import {
-  Dimensions,
-  Platform,
-  StyleSheet,
-  Animated,
-  ScrollView,
-  View,
-  Image
-} from 'react-native';
+import { Dimensions, Platform, StyleSheet, Animated, ScrollView, View, Image } from 'react-native';
 import { Container, Icon, H2, Text, Button } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Swiper from 'react-native-swiper';
 import _ from 'lodash';
 import { Content, Host, Menu, Review, Header, Footer } from './detail';
-import {
-  HEADER_MAX_HEIGHT,
-  HEADER_MIN_HEIGHT,
-  HEADER_SCROLL_DISTANCE
-} from './detail/constants';
+import { HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE } from './detail/constants';
 import { isAuth } from '../ducks/auth';
 import { withLoading as loading } from '../hocs/index';
+import { NavigationActions } from 'react-navigation';
 
 @connect(mapStateToProps, mapDispatchToProps)
 @loading
@@ -37,10 +26,7 @@ class DetailScreen extends Component {
     this.state.scrollY.addListener(({ value }) => {
       /** ignore minHeight > currentHeight or currentHeight > maxHeight */
       const currentHeight = HEADER_MAX_HEIGHT - value;
-      if (
-        HEADER_MAX_HEIGHT < currentHeight &&
-        currentHeight < HEADER_MIN_HEIGHT
-      ) {
+      if (HEADER_MAX_HEIGHT < currentHeight && currentHeight < HEADER_MIN_HEIGHT) {
         return;
       }
       // console.log(currentHeight, value);
@@ -60,7 +46,7 @@ class DetailScreen extends Component {
 
   render() {
     const { navigate, goBack } = this.props.navigation;
-    const { isAuth } = this.props;
+    const { isAuth, backScreen } = this.props;
     const { flexHeight } = this.state;
     // 0 ... HEADER_MAX_HEIGHT, 0, hidden 1 ... 0
     // 0 ... HEADER_MAX_HEIGHT, 0, height 56 ... 0
@@ -71,36 +57,26 @@ class DetailScreen extends Component {
         <ScrollView
           stickyHeaderIndices={ [0] }
           scrollEventThrottle={ 16 }
-          onScroll={ Animated.event(
-            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
-            {
-              useNativeDriver: false
-            },
-          ) }
+          onScroll={ Animated.event([{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }], {
+            useNativeDriver: false
+          }) }
           style={ styles.fill }>
           <View
             style={ {
               height: flexHeight,
               backgroundColor: 'transparent'
             } }>
-            <Header scrollY={ this.state.scrollY } backPress={ () => goBack() } />
+            <Header scrollY={ this.state.scrollY } backPress={ backScreen } />
           </View>
           {this._renderScrollViewContent()}
         </ScrollView>
-        <Footer
-          scrollY={ this.state.scrollY }
-          onRequest={ isAuth ? () => {} : () => navigate('Login') } />
+        <Footer scrollY={ this.state.scrollY } onRequest={ isAuth ? () => {} : () => navigate('Login') } />
       </Container>
     );
   }
 
   _renderScrollViewContent = () => {
-    const contents = [
-      { component: Content },
-      { component: Host },
-      { component: Menu },
-      { component: Review }
-    ];
+    const contents = [{ component: Content }, { component: Host }, { component: Menu }, { component: Review }];
     const { flexMarginTop } = this.state;
     return (
       <View style={ [styles.scrollViewContent, { marginTop: flexMarginTop }] }>
@@ -130,7 +106,12 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators(
+    {
+      backScreen: NavigationActions.back
+    },
+    dispatch
+  );
 }
 
 export default DetailScreen;

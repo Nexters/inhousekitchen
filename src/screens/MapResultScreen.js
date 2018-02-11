@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import { Icon, Container, Content, Footer, Button, List, ListItem, Left, Body, Text } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import _ from 'lodash';
+import EntyoIcon from 'react-native-vector-icons/Entypo';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import { NavigationActions } from 'react-navigation';
+import { BackButton } from '../components/Button';
 import { Header } from '../components/Header';
 
 const markers = [
@@ -21,6 +25,10 @@ const markers = [
 
 const HOST_HEIGHT = 300;
 
+@connect(null, {
+  backScreen: NavigationActions.back,
+  moveToScreen: NavigationActions.navigate
+})
 class MapResultScreen extends Component {
   constructor(props) {
     super(props);
@@ -31,11 +39,18 @@ class MapResultScreen extends Component {
   }
   render() {
     const items = [1, 2, 3];
-
+    const { backScreen, moveToScreen } = this.props;
     const { selectedMarkerId } = this.state;
+
     return (
       <Container>
-        <Header />
+        <Header
+          leftComponent={ () => <BackButton onPress={ () => backScreen() } /> }
+          rightComponent={ () => (
+            <Button onPress={ () => moveToScreen({ routeName: 'Detail' }) } transparent>
+              <EntyoIcon name="direction" color={ EStyleSheet.value('$secondColor') } size={ 24 } />
+            </Button>
+          ) } />
         <View style={ styles.content }>
           <MapView
             style={ styles.map }

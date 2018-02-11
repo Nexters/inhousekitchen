@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StatusBar } from 'react-native';
 import { Container, Header as NativeHeader, Left, Body, Right, Button, Title, Text, Content } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -20,6 +21,7 @@ class SubHeader extends Component {
       <NativeHeader
         style={ styles.headerContainer }
         androidStatusBarColor={ EStyleSheet.value('$backgroundColor') }
+        backgroundColor={ EStyleSheet.value('$backgroundColor') }
         iosBarStyle="light-content">
         <Left>
           <BackButton onPress={ onBackPress } />
@@ -36,6 +38,9 @@ class SubHeader extends Component {
 }
 
 const styles = EStyleSheet.create({
+  headerContainer: {
+    paddingTop: 0
+  },
   subHeaderRightText: {
     color: '$thirdColor'
   }

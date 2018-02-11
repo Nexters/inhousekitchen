@@ -50,6 +50,11 @@ const styles = EStyleSheet.create({
   },
   buttonArrow: {
     color: '#fff'
+  },
+  '@media android': {
+    buttonText: {
+      lineHeight: 12
+    }
   }
 });
 

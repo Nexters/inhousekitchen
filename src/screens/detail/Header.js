@@ -5,12 +5,9 @@ import { Container, Footer, Icon, H2, Text, Button } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Swiper from 'react-native-swiper';
 import _ from 'lodash';
-
-import {
-  HEADER_MAX_HEIGHT,
-  HEADER_MIN_HEIGHT,
-  HEADER_SCROLL_DISTANCE
-} from './constants';
+import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
+import { HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE } from './constants';
 import { BackButton } from '../../components/Button';
 import { ActiveDot, Dot } from '../../components/Dot';
 
@@ -19,14 +16,16 @@ class Header extends Component {
     images: PropTypes.arrayOf(PropTypes.string),
     title: PropTypes.string,
     content: PropTypes.string,
-    backPress: PropTypes.func
+    backPress: PropTypes.func,
+    scrollY: PropTypes.any
   };
 
   static defaultProps = {
     images: _.times(3, () => 'http://lorempixel.com/640/480/food/'),
     title: 'Korean Fusion Noodle',
     content: 'Korean noodles, called "guksu" or "myeon" are everyday food',
-    backPress: () => {}
+    backPress: () => {},
+    scrollY: new Animated.Value(0)
   };
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -43,21 +42,15 @@ class Header extends Component {
     const { animatedHidden, animatedBottom } = this._getAnimated();
     return (
       <View style={ [styles.header] }>
-        <Swiper
-          style={ styles.imageSwiper }
-          renderPagination={ this._renderPagination }>
+        <Swiper style={ styles.imageSwiper } renderPagination={ this._renderPagination }>
           {_.map(images, (image, index) => (
             <View key={ index } style={ styles.slide }>
               <Image style={ styles.slideImage } source={ { uri: image } } />
             </View>
           ))}
         </Swiper>
-        <BackButton style={ styles.backIcon } iconColor="#fff" />
-        <Animated.View
-          style={ [
-            styles.headerInfo,
-            { paddingBottom: animatedBottom, opacity: animatedHidden }
-          ] }>
+        <BackButton onPress={ backPress } buttonStyle={ styles.backIcon } iconColor="#fff" />
+        <Animated.View style={ [styles.headerInfo, { paddingBottom: animatedBottom, opacity: animatedHidden }] }>
           <Text style={ styles.headerInfoText }>{title}</Text>
           <Text style={ styles.headerInfoContentText }>{content}</Text>
         </Animated.View>

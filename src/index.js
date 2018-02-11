@@ -2,11 +2,11 @@ import * as Expo from 'expo';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { View, Text } from 'react-native';
-import configureStore from './configs/store';
+import { View, Text, StatusBar } from 'react-native';
+import store from './configs/store';
 import AppNavigator from './navigators/AppNavigator';
 import StorybookUI from './storybook';
-
+import { withFonts, withStatusBar } from './hocs';
 
 EStyleSheet.build({
   $firstColor: '#45464a',
@@ -43,12 +43,12 @@ class App extends Component {
       return <Expo.AppLoading />;
     }
     return (
-      <Provider store={ configureStore }>
+      <Provider store={ store }>
         <AppNavigator />
       </Provider>
     );
   }
 }
 
-module.exports = __DEV__ ? StorybookUI : App;
-// export default App;
+// module.exports = __DEV__ ? withFonts(withStatusBar(StorybookUI)) : withStatusBar(App);
+export default App;

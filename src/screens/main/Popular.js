@@ -23,7 +23,14 @@ class Popular extends Component {
             rightComponent={ () => <MaterialCommunityIcons style={ styles.headerIcon } size={ 20 } name="dots-horizontal" /> } />
         </Row>
         <Row style={ styles.content }>
-          <List horizontal dataArray={ _.times(3) } renderRow={ item => <HostCard /> } />
+          <List
+            horizontal
+            dataArray={ _.times(3) }
+            renderRow={ item => (
+              <View style={ styles.hostCard }>
+                <HostCard />
+              </View>
+            ) } />
         </Row>
       </Grid>
     );
@@ -41,7 +48,14 @@ const styles = EStyleSheet.create({
     paddingRight: 13
   },
   content: {
+    paddingTop: 20,
+    paddingBottom: 34,
     flexDirection: 'row'
+  },
+  hostCard: {
+    flex: 0,
+    width: 236,
+    marginRight: 15
   }
 });
 

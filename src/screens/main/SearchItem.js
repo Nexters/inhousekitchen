@@ -1,32 +1,57 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { View } from 'react-native';
-import { Text } from 'native-base';
+import { View, TouchableOpacity } from 'react-native';
+import { Text, Input, Button } from 'native-base';
+import EStyleSheet from 'react-native-extended-stylesheet';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import PropTypes from 'prop-types';
-
-function mapStateToProps(state) {
-  return {};
-}
 
 class SearchItem extends Component {
   static propTypes = {
-    placeholder: PropTypes.string,
-    IconComponent: PropTypes.element,
-  }
+    selected: PropTypes.bool,
+    name: PropTypes.string,
+    leftComponent: PropTypes.element,
+    onPress: PropTypes.func
+  };
 
   static defaultProps = {
-    placeholder: 'When',
-    IconComponent: ''
-  }
-  
+    selected: false,
+    name: 'When',
+    leftComponent: () => <MaterialIcons name="event-note" size={ 20 } />,
+    onPress: () => {}
+  };
+
   render() {
-    const { IconComponent, placeholder } = this.props;
+    const {
+      selected, leftComponent: LeftComponent, name, onPress
+    } = this.props;
+
     return (
-      <View>
-        <Text>SearchItem</Text>
-      </View>
+      <TouchableOpacity style={ styles.searchItem } onPress={ onPress }>
+        <View style={ styles.icon }>{LeftComponent && <LeftComponent />}</View>
+        <Text style={ [styles.searchItemText, selected ? styles.selected : null] }>{name}</Text>
+      </TouchableOpacity>
     );
   }
 }
 
-export default connect(mapStateToProps)(SearchItem);
+const styles = EStyleSheet.create({
+  searchItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 39
+  },
+  icon: {
+    marginRight: 6
+  },
+  searchItemText: {
+    fontSize: 18,
+    color: '$secondColor',
+    paddingLeft: 0,
+    paddingRight: 0
+  },
+  selected: {
+    color: '$firstColor'
+  }
+});
+
+export default SearchItem;

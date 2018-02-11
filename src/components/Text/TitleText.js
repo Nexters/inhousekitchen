@@ -10,7 +10,7 @@ class TitleText extends PureComponent {
   static propTypes = {
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     content: PropTypes.string,
-    containerStyle: PropTypes.number,
+    containerStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
     titleStyle: PropTypes.number,
     titleTextStyle: PropTypes.number,
     contentTextStyle: PropTypes.number
@@ -23,12 +23,7 @@ class TitleText extends PureComponent {
 
   render() {
     const {
-      title: Title,
-      content,
-      containerStyle,
-      titleStyle,
-      titleTextStyle,
-      contentTextStyle
+      title: Title, content, containerStyle, titleStyle, titleTextStyle, contentTextStyle
     } = this.props;
 
     const textComponent = _.isString(Title) ? (
