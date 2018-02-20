@@ -7,6 +7,8 @@ import MainScreen from '../screens/MainScreen';
 import DetailScreen from '../screens/DetailScreen';
 import MyPageScreen from '../screens/MyPageScreen';
 import MapResultScreen from '../screens/MapResultScreen';
+import SignupScreen from '../screens/SignupScreen';
+import InterestScreen from '../screens/InterestScreen';
 import { addNavigationListener } from '../configs/store';
 
 export const Navigator = StackNavigator(
@@ -15,10 +17,12 @@ export const Navigator = StackNavigator(
     MapResult: { screen: MapResultScreen },
     Detail: { screen: DetailScreen },
     Login: { screen: LoginScreen },
-    MyPage: { screen: MyPageScreen }
+    MyPage: { screen: MyPageScreen },
+    Signup: { screen: SignupScreen },
+    Interest: { screen: InterestScreen }
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: 'Login',
     headerMode: 'none'
   }
 );

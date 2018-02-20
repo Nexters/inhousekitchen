@@ -19,9 +19,11 @@ const styles = EStyleSheet.create({
   },
   loginButton: {
     width: '90%',
+    borderRadius: 18,
     marginHorizontal: '5%',
     marginVertical: 10,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: '$thirdColor'
   }
 });
 

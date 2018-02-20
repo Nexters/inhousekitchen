@@ -16,7 +16,9 @@ class MyPageScreen extends Component {
 
     return (
       <Container>
-        <SubHeader onBackPress={ () => this.props.backScreen() } />
+        <SubHeader onBackPress={ () => this.props.backScreen() }
+        rightComponent={() => <Text style={ styles.subHeaderRightText }>EDIT</Text>}
+        />
         <Content style={ styles.content }>
           <Profile />
           {isGuest ? <Interest /> : <MyKitchen />}

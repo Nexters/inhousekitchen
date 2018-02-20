@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { View, Image } from 'react-native';
 import { Container, Content, Footer, Button, Text } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { LoginButton } from '../components/Button';
+import { LoginButton, ArrowRoundedButton } from '../components/Button';
 import { isAuth, fetchGoogleLogin } from '../ducks/auth';
 import { action } from '../ducks/actionHelper';
 import { LOADED } from '../ducks/constants';
@@ -22,6 +22,15 @@ class LoginScreen extends Component {
   };
 
   componentDidMount() {}
+
+  _onPressSignup = () => {
+
+  };
+
+  _onPressSignIn = () => {
+
+  };
+
   render() {
     const { isAuth, googleLogin } = this.props;
 
@@ -35,10 +44,10 @@ class LoginScreen extends Component {
           <Image style={ styles.logoImage } source={ BackgroundImage } />
           <View style={ styles.footer }>
             <LoginButton onPress={ googleLogin }>
-              <Text>Google Login</Text>
+              <Text>Sign In</Text>
             </LoginButton>
             <Text style={ styles.termText }>
-              By signing up, You confirmed that accept the Terms of Use and Privacy Policy
+              Don't you have a account? <Text style={ styles.termHighlightText }>Sign Up</Text>
             </Text>
           </View>
         </Content>
@@ -59,6 +68,7 @@ const styles = EStyleSheet.create({
   },
   footer: {
     position: 'absolute',
+    width: "100%",
     bottom: 24,
     height: 130,
     flexDirection: 'column',
@@ -70,6 +80,10 @@ const styles = EStyleSheet.create({
   termText: {
     color: '#fff',
     textAlign: 'center'
+  },
+  termHighlightText: {
+    color: '#fff',
+    fontWeight: 'bold'
   }
 });
 

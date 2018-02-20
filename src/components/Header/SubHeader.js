@@ -8,14 +8,16 @@ import { BackButton } from '../Button';
 
 class SubHeader extends Component {
   static propsTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    rightComponent: PropTypes.func,
+    onBackPress: PropTypes.func
   };
 
   static defaultProps = {
     title: ''
   };
   render() {
-    const { title, onBackPress } = this.props;
+    const { title, onBackPress, rightComponent: RightComponent } = this.props;
 
     return (
       <NativeHeader
@@ -29,9 +31,7 @@ class SubHeader extends Component {
         <Body>
           <Title>{title}</Title>
         </Body>
-        <Right>
-          <Text style={ styles.subHeaderRightText }>EDIT</Text>
-        </Right>
+        <Right>{RightComponent && <RightComponent />}</Right>
       </NativeHeader>
     );
   }
@@ -39,7 +39,10 @@ class SubHeader extends Component {
 
 const styles = EStyleSheet.create({
   headerContainer: {
-    paddingTop: 0
+    paddingTop: 36,
+    paddingLeft: '$screenPadding',
+    paddingRight: 20,
+    paddingBottom: 20
   },
   subHeaderRightText: {
     color: '$thirdColor'

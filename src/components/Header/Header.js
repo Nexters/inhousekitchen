@@ -41,7 +41,7 @@ const styles = EStyleSheet.create({
     paddingTop: 36,
     paddingLeft: '$screenPadding',
     paddingRight: 20,
-    paddingBottom: 13,
+    paddingBottom: 20,
     borderColor: '#181818',
     borderBottomWidth: 0.3
   },

@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import CenterView from '../../storybook/stories/CenterView';
-import { PriceText, ProfileText, TitleText } from './';
+import { PriceText, ProfileText, TitleText, InputText, TermText } from './';
 
 storiesOf('Text', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
@@ -15,8 +15,8 @@ storiesOf('Text', module)
       <ProfileText />
     </View>
   ))
-  .add('with TitleText', () => (
-    <TitleText containerStyle={ { flex: 0, height: 20 } } />
-  ));
+  .add('with TitleText', () => <TitleText containerStyle={ { flex: 0, height: 20 } } />)
+  .add('with InputText', () => <InputText containerStyle={ { flex: 0, height: 20 } } />)
+  .add('with TermText', () => <TermText containerStyle={ { flex: 0, height: 20 } } />);
 
 const styles = EStyleSheet.create({});
