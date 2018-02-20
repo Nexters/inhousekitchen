@@ -16,9 +16,9 @@ class MyPageScreen extends Component {
 
     return (
       <Container>
-        <SubHeader onBackPress={ () => this.props.backScreen() }
-        rightComponent={() => <Text style={ styles.subHeaderRightText }>EDIT</Text>}
-        />
+        <SubHeader
+          onBackPress={ () => this.props.backScreen() }
+          rightComponent={ () => <Text style={ styles.subHeaderRightText }>EDIT</Text> } />
         <Content style={ styles.content }>
           <Profile />
           {isGuest ? <Interest /> : <MyKitchen />}
@@ -47,6 +47,9 @@ const styles = EStyleSheet.create({
     fontSize: 16,
     color: '$fourthColor',
     textAlign: 'left'
+  },
+  subHeaderRightText: {
+    color: '$thirdColor'
   }
 });
 

@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
-import { Container, Header as NativeHeader, Left, Body, Right, Button, Icon, Title, Text, Content } from 'native-base';
-import { Col, Row, Grid } from 'react-native-easy-grid';
+import { Header as NativeHeader, Left, Body, Right, Title } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import EntyoIcon from 'react-native-vector-icons/Entypo';
-import FeatherIcon from 'react-native-vector-icons/Feather';
 import PropTypes from 'prop-types';
 
 class Header extends Component {
   static propsTypes = {
+    containerStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
     title: PropTypes.string.isRequired,
     leftComponent: PropTypes.func,
     rightComponent: PropTypes.func
   };
 
   static defaultProps = {
-    title: 'InHouseKitchen'
+    title: 'InHouseKitchen',
+    containerStyle: {}
   };
 
   render() {
-    const { title, leftComponent: LeftComponent, rightComponent: RightComponent } = this.props;
+    const {
+      title, leftComponent: LeftComponent, rightComponent: RightComponent, containerStyle
+    } = this.props;
 
     return (
       <NativeHeader
-        style={ styles.headerContainer }
+        style={ [styles.headerContainer, containerStyle] }
         androidStatusBarColor={ EStyleSheet.value('$backgroundColor') }
         iosBarStyle="light-content">
         <Left style={ { flex: 0 } }>{LeftComponent && <LeftComponent />}</Left>

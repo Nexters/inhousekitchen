@@ -4,6 +4,7 @@ import { ScrollView, View } from 'react-native';
 import { Text, List } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import PropTypes from 'prop-types';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import _ from 'lodash';
 import { TitleHeader } from '../../components/Header';
@@ -14,7 +15,15 @@ function mapStateToProps(state) {
 }
 
 class Popular extends Component {
+  static propTypes = {
+    hosts: PropTypes.array
+  };
+
+  static defaultProps = {
+    hosts: []
+  };
   render() {
+    const { hosts } = this.props;
     return (
       <Grid style={ styles.popular }>
         <Row style={ styles.header }>
@@ -25,10 +34,10 @@ class Popular extends Component {
         <Row style={ styles.content }>
           <List
             horizontal
-            dataArray={ _.times(3) }
+            dataArray={ hosts }
             renderRow={ item => (
-              <View style={ styles.hostCard }>
-                <HostCard />
+              <View key={ item.id } style={ styles.hostCard }>
+                <HostCard title={ item.dIntro } contentUrl={ _.first(item.diningImages).imageUrl } price={ item.price } />
               </View>
             ) } />
         </Row>

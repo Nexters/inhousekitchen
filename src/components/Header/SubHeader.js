@@ -43,9 +43,6 @@ const styles = EStyleSheet.create({
     paddingLeft: '$screenPadding',
     paddingRight: 20,
     paddingBottom: 20
-  },
-  subHeaderRightText: {
-    color: '$thirdColor'
   }
 });
 

@@ -10,16 +10,18 @@ import { PriceText } from '../Text';
 class HostCard extends PureComponent {
   static propTypes = {
     contentUrl: PropTypes.string,
-    title: PropTypes.string
+    title: PropTypes.string,
+    price: PropTypes.number
   };
 
   static defaultProps = {
     contentUrl: 'http://lorempixel.com/300/300/food',
-    title: 'Korean Fusion Food...'
+    title: 'Korean Fusion Food...',
+    price: 29.99
   };
 
   render() {
-    const { contentUrl, title } = this.props;
+    const { contentUrl, title, price } = this.props;
 
     return (
       <Grid style={ styles.hostCard }>
@@ -29,7 +31,7 @@ class HostCard extends PureComponent {
         <Row style={ styles.content }>
           <Text style={ styles.contentTitle }>{title}</Text>
           <View style={ styles.footer }>
-            <PriceText style={ styles.priceText }>$29.99</PriceText>
+            <PriceText style={ styles.priceText }>${price}</PriceText>
             <Text style={ styles.heart }>Heart</Text>
           </View>
         </Row>

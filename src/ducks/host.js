@@ -27,13 +27,13 @@ export const fetchHostByType = type => ({
 });
 
 const initialState = {
-  hosts: []
+  NONE: []
 };
 
 const hostReducer = {
-  [types.HOST[SUCCESS]]: (state, { payload: { hosts } }) => ({
+  [types.HOST[SUCCESS]]: (state, { payload: { type, hosts } }) => ({
     ...state,
-    hosts
+    [type]: hosts
   }),
   [types.HOST[FAILURE]]: state =>
     // TODO faker data.
@@ -44,4 +44,4 @@ export const reducers = createReducer(initialState, {
   ...hostReducer
 });
 
-export const getHosts = state => state.host.hosts;
+export const findHostsByType = (state, type = 'NONE') => state.host[type];

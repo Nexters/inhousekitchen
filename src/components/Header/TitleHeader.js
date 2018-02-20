@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import _ from 'lodash';
 import { Text, Button, List, ListItem } from 'native-base';
 import PropTypes from 'prop-types';
 import { LightRoundedButton } from '../Button';
-import _ from 'lodash';
 
 class TitleHeader extends Component {
   static propTypes = {

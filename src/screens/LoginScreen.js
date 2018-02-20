@@ -47,7 +47,7 @@ class LoginScreen extends Component {
               <Text>Sign In</Text>
             </LoginButton>
             <Text style={ styles.termText }>
-              Don't you have a account? <Text style={ styles.termHighlightText }>Sign Up</Text>
+              {"Don't you have a account?"} <Text style={ styles.termHighlightText }>Sign Up</Text>
             </Text>
           </View>
         </Content>

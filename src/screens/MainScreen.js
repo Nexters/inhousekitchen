@@ -12,7 +12,7 @@ import EntyoIcon from 'react-native-vector-icons/Entypo';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { Header } from '../components/Header';
 import { HostCard } from '../components/Card';
-import { fetchHostByType } from '../ducks/host';
+import { fetchHostByType, findHostsByType } from '../ducks/host';
 import { Favorite, Place, Popular, Search } from './main';
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -27,6 +27,7 @@ class MainScreen extends Component {
     return (
       <Container>
         <Header
+          containerStyle={ styles.header }
           leftComponent={ () => (
             <Button onPress={ () => moveToScreen({ routeName: 'MyPage' }) } transparent>
               <FeatherIcon name="user" size={ 24 } />
@@ -46,13 +47,17 @@ class MainScreen extends Component {
   }
 
   _renderContent = () => {
+    const { hostsByType } = this.props;
     const contents = [Popular, Place, Favorite];
 
-    return _.map(contents, (Component, index) => <Component key={ index } />);
+    return _.map(contents, (Component, index) => <Component key={ index } hosts={ hostsByType('NONE') } />);
   };
 }
 
 const styles = EStyleSheet.create({
+  header: {
+    backgroundColor: '$backgroundColor'
+  },
   contentContainer: {
     paddingTop: 8
   },
@@ -64,7 +69,9 @@ const styles = EStyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    hostsByType: _.partial(findHostsByType, state, _)
+  };
 }
 
 function mapDispatchToProps(dispatch) {

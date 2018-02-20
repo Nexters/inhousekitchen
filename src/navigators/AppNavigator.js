@@ -22,7 +22,7 @@ export const Navigator = StackNavigator(
     Interest: { screen: InterestScreen }
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Main',
     headerMode: 'none'
   }
 );
