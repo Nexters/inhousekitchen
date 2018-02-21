@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { View, Image } from 'react-native';
 import Placeholder from 'rn-placeholder';
 
-class ProgressiveImage extends Component {
+class ProgressiveImage extends PureComponent {
   state = {
     isReady: false
   };

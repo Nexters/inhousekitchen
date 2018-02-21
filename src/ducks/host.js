@@ -67,4 +67,4 @@ export const reducers = createReducer(initialState, {
 
 export const findHostsByType = (state, type = 'NONE') => state.host[type];
 
-export const findHostById = (state, id) => state.host[detail][id];
+export const getHostById = (state, id) => state.host.detail[id];

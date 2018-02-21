@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { TouchableOpacity, Image } from 'react-native';
 import { Thumbnail, H1, H2, H3, Text, Button } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -6,7 +6,7 @@ import Placeholder from 'rn-placeholder';
 import PropTypes from 'prop-types';
 import { ProgressiveImage } from '../Progressive';
 
-class ImageCard extends Component {
+class ImageCard extends PureComponent {
   static propTypes = {
     url: PropTypes.string,
     name: PropTypes.string,

@@ -48,7 +48,7 @@ class MapResultScreen extends Component {
         <Header
           leftComponent={ () => <BackButton onPress={ () => backScreen() } /> }
           rightComponent={ () => (
-            <Button onPress={ () => moveToScreen({ routeName: 'Detail' }) } transparent>
+            <Button onPress={ this._goToDetail } transparent>
               <EntyoIcon name="direction" color={ EStyleSheet.value('$secondColor') } size={ 24 } />
             </Button>
           ) } />
@@ -86,6 +86,11 @@ class MapResultScreen extends Component {
       </Container>
     );
   }
+
+  _goToDetail = () => {
+    const { moveToScreen } = this.props;
+    moveToScreen({ routeName: 'Detail', params: { id: 1 } });
+  };
 
   _onRegionChange = event => {
     this.setState(

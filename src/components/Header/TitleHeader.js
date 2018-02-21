@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import _ from 'lodash';
@@ -6,7 +6,7 @@ import { Text, Button, List, ListItem } from 'native-base';
 import PropTypes from 'prop-types';
 import { LightRoundedButton } from '../Button';
 
-class TitleHeader extends Component {
+class TitleHeader extends PureComponent {
   static propTypes = {
     title: PropTypes.string,
     rightComponent: PropTypes.func,

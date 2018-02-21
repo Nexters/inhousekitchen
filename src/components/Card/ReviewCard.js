@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { View, Image } from 'react-native';
 import { Thumbnail, H1, H2, H3, Text, Button } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 
-class ReviewCard extends Component {
+class ReviewCard extends PureComponent {
   static propTypes = {
     profileUrl: PropTypes.string,
     name: PropTypes.string,

@@ -3,7 +3,7 @@ import { View, TextInput, Text } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 
-class InputText extends Component {
+class InputText extends PureComponent {
   static propTypes = {
     name: PropTypes.string,
     placeholder: PropTypes.string,

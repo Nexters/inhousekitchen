@@ -9,13 +9,10 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Accordion from 'react-native-collapsible/Accordion';
 import { TitleHeader } from '../../components/Header/index';
 import { ProfileText } from '../../components/Text/index';
-import {
-  ArrowRoundedButton,
-  LightRoundedButton
-} from '../../components/Button/index';
+import { ArrowRoundedButton, LightRoundedButton } from '../../components/Button/index';
 import { AccordianHeader } from './';
 
-class Host extends Component {
+class Host extends PureComponent {
   state = {
     isOpen: true
   };
@@ -44,15 +41,12 @@ class Host extends Component {
           containerStyle={ styles.profileText }
           profileStyle={ styles.profileImage }
           nameTextStyle={ styles.name } />
-        <LightRoundedButton
-          buttonStyle={ styles.contactButton }
-          title="CONTACT" />
+        <LightRoundedButton buttonStyle={ styles.contactButton } title="CONTACT" />
       </Row>
       <Row>
         <Text style={ styles.contentText }>
-          I’m full time Youtuber Lorem Ipsum is simply dummy text of the
-          printing and typesetting industry. Lorem Ipsum has been the industry's
-          standard dummy text ever since t…
+          I’m full time Youtuber Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+          has been the industry's standard dummy text ever since t…
         </Text>
       </Row>
     </Grid>

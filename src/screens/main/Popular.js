@@ -45,11 +45,6 @@ class Popular extends Component {
     this.props.fetchHostByType('NONE');
   }
 
-  _goToDetail = hostId => {
-    const { moveToScreen } = this.props;
-    moveToScreen({ routeName: 'Detail' });
-  };
-
   render() {
     const { hosts } = this.props;
     return (
@@ -72,6 +67,16 @@ class Popular extends Component {
       </Grid>
     );
   }
+
+  _goToDetail = hostId => {
+    const { moveToScreen } = this.props;
+    moveToScreen({
+      routeName: 'Detail',
+      params: {
+        id: 1 // hostId
+      }
+    });
+  };
 }
 
 const styles = EStyleSheet.create({

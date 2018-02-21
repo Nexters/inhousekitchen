@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { Container, Button } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-class LoginButton extends Component {
+class LoginButton extends PureComponent {
   render() {
     const { children, ...props } = this.props;
     return (

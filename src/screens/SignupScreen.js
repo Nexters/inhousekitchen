@@ -23,9 +23,22 @@ class SignupScreen extends Component {
         <Content style={ styles.content }>
           <InfoText title="Welcome" content="Create Your Account" />
           <View style={ styles.form }>
-            <InputText onChangeText={(text) => this._handleType('username', text)} containerStyle={ styles.inputText } name="Username" placeholder="Input Your Username" />
-            <InputText onChangeText={(text) => this._handleType('email', text)} containerStyle={ styles.inputText } name="E-mail" placeholder="Input Your E-mail Address" />
-            <InputText onChangeText={(text) => this._handleType('password', text)} containerStyle={ styles.inputText } name="Password" isSecure placeholder="Set Your Password" />
+            <InputText
+              onChangeText={ text => this._handleType('username', text) }
+              containerStyle={ styles.inputText }
+              name="Username"
+              placeholder="Input Your Username" />
+            <InputText
+              onChangeText={ text => this._handleType('email', text) }
+              containerStyle={ styles.inputText }
+              name="E-mail"
+              placeholder="Input Your E-mail Address" />
+            <InputText
+              onChangeText={ text => this._handleType('password', text) }
+              containerStyle={ styles.inputText }
+              name="Password"
+              isSecure
+              placeholder="Set Your Password" />
           </View>
           <TermText containerStyle={ styles.term } />
         </Content>

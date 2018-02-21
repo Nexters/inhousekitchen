@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 import { TitleHeader } from '../../components/Header/index';
 
-class AccordianHeader extends Component {
+class AccordianHeader extends PureComponent {
   static propTypes = {
     title: PropTypes.string.isRequired,
     isOpen: PropTypes.bool.isRequired,
@@ -18,11 +18,7 @@ class AccordianHeader extends Component {
         title={ title }
         headerStyle={ [styles.header, headerStyle] }
         headerRightStyle={ styles.headerRight }
-        rightComponent={ () => (
-          <SimpleLineIcons
-            name={ isOpen ? 'arrow-up' : 'arrow-down' }
-            size={ 24 } />
-        ) } />
+        rightComponent={ () => <SimpleLineIcons name={ isOpen ? 'arrow-up' : 'arrow-down' } size={ 24 } /> } />
     );
   }
 }

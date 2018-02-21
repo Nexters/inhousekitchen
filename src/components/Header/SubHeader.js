@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { StatusBar } from 'react-native';
 import { Container, Header as NativeHeader, Left, Body, Right, Button, Title, Text, Content } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
@@ -6,7 +6,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 import { BackButton } from '../Button';
 
-class SubHeader extends Component {
+class SubHeader extends PureComponent {
   static propsTypes = {
     title: PropTypes.string.isRequired,
     rightComponent: PropTypes.func,

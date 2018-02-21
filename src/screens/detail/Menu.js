@@ -9,7 +9,7 @@ import Accordion from 'react-native-collapsible/Accordion';
 import { TitleHeader } from '../../components/Header/index';
 import { AccordianHeader } from './';
 
-class Menu extends Component {
+class Menu extends PureComponent {
   state = {
     isOpen: true
   };
@@ -46,9 +46,8 @@ class Menu extends Component {
       <Text style={ styles.menuTitleText }>Drinks</Text>
       <Text style={ styles.menuContentText }>Coke</Text>
       <Text style={ styles.description }>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since t…
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since t…
       </Text>
     </View>
   );

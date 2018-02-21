@@ -4,16 +4,16 @@ import { bindActionCreators } from 'redux';
 import { View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import { H1, Text } from 'native-base';
+import { Text } from 'native-base';
+import _ from 'lodash';
 import { NavigationActions } from 'react-navigation';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import PropTypes from 'prop-types';
 import { TitleText } from '../../components/Text';
 import { TitleHeader } from '../../components/Header/index';
-import { fetchHostDetail } from '../../ducks/host';
+import { fetchHostDetail, getHostById } from '../../ducks/host';
 
-@connect(mapStateToProps, mapDispatchToProps)
-class Content extends Component {
+class Content extends PureComponent {
   static propTypes = {
     title: PropTypes.string,
     content: PropTypes.string,
@@ -27,10 +27,6 @@ class Content extends Component {
     date: '10:00 AM - 3:00 PM',
     location: 'Yeoksam-dong, Gangnam-gu, Seoul'
   };
-
-  componentDidMount() {
-    // this.props.fetchHostDetail(1);
-  }
 
   render() {
     const {
@@ -84,20 +80,5 @@ const styles = EStyleSheet.create({
     color: '#919297'
   }
 });
-
-function mapStateToProps(state) {
-  return {};
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    {
-      backScreen: NavigationActions.back,
-      moveToScreen: NavigationActions.navigate,
-      fetchHostDetail
-    },
-    dispatch
-  );
-}
 
 export default Content;

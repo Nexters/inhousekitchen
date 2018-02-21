@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { View, Image } from 'react-native';
 import { Thumbnail, H1, H2, H3, Text, Button } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 
-class Image2Card extends Component {
+class Image2Card extends PureComponent {
   static propTypes = {
     url: PropTypes.string,
     name: PropTypes.string

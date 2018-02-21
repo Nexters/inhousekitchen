@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { Header as NativeHeader, Left, Body, Right, Title } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 
-class Header extends Component {
+class Header extends PureComponent {
   static propsTypes = {
     containerStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
     title: PropTypes.string.isRequired,

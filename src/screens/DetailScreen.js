@@ -12,7 +12,7 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { Content, Host, Menu, Review, Header, Footer } from './detail';
 import { HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE } from './detail/constants';
 import { isAuth } from '../ducks/auth';
-import { fetchHostDetail } from '../ducks/host';
+import { fetchHostDetail, getHostById } from '../ducks/host';
 import { SubHeader } from '../components/Header';
 import { withLoading as loading } from '../hocs/index';
 
@@ -25,8 +25,9 @@ class DetailScreen extends Component {
   }
 
   componentDidMount() {
+    const { id } = this.props.navigation.state.params;
     // console.log('didMount');
-    this.props.fetchHostDetail(1);
+    this.props.fetchHostDetail(id);
   }
 
   render() {
@@ -53,12 +54,23 @@ class DetailScreen extends Component {
   }
 
   _renderScrollViewContent = () => {
-    const contents = [{ component: Content }, { component: Host }, { component: Menu }, { component: Review }];
+    const { id } = this.props.navigation.state.params;
+    const detail = this.props.getHostById(id) || {};
+    const {
+      dIntro, startDate, endDate, startTime, endTime
+    } = detail;
+
+    const contents = [
+      { component: Content, title: dIntro, date: startDate ? `${startDate} ${startTime} - ${endDate} ${endTime}` : undefined },
+      { component: Host },
+      { component: Menu },
+      { component: Review }
+    ];
     return (
       <View style={ [styles.scrollViewContent] }>
         {_.map(contents, (content, index) => {
-          const { component: Component } = content;
-          return <Component key={ index } />;
+          const { component: Component, ...props } = content;
+          return <Component { ...props } key={ index } />;
         })}
       </View>
     );
@@ -77,7 +89,8 @@ const styles = EStyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-    isAuth: isAuth(state)
+    isAuth: isAuth(state),
+    getHostById: _.partial(getHostById, state)
   };
 }
 

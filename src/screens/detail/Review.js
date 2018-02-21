@@ -2,12 +2,7 @@ import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import {
-  FlatList,
-  TouchableHighlight,
-  TouchableOpacity,
-  View
-} from 'react-native';
+import { FlatList, TouchableHighlight, TouchableOpacity, View } from 'react-native';
 import { List, H1, H2, Text } from 'native-base';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Accordion from 'react-native-collapsible/Accordion';
@@ -18,12 +13,8 @@ import { StarRating } from '../../components/Star';
 import { AccordianHeader } from './';
 import { ReviewCard } from '../../components/Card/index';
 
-const dataSource = [
-  { id: 1, title: 'Chicnk' },
-  { id: 2, title: 'Chicnk' },
-  { id: 3, title: 'Chicnk' }
-];
-class Review extends Component {
+const dataSource = [{ id: 1, title: 'Chicnk' }, { id: 2, title: 'Chicnk' }, { id: 3, title: 'Chicnk' }];
+class Review extends PureComponent {
   state = {
     isOpen: true
   };
@@ -45,10 +36,7 @@ class Review extends Component {
     const { isOpen } = this.state;
     return (
       <View style={ styles.header }>
-        <AccordianHeader
-          headerStyle={ styles.accordianHeader }
-          title="Review"
-          isOpen={ isOpen } />
+        <AccordianHeader headerStyle={ styles.accordianHeader } title="Review" isOpen={ isOpen } />
         <View style={ { width: 60, flexDirection: 'row', alignItems: 'center' } }>
           <StarRating />
           <Text style={ styles.starText }>(12)</Text>
@@ -63,12 +51,8 @@ class Review extends Component {
           data={ dataSource }
           keyExtractor={ item => item.id }
           renderItem={ item => <ReviewCard /> }
-          ItemSeparatorComponent={ () => (
-            <View style={ { width: '100%', height: 12 } } />
-          ) }
-          ListFooterComponent={
-            <Text style={ styles.moreButton }>Read more 9 reviews…</Text>
-          } />
+          ItemSeparatorComponent={ () => <View style={ { width: '100%', height: 12 } } /> }
+          ListFooterComponent={ <Text style={ styles.moreButton }>Read more 9 reviews…</Text> } />
       </View>
     );
   }
