@@ -16,25 +16,45 @@ class SignupScreen extends Component {
 
   componentDidMount() {}
   render() {
-    const { backScreen, moveToScreen} = this.props;
+    const { backScreen, moveToScreen } = this.props;
     return (
       <Container>
         <SubHeader onBackPress={ () => backScreen() } />
         <Content style={ styles.content }>
           <InfoText title="Welcome" content="Create Your Account" />
           <View style={ styles.form }>
-            <InputText containerStyle={ styles.inputText } name="Username" placeholder="Input Your Username" />
-            <InputText containerStyle={ styles.inputText } name="E-mail" placeholder="Input Your E-mail Address" />
-            <InputText containerStyle={ styles.inputText } name="Password" isSecure placeholder="Set Your Password" />
+            <InputText onChangeText={(text) => this._handleType('username', text)} containerStyle={ styles.inputText } name="Username" placeholder="Input Your Username" />
+            <InputText onChangeText={(text) => this._handleType('email', text)} containerStyle={ styles.inputText } name="E-mail" placeholder="Input Your E-mail Address" />
+            <InputText onChangeText={(text) => this._handleType('password', text)} containerStyle={ styles.inputText } name="Password" isSecure placeholder="Set Your Password" />
           </View>
           <TermText containerStyle={ styles.term } />
         </Content>
-        <Button onPress={() => moveToScreen({ routeName: 'Interest' })} full style={ styles.signupButton }>
+        <Button onPress={ this._moveToInterest } full style={ styles.signupButton }>
           <Text style={ styles.signupButtonText }>SIGN UP</Text>
         </Button>
       </Container>
     );
   }
+
+  _handleType = (name, text) => {
+    this.setState({
+      [name]: text
+    });
+  };
+
+  _moveToInterest = () => {
+    const { email, username, password } = this.state;
+    const { moveToScreen } = this.props;
+
+    moveToScreen({
+      routeName: 'Interest',
+      params: {
+        email,
+        username,
+        password
+      }
+    });
+  };
 }
 
 const styles = EStyleSheet.create({

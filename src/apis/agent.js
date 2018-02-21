@@ -29,10 +29,22 @@ const Counter = {
 };
 
 const Login = {
-  login: (email, password) => axios.post(`${API_ROOT}/signin`, { userName: email, pwd: password }, config).then(res => {
-    console.log(res);
-    return res;
-  })
+  login: (email, password) =>
+    axios.post(`${API_ROOT}/signin`, { userName: email, pwd: password }, config).then(res =>
+      // console.log(res);
+      res),
+  signup: (email, username, password, favors) =>
+    requests
+      .post('/signup', {
+        email,
+        pwd: password,
+        userName: username,
+        prefer: _.reduce(favors, (items, favor, index) => ({ ...items, [`favor${index + 1}`]: favor }), {})
+      })
+      .then(res => {
+        console.log(res);
+        return res;
+      })
   // login: googleInfo => Promise.resolve({ user: googleInfo })
 };
 
@@ -42,10 +54,9 @@ const Host = {
       // console.log(res);
       ({ type, hosts: res })),
   findById: id =>
-    requests.get(`/search/detail?hostId=${id}`).then(res => {
+    requests.get(`/search/detail?hostId=${id}`).then(res =>
       // console.log(res);
-      return { detail: _.first(res) };
-    })
+      ({ detail: _.first(res) }))
 };
 
 export default {

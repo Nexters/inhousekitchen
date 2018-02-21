@@ -10,6 +10,7 @@ import { NavigationActions } from 'react-navigation';
 import { HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE } from './constants';
 import { BackButton } from '../../components/Button';
 import { ActiveDot, Dot } from '../../components/Dot';
+import { ProgressiveImage } from '../../components/Progressive'
 
 class Header extends Component {
   static propTypes = {
@@ -35,7 +36,7 @@ class Header extends Component {
         <Swiper style={ styles.imageSwiper } renderPagination={ this._renderPagination }>
           {_.map(images, (image, index) => (
             <View key={ index } style={ styles.slide }>
-              <Image style={ styles.slideImage } source={ { uri: image } } />
+              <ProgressiveImage style={ styles.slideImage } source={ { uri: image } } />
             </View>
           ))}
         </Swiper>

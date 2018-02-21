@@ -10,7 +10,8 @@ export const types = {
   GOOGLE_LOGIN: createFetchTypes('GOOGLE_LOGIN'),
   LOGOUT: createFetchTypes('LOGOUT'),
   GOOGLE_LOGOUT: createFetchTypes('GOOGLE_LOGOUT'),
-  TOGGLE_USER_TYPE: 'TOGGLE_USER_TYPE'
+  TOGGLE_USER_TYPE: 'TOGGLE_USER_TYPE',
+  SIGNUP: createFetchTypes('SIGNUP')
 };
 
 export const fetchLogin = (email, password) => ({
@@ -37,6 +38,15 @@ export const fetchGoogleLogin = config => ({
   })
 });
 
+export const signup = (email, username, password, favors) => ({
+  ...action(types.SIGNUP[FETCH]),
+  ...createMetaOffline({
+    effect: { url: _.partial(agent.Login.signup, email, username, password, favors) },
+    commit: action(types.SIGNUP[SUCCESS]),
+    rollback: action(types.SIGNUP[FAILURE])
+  })
+});
+
 export const toggleUserType = () => action(types.TOGGLE_USER_TYPE);
 
 const initialState = {
@@ -51,7 +61,9 @@ const loginReducer = {
     ...state,
     user
   }),
-  [types.LOGIN[FAILURE]]: state => initialState
+  [types.LOGIN[FAILURE]]: state => initialState,
+  [types.SIGNUP[SUCCESS]]: state => state,
+  [types.SIGNUP[FAILURE]]: state => state
 };
 
 const googleLoginReducer = {

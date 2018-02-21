@@ -20,11 +20,15 @@ class ImageCard extends Component {
   };
 
   render() {
-    const { url, name, selectedIndex, ...props } = this.props;
+    const {
+      url, name, selectedIndex, ...props
+    } = this.props;
 
     return (
-      <TouchableOpacity {...props} style={ styles.imageCard, selectedIndex !== -1 ? styles.selected : {} }>
-        <ProgressiveImage style={ styles.backgroundImage } source={ { uri: url } } />
+      <TouchableOpacity { ...props } style={ [styles.imageCard] }>
+        <ProgressiveImage
+          style={ [styles.backgroundImage, selectedIndex === -1 ? {} : styles.selected] }
+          source={ { uri: url } } />
         <Text style={ styles.name }>{name}</Text>
       </TouchableOpacity>
     );
