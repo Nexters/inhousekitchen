@@ -62,11 +62,15 @@ class InterestScreen extends Component {
   }
 
   _onPressSignup = () => {
-    const { favors } = this.state;
+    const { favors, limit } = this.state;
     const { email, username, password } = this.props.navigation.state.params;
 
-    console.log(favors, email, username, password);
+    if (favors.length !== limit) {
+      alert('you muest select 4 favors.');
+      return;
+    }
     if (!(email && username && password)) {
+      alert('invalid email, username, password');
       return;
     }
     this.props.signup(email, username, password, favors);
