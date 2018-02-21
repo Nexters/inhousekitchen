@@ -16,9 +16,10 @@ class SignupScreen extends Component {
 
   componentDidMount() {}
   render() {
+    const { backScreen, moveToScreen} = this.props;
     return (
       <Container>
-        <SubHeader onBackPress={ () => this.props.backScreen() } />
+        <SubHeader onBackPress={ () => backScreen() } />
         <Content style={ styles.content }>
           <InfoText title="Welcome" content="Create Your Account" />
           <View style={ styles.form }>
@@ -28,7 +29,7 @@ class SignupScreen extends Component {
           </View>
           <TermText containerStyle={ styles.term } />
         </Content>
-        <Button full style={ styles.signupButton }>
+        <Button onPress={() => moveToScreen({ routeName: 'Interest' })} full style={ styles.signupButton }>
           <Text style={ styles.signupButtonText }>SIGN UP</Text>
         </Button>
       </Container>
@@ -68,7 +69,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      backScreen: NavigationActions.back
+      backScreen: NavigationActions.back,
+      moveToScreen: NavigationActions.navigate
     },
     dispatch
   );

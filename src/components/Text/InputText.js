@@ -8,7 +8,7 @@ class InputText extends Component {
     name: PropTypes.string,
     placeholder: PropTypes.string,
     isSecure: PropTypes.bool,
-    containerStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object])
+    containerStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
   };
   static defaultProps = {
     name: 'User Name',
@@ -18,12 +18,13 @@ class InputText extends Component {
   };
   render() {
     const {
-      name, placeholder, isSecure, containerStyle
+      name, placeholder, isSecure, containerStyle, ...props
     } = this.props;
     return (
       <View style={ containerStyle }>
         <Text style={ styles.label }>{name}</Text>
         <TextInput
+          {...props}
           autoCapitalize="none"
           secureTextEntry={ isSecure }
           selectionColor={ EStyleSheet.value('$firstColor') }

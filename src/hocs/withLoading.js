@@ -10,15 +10,13 @@ const withLoading = Component => {
   const WithLoading = class extends React.Component {
     render() {
       const { loading } = this.props;
-
-      if (loading) {
-        return (
-          <View style={ styles.spinnerContent }>
-            <Spinner />
-          </View>
-        );
-      }
-      return <Component { ...this.props } />;
+      // var loading = true;
+      return (
+        <View style={ [styles.spinnerContent, loading ? { opacity: 0.4 } : {}] }>
+          {loading ? <Spinner style={ styles.spinner } /> : null}
+          <Component { ...this.props } />
+        </View>
+      );
     }
   };
   return connect(mapStateToProps, mapDispatchToProps)(WithLoading);
@@ -29,6 +27,12 @@ const styles = EStyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  spinner: {
+    position: 'absolute',
+    top: '50% - 27',
+    left: '50% - 27',
+    zIndex: 999
   }
 });
 

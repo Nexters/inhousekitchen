@@ -1,27 +1,55 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ScrollView, View } from 'react-native';
-import { Text, List } from 'native-base';
-import { Col, Row, Grid } from 'react-native-easy-grid';
+import { bindActionCreators } from 'redux';
+import { TouchableOpacity } from 'react-native';
+import { List } from 'native-base';
+import { Row, Grid } from 'react-native-easy-grid';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import _ from 'lodash';
+import { NavigationActions } from 'react-navigation';
 import { TitleHeader } from '../../components/Header';
 import { HostCard } from '../../components/Card';
+import { fetchHostByType, findHostsByType } from '../../ducks/host';
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    hosts: findHostsByType(state, 'NONE')
+  };
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      fetchHostByType,
+      moveToScreen: NavigationActions.navigate
+    },
+    dispatch
+  );
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 class Popular extends Component {
   static propTypes = {
-    hosts: PropTypes.array
+    hosts: PropTypes.array,
+    fetchHostByType: PropTypes.func
   };
 
   static defaultProps = {
-    hosts: []
+    hosts: [],
+    fetchHostByType: () => {}
   };
+
+  componentDidMount() {
+    this.props.fetchHostByType('NONE');
+  }
+
+  _goToDetail = hostId => {
+    const { moveToScreen } = this.props;
+    moveToScreen({ routeName: 'Detail' });
+  };
+
   render() {
     const { hosts } = this.props;
     return (
@@ -36,9 +64,9 @@ class Popular extends Component {
             horizontal
             dataArray={ hosts }
             renderRow={ item => (
-              <View key={ item.id } style={ styles.hostCard }>
+              <TouchableOpacity onPress={ () => this._goToDetail(item.id) } key={ item.id } style={ styles.hostCard }>
                 <HostCard title={ item.dIntro } contentUrl={ _.first(item.diningImages).imageUrl } price={ item.price } />
-              </View>
+              </TouchableOpacity>
             ) } />
         </Row>
       </Grid>

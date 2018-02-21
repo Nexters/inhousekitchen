@@ -13,10 +13,10 @@ export const types = {
   TOGGLE_USER_TYPE: 'TOGGLE_USER_TYPE'
 };
 
-export const fetchLogin = googleInfo => ({
+export const fetchLogin = (email, password) => ({
   ...action(types.LOGIN[FETCH]),
   ...createMetaOffline({
-    effect: { url: _.partial(agent.Login.login, googleInfo) },
+    effect: { url: _.partial(agent.Login.login, email, password) },
     commit: action(types.LOGIN[SUCCESS]),
     rollback: action(types.LOGIN[FAILURE])
   })

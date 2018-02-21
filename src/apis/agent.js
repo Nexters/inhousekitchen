@@ -1,5 +1,6 @@
-import env from '../configs/constants';
 import axios from 'axios';
+import _ from 'lodash';
+import env from '../configs/constants';
 
 const API_ROOT = 'http://13.125.66.49:7777/InHouseKitchen';
 
@@ -28,14 +29,23 @@ const Counter = {
 };
 
 const Login = {
-  login: googleInfo => Promise.resolve({ user: googleInfo })
+  login: (email, password) => axios.post(`${API_ROOT}/signin`, { userName: email, pwd: password }, config).then(res => {
+    console.log(res);
+    return res;
+  })
+  // login: googleInfo => Promise.resolve({ user: googleInfo })
 };
 
 const Host = {
   findByType: type =>
     requests.get('/search/main').then(res =>
       // console.log(res);
-      ({ type, hosts: res }))
+      ({ type, hosts: res })),
+  findById: id =>
+    requests.get(`/search/detail?hostId=${id}`).then(res => {
+      // console.log(res);
+      return { detail: _.first(res) };
+    })
 };
 
 export default {

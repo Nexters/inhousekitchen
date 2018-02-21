@@ -16,30 +16,20 @@ class Header extends Component {
     images: PropTypes.arrayOf(PropTypes.string),
     title: PropTypes.string,
     content: PropTypes.string,
-    backPress: PropTypes.func,
-    scrollY: PropTypes.any
+    backPress: PropTypes.func
   };
 
   static defaultProps = {
     images: _.times(3, () => 'http://lorempixel.com/640/480/food/'),
     title: 'Korean Fusion Noodle',
     content: 'Korean noodles, called "guksu" or "myeon" are everyday food',
-    backPress: () => {},
-    scrollY: new Animated.Value(0)
+    backPress: () => {}
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    // console.log(nextProps, nextState);
-    if (nextProps.scrollY != this.props.scrollY) {
-      return true;
-    }
-    return false;
-  }
   render() {
     const {
-      backPress, images, title, content, scrollY
+      backPress, images, title, content
     } = this.props;
-    const { animatedHidden, animatedBottom } = this._getAnimated();
     return (
       <View style={ [styles.header] }>
         <Swiper style={ styles.imageSwiper } renderPagination={ this._renderPagination }>
@@ -50,7 +40,7 @@ class Header extends Component {
           ))}
         </Swiper>
         <BackButton onPress={ backPress } buttonStyle={ styles.backIcon } iconColor="#fff" />
-        <Animated.View style={ [styles.headerInfo, { paddingBottom: animatedBottom, opacity: animatedHidden }] }>
+        <Animated.View style={ [styles.headerInfo] }>
           <Text style={ styles.headerInfoText }>{title}</Text>
           <Text style={ styles.headerInfoContentText }>{content}</Text>
         </Animated.View>
@@ -58,25 +48,16 @@ class Header extends Component {
     );
   }
 
-  _renderPagination = (index, total, context) => {
-    const { animatedBottom } = this._getAnimated();
-    return (
-      <Animated.View
-        style={ [
-          styles.pagingation,
-          {
-            paddingBottom: animatedBottom
-          }
-        ] }>
-        {_.times(total, dotIndex => {
-          if (dotIndex == index) {
-            return <ActiveDot key={ dotIndex } />;
-          }
-          return <Dot key={ dotIndex } />;
-        })}
-      </Animated.View>
-    );
-  };
+  _renderPagination = (index, total, context) => (
+    <Animated.View style={ [styles.pagingation] }>
+      {_.times(total, dotIndex => {
+        if (dotIndex == index) {
+          return <ActiveDot key={ dotIndex } />;
+        }
+        return <Dot key={ dotIndex } />;
+      })}
+    </Animated.View>
+  );
 
   _getAnimated = () => {
     const { scrollY } = this.props;
@@ -103,7 +84,8 @@ const styles = EStyleSheet.create({
       top: 35 - 8
     },
     left: 24,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    zIndex: 1000
   },
   header: {
     position: 'absolute',
@@ -131,7 +113,7 @@ const styles = EStyleSheet.create({
   },
   headerInfo: {
     position: 'absolute',
-    bottom: 32,
+    bottom: 32 + 56,
     left: 0,
     width: '100%',
     paddingHorizontal: 20,

@@ -16,9 +16,26 @@ import { ImageCard } from '../components/Card';
 class InterestScreen extends Component {
   static propTypes = {};
 
+  state = {
+    currentIndex: 0,
+    favors: [],
+    limit: 4
+  }
+
   componentDidMount() {}
+
+  selectedFavor = (id) => {
+    const{ favors } = this.state;
+    if(favors.includes(id)) {
+      return _.filter(favors, favor => favor === id);
+    }
+    return [ ...favors, id ];
+  };
+
   render() {
-    const data = _.times(9, index => ({ id: index + 1 }));
+    const{ favors } = this.state;
+    const data = _.reduce(_.times(9, index => ({ id: index + 1 })), (items, nextItem) => ({ [nextItem.id]: nextItem, ...items }), {});
+    console.log( _.values(data));
     return (
       <Container>
         <SubHeader onBackPress={ () => this.props.backScreen() } />
@@ -29,13 +46,13 @@ class InterestScreen extends Component {
               contentContainerStyle={ {
                 alignItems: 'center'
               } }
-              data={ data }
+              data={ _.values(data) }
               numColumns={ 3 }
               columnWrapperStyle={ {
                 paddingBottom: 10
               } }
               keyExtractor={ item => item.id }
-              renderItem={ ({ item }) => <ImageCard /> } />
+              renderItem={ ({ item }) => <ImageCard onPress={() => this.selectedFavor(item.id)} selectedIndex={favors.indexOf(item.id)} /> } />
           </View>
         </Content>
         <Button full style={ styles.okButton }>

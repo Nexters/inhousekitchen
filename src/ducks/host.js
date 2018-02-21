@@ -14,7 +14,8 @@ import { createReducer } from './reducerHelper';
 // type poplurar, theme, recent
 
 export const types = {
-  HOST: createFetchTypes('HOST')
+  HOST: createFetchTypes('HOST'),
+  HOST_DETAIL: createFetchTypes('HOST_DETAIL')
 };
 
 export const fetchHostByType = type => ({
@@ -26,7 +27,17 @@ export const fetchHostByType = type => ({
   })
 });
 
+export const fetchHostDetail = id => ({
+  ...action(types.HOST_DETAIL[FETCH]),
+  ...createMetaOffline({
+    effect: { url: _.partial(agent.Host.findById, id) },
+    commit: action(types.HOST_DETAIL[SUCCESS]),
+    rollback: action(types.HOST_DETAIL[FAILURE])
+  })
+});
+
 const initialState = {
+  detail: {},
   NONE: []
 };
 
@@ -37,6 +48,16 @@ const hostReducer = {
   }),
   [types.HOST[FAILURE]]: state =>
     // TODO faker data.
+    initialState,
+  [types.HOST_DETAIL[SUCCESS]]: (state, { payload: { detail } }) => ({
+    ...state,
+    detail: {
+      ...state.detail,
+      [detail.id]: detail
+    }
+  }),
+  [types.HOST_DETAIL[FAILURE]]: state =>
+    // TODO faker data.
     initialState
 };
 
@@ -45,3 +66,5 @@ export const reducers = createReducer(initialState, {
 });
 
 export const findHostsByType = (state, type = 'NONE') => state.host[type];
+
+export const findHostById = (state, id) => state.host[detail][id];

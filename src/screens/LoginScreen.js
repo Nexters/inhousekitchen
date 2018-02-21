@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { View, Image } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 import { Container, Content, Footer, Button, Text } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { LoginButton, ArrowRoundedButton } from '../components/Button';
@@ -21,18 +22,8 @@ class LoginScreen extends Component {
     googleLogin: PropTypes.func.isRequired
   };
 
-  componentDidMount() {}
-
-  _onPressSignup = () => {
-
-  };
-
-  _onPressSignIn = () => {
-
-  };
-
   render() {
-    const { isAuth, googleLogin } = this.props;
+    const { isAuth, googleLogin, moveToScreen } = this.props;
 
     // if (isAuth) {
     // console.log('success login');
@@ -40,17 +31,20 @@ class LoginScreen extends Component {
     // }
     return (
       <Container>
-        <Content contentContainerStyle={ styles.logo }>
+        <View style={ styles.logo }>
           <Image style={ styles.logoImage } source={ BackgroundImage } />
           <View style={ styles.footer }>
-            <LoginButton onPress={ googleLogin }>
+            <LoginButton onPress={ () => moveToScreen({ routeName: 'Signin' }) }>
               <Text>Sign In</Text>
             </LoginButton>
             <Text style={ styles.termText }>
-              {"Don't you have a account?"} <Text style={ styles.termHighlightText }>Sign Up</Text>
+              {"Don't you have a account?"}{' '}
+              <Text onPress={ () => moveToScreen({ routeName: 'Signup' }) } style={ styles.termHighlightText }>
+                Sign Up
+              </Text>
             </Text>
           </View>
-        </Content>
+        </View>
       </Container>
     );
   }
@@ -58,17 +52,19 @@ class LoginScreen extends Component {
 
 const styles = EStyleSheet.create({
   logo: {
+    width: '100%',
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center'
   },
   logoImage: {
+    position: 'absolute',
     width: '100%',
     height: '100%'
   },
   footer: {
     position: 'absolute',
-    width: "100%",
+    width: '100%',
     bottom: 24,
     height: 130,
     flexDirection: 'column',
@@ -101,7 +97,8 @@ function mapDispatchToProps(dispatch) {
           androidClientId: '94680954925-v72em1r0etl273dmuaslaei17dqm64m5.apps.googleusercontent.com',
           iosClientId: '94680954925-v72em1r0etl273dmuaslaei17dqm64m5.apps.googleusercontent.com',
           scopes: ['profile', 'email']
-        })
+        }),
+      moveToScreen: NavigationActions.navigate
     },
     dispatch
   );

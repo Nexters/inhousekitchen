@@ -1,31 +1,32 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { TouchableOpacity, Image } from 'react-native';
 import { Thumbnail, H1, H2, H3, Text, Button } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Placeholder from 'rn-placeholder';
 import PropTypes from 'prop-types';
-
 import { ProgressiveImage } from '../Progressive';
 
 class ImageCard extends Component {
   static propTypes = {
     url: PropTypes.string,
-    name: PropTypes.string
+    name: PropTypes.string,
+    selectedIndex: PropTypes.number
   };
 
   static defaultProps = {
     url: 'https://randomuser.me/api/portraits/men/83.jpg',
-    name: 'Chicken'
+    name: 'Chicken',
+    selectedIndex: -1
   };
 
   render() {
-    const { url, name } = this.props;
+    const { url, name, selectedIndex, ...props } = this.props;
 
     return (
-      <View style={ styles.imageCard }>
+      <TouchableOpacity {...props} style={ styles.imageCard, selectedIndex !== -1 ? styles.selected : {} }>
         <ProgressiveImage style={ styles.backgroundImage } source={ { uri: url } } />
         <Text style={ styles.name }>{name}</Text>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
@@ -47,6 +48,9 @@ const styles = EStyleSheet.create({
     bottom: 10,
     backgroundColor: 'transparent',
     color: '#fff'
+  },
+  selected: {
+    opacity: 0.4
   }
 });
 
