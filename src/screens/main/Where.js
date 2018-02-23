@@ -5,7 +5,7 @@ class Where extends Component {
   render() {
     return (
       <Item inlineLabel>
-        <Label>Username</Label>
+        <Label>Where</Label>
         <Input />
       </Item>
     );

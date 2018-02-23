@@ -14,13 +14,13 @@ class SelectCalendar extends Component {
         maxDate="2020-05-30"
         // Handler which gets executed on day press. Default = undefined
         onDayPress={ day => {
-          console.log('selected day', day);
+          // console.log('selected day', day);
         } }
         // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
         monthFormat="MMM yyyy"
         // Handler which gets executed when visible month changes in calendar. Default = undefined
         onMonthChange={ month => {
-          console.log('month changed', month);
+          // console.log('month changed', month);
         } }
         // Replace default arrows with custom ones (direction can be 'left' or 'right')
         renderArrow={ direction => (

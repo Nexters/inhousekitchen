@@ -32,12 +32,14 @@ class SigninScreen extends Component {
           <InfoText title="Sign In" content="with E-mail" />
           <View style={ styles.form }>
             <InputText
+              underlineColorAndroid="transparent"
               onChangeText={ text => this._handleType('email', text) }
               value={ email }
               containerStyle={ styles.inputText }
               name="E-mail"
               placeholder="Input Your E-mail Address" />
             <InputText
+              underlineColorAndroid="transparent"
               onChangeText={ text => this._handleType('password', text) }
               value={ password }
               containerStyle={ styles.inputText }
@@ -126,9 +128,7 @@ const styles = EStyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  return {
-    
-  };
+  return {};
 }
 
 function mapDispatchToProps(dispatch) {

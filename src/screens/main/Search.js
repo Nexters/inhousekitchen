@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { NavigationActions } from 'react-navigation';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { View } from 'react-native';
 import { Text, Button } from 'native-base';
@@ -6,6 +9,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { SelectCalendar } from '../../components/Calendar';
 import { SearchItem, Guest, Where } from './';
 
+@connect(mapStateToProps, mapDispatchToProps)
 class Search extends Component {
   state = {
     selectedType: 'guests',
@@ -89,6 +93,16 @@ class Search extends Component {
       </View>
     );
   }
+
+  _goToDetail = hostId => {
+    const { moveToScreen } = this.props;
+    moveToScreen({
+      routeName: 'Detail',
+      params: {
+        id: 1 // hostId
+      }
+    });
+  };
 }
 
 const styles = EStyleSheet.create({
@@ -108,5 +122,19 @@ const styles = EStyleSheet.create({
     fontSize: 16
   }
 });
+
+function mapStateToProps(state) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      backScreen: NavigationActions.back,
+      moveToScreen: NavigationActions.navigate
+    },
+    dispatch
+  );
+}
 
 export default Search;

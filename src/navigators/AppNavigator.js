@@ -10,6 +10,7 @@ import MapResultScreen from '../screens/MapResultScreen';
 import SignupScreen from '../screens/SignupScreen';
 import SigninScreen from '../screens/SigninScreen';
 import InterestScreen from '../screens/InterestScreen';
+import BecomeHostScreen from '../screens/BecomeHostScreen';
 import { addNavigationListener } from '../configs/store';
 
 export const Navigator = StackNavigator(
@@ -22,6 +23,7 @@ export const Navigator = StackNavigator(
     Signup: { screen: SignupScreen },
     Signin: { screen: SigninScreen },
     Interest: { screen: InterestScreen },
+    BecomeHost: { screen: BecomeHostScreen }
   },
   {
     initialRouteName: 'Main',

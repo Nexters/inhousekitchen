@@ -23,7 +23,7 @@ const requests = {
 const Counter = {
   getCounter: () =>
     new Promise((resolve, reject) => {
-      console.log('fetch Counter');
+      // console.log('fetch Counter');
       window.setTimeout(() => resolve(3), 5000);
     })
 };

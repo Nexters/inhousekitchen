@@ -21,11 +21,11 @@ class Guest extends Component {
     const { onPlus, onMinus, number } = this.props;
     return (
       <View style={ styles.guest }>
-        <Button style={ styles.button } onPress={ onPlus }>
+        <Button transparent style={ styles.button } onPress={ onPlus }>
           <Text style={ styles.buttonText }>+</Text>
         </Button>
         <Text style={ styles.text }>{number}</Text>
-        <Button style={ styles.button } onPress={ onMinus }>
+        <Button transparent style={ styles.button } onPress={ onMinus }>
           <Text style={ styles.buttonText }>-</Text>
         </Button>
       </View>

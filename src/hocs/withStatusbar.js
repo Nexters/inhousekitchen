@@ -11,7 +11,7 @@ function withStatusBar(TargetComponent) {
     render() {
       return (
         <View style={ { flex: 1 } }>
-          <StatusBar hidden />
+          <StatusBar barStyle="dark-content" backgroundColor="#000" translucent hidden />
           <TargetComponent { ...this.props } />
         </View>
       );

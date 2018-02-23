@@ -10,7 +10,7 @@ import { NavigationActions } from 'react-navigation';
 import { HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE } from './constants';
 import { BackButton } from '../../components/Button';
 import { ActiveDot, Dot } from '../../components/Dot';
-import { ProgressiveImage } from '../../components/Progressive'
+import { ProgressiveImage } from '../../components/Progressive';
 
 class Header extends Component {
   static propTypes = {
@@ -133,7 +133,7 @@ const styles = EStyleSheet.create({
   pagingation: {
     position: 'absolute',
     width: '100%',
-    bottom: 12,
+    bottom: 12 + 56,
     justifyContent: 'center',
     flexDirection: 'row'
   }

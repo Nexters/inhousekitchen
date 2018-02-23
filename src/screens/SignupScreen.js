@@ -34,16 +34,19 @@ class SignupScreen extends Component {
           <InfoText title="Welcome" content="Create Your Account" />
           <View style={ styles.form }>
             <InputText
+              underlineColorAndroid="transparent"
               onChangeText={ text => this._handleType('username', text) }
               containerStyle={ styles.inputText }
               name="Username"
               placeholder="Input Your Username" />
             <InputText
+              underlineColorAndroid="transparent"
               onChangeText={ text => this._handleType('email', text) }
               containerStyle={ styles.inputText }
               name="E-mail"
               placeholder="Input Your E-mail Address" />
             <InputText
+              underlineColorAndroid="transparent"
               onChangeText={ text => this._handleType('password', text) }
               containerStyle={ styles.inputText }
               name="Password"
@@ -87,7 +90,8 @@ const styles = EStyleSheet.create({
     paddingHorizontal: '$screenPadding'
   },
   inputText: {
-    marginBottom: 21
+    marginBottom: 21,
+    '@media android': {}
   },
   term: {
     paddingHorizontal: '$screenPadding'

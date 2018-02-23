@@ -15,6 +15,7 @@ import { isAuth } from '../ducks/auth';
 import { fetchHostDetail, getHostById } from '../ducks/host';
 import { SubHeader } from '../components/Header';
 import { withLoading as loading } from '../hocs/index';
+import { callValue } from '../utils/ObjectUtil';
 
 @connect(mapStateToProps, mapDispatchToProps)
 @loading
@@ -25,9 +26,7 @@ class DetailScreen extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.navigation.state.params;
-    // console.log('didMount');
-    this.props.fetchHostDetail(id);
+    this.props.fetchHostDetail(callValue(() => this.props.navigation.state.params.id, 1));
   }
 
   render() {
@@ -54,14 +53,18 @@ class DetailScreen extends Component {
   }
 
   _renderScrollViewContent = () => {
-    const { id } = this.props.navigation.state.params;
+    const id = callValue(() => this.props.navigation.state.params.id, 1);
     const detail = this.props.getHostById(id) || {};
     const {
       dIntro, startDate, endDate, startTime, endTime
     } = detail;
 
     const contents = [
-      { component: Content, title: dIntro, date: startDate ? `${startDate} ${startTime} - ${endDate} ${endTime}` : undefined },
+      {
+        component: Content,
+        title: dIntro,
+        date: startDate ? `${startDate} ${startTime} - ${endDate} ${endTime}` : undefined
+      },
       { component: Host },
       { component: Menu },
       { component: Review }

@@ -40,9 +40,14 @@ class SubHeader extends PureComponent {
 const styles = EStyleSheet.create({
   headerContainer: {
     paddingTop: 36,
+    height: 65,
     paddingLeft: '$screenPadding',
     paddingRight: 20,
-    paddingBottom: 20
+    paddingBottom: 20,
+    '@media android': {
+      paddingTop: 40,
+      paddingBottom: 15
+    }
   }
 });
 

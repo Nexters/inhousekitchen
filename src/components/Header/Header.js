@@ -26,11 +26,11 @@ class Header extends PureComponent {
         style={ [styles.headerContainer, containerStyle] }
         androidStatusBarColor={ EStyleSheet.value('$backgroundColor') }
         iosBarStyle="light-content">
-        <Left style={ { flex: 0 } }>{LeftComponent && <LeftComponent />}</Left>
+        <Left style={ { flex: 0, marginBottom: 5 } }>{LeftComponent && <LeftComponent />}</Left>
         <Body style={ { justifyContent: 'center', alignItems: 'center' } }>
           <Title style={ styles.headerTitle }>{title}</Title>
         </Body>
-        <Right style={ { flex: 0 } }>{RightComponent && <RightComponent />}</Right>
+        <Right style={ { flex: 0, marginBottom: 5 } }>{RightComponent && <RightComponent />}</Right>
       </NativeHeader>
     );
   }
@@ -40,11 +40,16 @@ const styles = EStyleSheet.create({
   headerContainer: {
     backgroundColor: '#fff',
     paddingTop: 36,
+    height: 65,
     paddingLeft: '$screenPadding',
     paddingRight: 20,
     paddingBottom: 20,
     borderColor: '#181818',
-    borderBottomWidth: 0.3
+    borderBottomWidth: 0.3,
+    '@media android': {
+      paddingTop: 40,
+      paddingBottom: 15
+    }
   },
   headerTitle: {
     width: 180,

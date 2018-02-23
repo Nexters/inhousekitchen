@@ -23,7 +23,6 @@ class InfoText extends PureComponent {
           <TitleHeader title={ title } />
           <Text style={ styles.content }>{content}</Text>
         </View>
-        <Separator />
       </View>
     );
   }

@@ -22,8 +22,8 @@ const sagaMiddleware = createSagaMiddleware();
 const middleware = [
   createReactNavigationReduxMiddleware('root', state => state.nav),
   sagaMiddleware,
-  createOfflineMiddleware(customConfig),
-  createLogger()
+  createOfflineMiddleware(customConfig)
+  // createLogger()
 ]; // createLogger(),
 export const addNavigationListener = createReduxBoundAddListener('root');
 
