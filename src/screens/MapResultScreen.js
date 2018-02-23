@@ -47,11 +47,7 @@ class MapResultScreen extends Component {
       <Container>
         <Header
           leftComponent={ () => <BackButton onPress={ () => backScreen() } /> }
-          rightComponent={ () => (
-            <Button onPress={ this._goToDetail } transparent>
-              <EntyoIcon name="direction" color={ EStyleSheet.value('$secondColor') } size={ 24 } />
-            </Button>
-          ) } />
+        />
         <View style={ styles.content }>
           <MapView
             style={ styles.map }
@@ -87,6 +83,14 @@ class MapResultScreen extends Component {
     );
   }
 
+  _rednerHostItem = item => {
+    return (
+      <TouchableOpacity key={ item } onPress={ this._goToDetail } style={ styles.hostItem }>
+        <Host4Card />
+      </TouchableOpacity>
+    );
+  };
+
   _goToDetail = () => {
     const { moveToScreen } = this.props;
     moveToScreen({ routeName: 'Detail', params: { id: 1 } });
@@ -120,14 +124,6 @@ class MapResultScreen extends Component {
     );
   };
 
-  _rednerHostItem = item => {
-    const { navigate } = this.props.navigation;
-    return (
-      <TouchableOpacity key={ item } onPress={ () => navigate('Detail') } style={ styles.hostItem }>
-        <Host4Card />
-      </TouchableOpacity>
-    );
-  };
 }
 
 const styles = EStyleSheet.create({

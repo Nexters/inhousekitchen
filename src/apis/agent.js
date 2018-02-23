@@ -30,9 +30,19 @@ const Counter = {
 
 const Login = {
   login: (email, password) =>
-    axios.post(`${API_ROOT}/signin`, { userName: email, pwd: password }, config).then(res =>
-      // console.log(res);
-      res),
+    /*
+axios.post(`${API_ROOT}${'/signin'}`, { userName: email, pwd: password }, config)
+      .then(res => {
+        console.log(res);
+        return { token: res };
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    */
+    Promise.resolve({
+      token: 'abcd'
+    }),
   signup: (email, username, password, favors) =>
     requests
       .post('/signup', {
@@ -44,15 +54,22 @@ const Login = {
       .then(res => {
         console.log(res);
         return res;
-      })
+      }),
+  signout: () => Promise.resolve()
   // login: googleInfo => Promise.resolve({ user: googleInfo })
 };
 
 const Host = {
   findByType: type =>
-    requests.get('/search/main').then(res =>
-      // console.log(res);
-      ({ type, hosts: res })),
+    requests
+      .get('/search/main')
+      .then(res =>
+        // console.log(res);
+        ({ type, hosts: res }))
+      .catch(err => {
+        console.log(err);
+        return err;
+      }),
   findById: id =>
     requests.get(`/search/detail?hostId=${id}`).then(res =>
       // console.log(res);

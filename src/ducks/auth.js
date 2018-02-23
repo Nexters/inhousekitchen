@@ -11,11 +11,12 @@ export const types = {
   LOGOUT: createFetchTypes('LOGOUT'),
   GOOGLE_LOGOUT: createFetchTypes('GOOGLE_LOGOUT'),
   TOGGLE_USER_TYPE: 'TOGGLE_USER_TYPE',
-  SIGNUP: createFetchTypes('SIGNUP')
+  SIGNUP: createFetchTypes('SIGNUP'),
+  SIGNOUT: createFetchTypes('SIGNOUT')
 };
 
 export const fetchLogin = (email, password) => ({
-  ...action(types.LOGIN[FETCH]),
+  ...action(types.LOGIN[FETCH], { loading: true }),
   ...createMetaOffline({
     effect: { url: _.partial(agent.Login.login, email, password) },
     commit: action(types.LOGIN[SUCCESS]),
@@ -47,6 +48,15 @@ export const signup = (email, username, password, favors) => ({
   })
 });
 
+export const signout = () => ({
+  ...action(types.SIGNOUT[FETCH]),
+  ...createMetaOffline({
+    effect: { url: _.partial(agent.Login.signout) },
+    commit: action(types.SIGNOUT[SUCCESS]),
+    rollback: action(types.SIGNOUT[FAILURE])
+  })
+});
+
 export const toggleUserType = () => action(types.TOGGLE_USER_TYPE);
 
 const initialState = {
@@ -57,13 +67,18 @@ const initialState = {
 };
 
 const loginReducer = {
-  [types.LOGIN[SUCCESS]]: (state, { payload: { user } }) => ({
+  [types.LOGIN[SUCCESS]]: (state, { payload: { token } }) => ({
     ...state,
-    user
+    user: {
+      ...state.user,
+      token
+    }
   }),
   [types.LOGIN[FAILURE]]: state => initialState,
   [types.SIGNUP[SUCCESS]]: state => state,
-  [types.SIGNUP[FAILURE]]: state => state
+  [types.SIGNUP[FAILURE]]: state => state,
+  [types.SIGNOUT[SUCCESS]]: state => initialState,
+  [types.SIGNOUT[FAILURE]]: state => state
 };
 
 const googleLoginReducer = {
@@ -90,5 +105,5 @@ export const reducers = createReducer(initialState, {
   ...authReducer
 });
 
-export const isAuth = state => !_.isEmpty(state.auth.user);
+export const isAuth = state => !_.isEmpty(state.auth.user.token);
 export const isGuest = state => state.auth.user.userType === 'GUEST';

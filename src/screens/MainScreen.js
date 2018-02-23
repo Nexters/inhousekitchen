@@ -24,7 +24,7 @@ class MainScreen extends Component {
         <Header
           containerStyle={ styles.header }
           leftComponent={ () => (
-            <Button onPress={ () => moveToScreen({ routeName: 'Login' }) } transparent>
+            <Button onPress={ () => moveToScreen({ routeName: 'MyPage' }) } transparent>
               <FeatherIcon name="user" size={ 24 } />
             </Button>
           ) }

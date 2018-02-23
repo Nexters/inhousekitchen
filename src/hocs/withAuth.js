@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { NavigationActions } from 'react-navigation';
 import { View } from 'react-native';
 import { isAuth } from '../ducks/auth';
+import { getCurrentKey } from '../ducks/nav';
+import LoginScreen from '../screens/LoginScreen';
 
 const withAuth = Component => {
   const WithAuth = class extends React.Component {
@@ -9,7 +13,7 @@ const withAuth = Component => {
       const { isAuth } = this.props;
 
       if (!isAuth) {
-        return <View />;
+        return <LoginScreen />;
       }
       return <Component { ...this.props } />;
     }
@@ -19,12 +23,19 @@ const withAuth = Component => {
 
 function mapStateToProps(state) {
   return {
-    isAuth: isAuth(state)
+    isAuth: isAuth(state),
+    currentRouteKey: getCurrentKey(state.nav)
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators(
+    {
+      moveToScreen: NavigationActions.navigate,
+      setParamScreen: NavigationActions.setParams
+    },
+    dispatch
+  );
 }
 
 export default withAuth;

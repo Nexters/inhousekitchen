@@ -7,9 +7,11 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { NavigationActions } from 'react-navigation';
 import { SubHeader } from '../components/Header';
 import { Profile, Interest, Reservation, MyKitchen } from './mypage';
-import { toggleUserType, isGuest } from '../ducks/auth';
+import { withAuth as auth } from '../hocs';
+import { signout, isGuest, isAuth } from '../ducks/auth';
 
 @connect(mapStateToProps, mapDispatchToProps)
+@auth
 class MyPageScreen extends Component {
   render() {
     const { isGuest } = this.props;
@@ -23,13 +25,17 @@ class MyPageScreen extends Component {
           <Profile />
           {isGuest ? <Interest /> : <MyKitchen />}
           <Reservation />
-          <Button full style={ styles.signoutButton }>
+          <Button onPress={ this._onPressSignout } full style={ styles.signoutButton }>
             <Text style={ styles.signoutButtonText }>Sign Out</Text>
           </Button>
         </Content>
       </Container>
     );
   }
+
+  _onPressSignout = () => {
+    this.props.signout();
+  };
 }
 
 const styles = EStyleSheet.create({
@@ -62,7 +68,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      backScreen: NavigationActions.back
+      backScreen: NavigationActions.back,
+      signout
     },
     dispatch
   );

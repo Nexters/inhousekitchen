@@ -23,7 +23,7 @@ class SigninScreen extends Component {
 
   componentDidMount() {}
   render() {
-      const { remember, email, password }= this.state;
+    const { remember, email, password } = this.state;
 
     return (
       <Container>
@@ -31,18 +31,33 @@ class SigninScreen extends Component {
         <Content style={ styles.content }>
           <InfoText title="Sign In" content="with E-mail" />
           <View style={ styles.form }>
-            <InputText onChangeText={(text) => this._handleType('email', text)} value={email} containerStyle={ styles.inputText } name="E-mail" placeholder="Input Your E-mail Address" />
-            <InputText onChangeText={(text) => this._handleType('password', text)} value={password} containerStyle={ styles.inputText } name="Password" isSecure placeholder="Set Your Password" />
+            <InputText
+              onChangeText={ text => this._handleType('email', text) }
+              value={ email }
+              containerStyle={ styles.inputText }
+              name="E-mail"
+              placeholder="Input Your E-mail Address" />
+            <InputText
+              onChangeText={ text => this._handleType('password', text) }
+              value={ password }
+              containerStyle={ styles.inputText }
+              name="Password"
+              isSecure
+              placeholder="Set Your Password" />
           </View>
           <View style={ styles.etc }>
             <View style={ styles.remember }>
-              <CheckBox onPress={this._toggleRemember} color={ EStyleSheet.value('$firstColor') } style={ styles.rememberCheckBox } checked={remember} />
+              <CheckBox
+                onPress={ this._toggleRemember }
+                color={ EStyleSheet.value('$firstColor') }
+                style={ styles.rememberCheckBox }
+                checked={ remember } />
               <Text>Remember me</Text>
             </View>
             <Text style={ styles.forgotten }>Forgotten Password</Text>
           </View>
         </Content>
-        <Button onPress={this._onPressSignIn} full style={ styles.signinButton }>
+        <Button onPress={ this._onPressSignIn } full style={ styles.signinButton }>
           <Text style={ styles.signinButtonText }>SIGN IN</Text>
         </Button>
       </Container>
@@ -50,7 +65,7 @@ class SigninScreen extends Component {
   }
 
   _toggleRemember = () => {
-    this.setState((state) => ({
+    this.setState(state => ({
       remember: !state.remember
     }));
   };
@@ -111,7 +126,9 @@ const styles = EStyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    
+  };
 }
 
 function mapDispatchToProps(dispatch) {

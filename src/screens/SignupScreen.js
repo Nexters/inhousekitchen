@@ -9,10 +9,20 @@ import { Container, Content, Footer, Button, Text } from 'native-base';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { InfoText, InputText, TermText } from '../components/Text';
 import { SubHeader, TitleHeader } from '../components/Header';
+import { getCurrentKey } from '../ducks/nav';
 
 @connect(mapStateToProps, mapDispatchToProps)
 class SignupScreen extends Component {
   static propTypes = {};
+
+  constructor(props) {
+    super(props);
+    const { currentRouteKey, setParamScreen } = props;
+    setParamScreen({
+      key: currentRouteKey,
+      params: { auth: true }
+    });
+  }
 
   componentDidMount() {}
   render() {
@@ -96,14 +106,17 @@ const styles = EStyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    currentRouteKey: getCurrentKey(state.nav)
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       backScreen: NavigationActions.back,
-      moveToScreen: NavigationActions.navigate
+      moveToScreen: NavigationActions.navigate,
+      setParamScreen: NavigationActions.setParams
     },
     dispatch
   );

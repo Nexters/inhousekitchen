@@ -3,7 +3,7 @@ export function callValue(supplier, defaultValue) {
     const value = supplier();
     return value || defaultValue;
   } catch (err) {
-    console.error(supplier);
+    // console.error(supplier);
     return defaultValue;
   }
 }
